@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593322775957",
+    "project_id": "dalsocial-f7ce0",
+    "storage_bucket": "dalsocial-f7ce0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593322775957:android:eea751c62d8494232ed29c",
+        "android_client_info": {
+          "package_name": "com.example.dalsocial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593322775957-1l1puqnq8egsoreogiu3a0ofb9s2b232.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYETaf-VVbdTTX4ima11pSI0avk4GslCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593322775957-1l1puqnq8egsoreogiu3a0ofb9s2b232.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
