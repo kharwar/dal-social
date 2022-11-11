@@ -21,6 +21,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         activity?.title = "Login";
+
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         val loginButton = view.findViewById<Button>(R.id.loginLoginButton)
