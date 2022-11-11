@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
-import com.example.dalsocial.userManagement.model.Authentication
+import com.example.dalsocial.userManagement.model.FirebaseAuthentication
 
 class RegistrationFragment : Fragment() {
 
@@ -30,7 +30,7 @@ class RegistrationFragment : Fragment() {
             val email = edEmail.text.toString()
             val password = edPassword.text.toString()
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                val auth = Authentication()
+                val auth = FirebaseAuthentication()
                 auth.registerWithEmail(email, password) { success ->
                     if (success) {
                     // goto home activity

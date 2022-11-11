@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
-import com.example.dalsocial.userManagement.model.Authentication
+import com.example.dalsocial.userManagement.model.FirebaseAuthentication
 
 class LoginFragment : Fragment() {
 
@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
             val email = edEmail.text.toString()
             val password = edPassword.text.toString()
 
-            val auth = Authentication()
+            val auth = FirebaseAuthentication()
 
             auth.loginWithEmail(email, password) { success ->
                 if (success) {

@@ -5,7 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import java.util.*
 
 // reference for mvc: https://www.geeksforgeeks.org/mvc-model-view-controller-architecture-pattern-in-android-with-example/
-class Authentication : Observable() {
+class FirebaseAuthentication : IFirebaseAuthentication, Observable() {
 
     var currentUser: FirebaseUser? = null
     var auth: FirebaseAuth? = null
@@ -15,28 +15,14 @@ class Authentication : Observable() {
         auth = FirebaseAuth.getInstance()
     }
 
-    fun getUserID(): String? {
+    override fun getFirebaseUserID(): String? {
         if (currentUser != null) {
             return currentUser!!.uid
         }
         return null
     }
 
-    fun getUserEmail(): String? {
-        if (currentUser != null) {
-            return currentUser!!.email
-        }
-        return null
-    }
-
-    fun getUsername(): String? {
-        if (currentUser != null) {
-            return currentUser!!.displayName
-        }
-        return null
-    }
-
-    fun loginWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
+    override fun loginWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
         if (currentUser == null) {
             auth!!.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -52,7 +38,7 @@ class Authentication : Observable() {
         }
     }
 
-    fun registerWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
+    override fun registerWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
         if (currentUser == null) {
             auth!!.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -68,7 +54,7 @@ class Authentication : Observable() {
         }
     }
 
-    fun logout() {
+    override fun logout() {
         if (currentUser != null) {
             auth!!.signOut()
             currentUser = null
@@ -77,7 +63,7 @@ class Authentication : Observable() {
         }
     }
 
-    fun isLoggedIn(): Boolean {
+    override fun isLoggedIn(): Boolean {
         return currentUser != null
     }
 }
