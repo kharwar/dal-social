@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".userManagement.fragment.LoginFragment">
+
+    <ImageView
+        android:id="@+id/ivRegistrationImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/edRegistrationEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="12dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivRegistrationImage" />
+
+    <EditText
+        android:id="@+id/edRegistrationPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        app:layout_constraintEnd_toEndOf="@+id/edRegistrationEmail"
+        app:layout_constraintStart_toStartOf="@+id/edRegistrationEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edRegistrationEmail" />
+
+    <Button
+        android:id="@+id/registerRegisterButton"
+        android:layout_width="213dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edRegistrationPassword"
+        app:layout_constraintVertical_bias="0.053" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
