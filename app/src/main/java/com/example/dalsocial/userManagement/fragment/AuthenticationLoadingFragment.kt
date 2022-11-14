@@ -23,10 +23,11 @@ class AuthenticationLoadingFragment : Fragment() {
 
         val auth = FirebaseAuthentication()
 
-        var intent = Intent(activity, HomeActivity::class.java)
 
         if (auth.isLoggedIn()) {
             val userPersistence = UserPersistence()
+            var intent = Intent(activity, HomeActivity::class.java)
+
             userPersistence.getUserByID(auth.getFirebaseUserID()!!) { user ->
                 if (user == null) {
                     intent = Intent(activity, SetupUserActivity::class.java)

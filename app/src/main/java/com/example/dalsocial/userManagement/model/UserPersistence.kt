@@ -13,13 +13,13 @@ class UserPersistence : IUserPersistence {
 
     override fun getUserByID(id: String, result: (User?) -> Unit) {
 
-        var user: User?
+        var user: User? = User()
 
         GlobalScope.launch {
             val docRef = db.collection("users").document(id)
 
             docRef.get().addOnSuccessListener { document ->
-                if (document != null) {
+                if (document.exists()) {
                     user = document.toObject(User::class.java)
                     result(user!!)
                 } else {
