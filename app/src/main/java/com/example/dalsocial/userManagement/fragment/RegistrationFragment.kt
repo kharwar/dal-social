@@ -11,7 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
+import com.example.dalsocial.userManagement.activity.SetupUserActivity
 import com.example.dalsocial.userManagement.model.FirebaseAuthentication
+import com.example.dalsocial.userManagement.model.UserPersistence
 
 class RegistrationFragment : Fragment() {
 
@@ -27,15 +29,28 @@ class RegistrationFragment : Fragment() {
         val edPassword = view.findViewById<EditText>(R.id.edRegistrationPassword)
 
         registerButton.setOnClickListener {
+            //TODO: Show progress bar here
+
             val email = edEmail.text.toString()
             val password = edPassword.text.toString()
+
             if (email.isNotEmpty() && password.isNotEmpty()) {
+
                 val auth = FirebaseAuthentication()
+                val persistence = UserPersistence()
+
                 auth.registerWithEmail(email, password) { success ->
                     if (success) {
-                    // goto home activity
-                        val intent = Intent(requireContext(), HomeActivity::class.java)
-                        startActivity(intent)
+
+                        var intent = Intent(activity, HomeActivity::class.java)
+
+                        persistence.getUserByID(auth.getFirebaseUserID()!!) { user ->
+                            if (user == null) {
+                                intent = Intent(context, SetupUserActivity::class.java)
+                            }
+                            startActivity(intent)
+                        }
+
                     } else {
                         Toast.makeText(context, "Registration failed", Toast.LENGTH_SHORT).show()
                     }

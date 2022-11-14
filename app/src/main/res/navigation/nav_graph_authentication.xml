@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_authentication"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/authenticationLoadingFragment">
 
+    <fragment
+        android:id="@+id/authenticationLoadingFragment"
+        android:name="com.example.dalsocial.userManagement.fragment.AuthenticationLoadingFragment"
+        android:label="fragment_authentication_loading"
+        tools:layout="@layout/fragment_authentication_loading" >
+        <action
+            android:id="@+id/action_authenticationLoadingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.dalsocial.userManagement.fragment.LoginFragment"
@@ -20,4 +30,5 @@
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
 </navigation>
