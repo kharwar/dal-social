@@ -24,6 +24,8 @@ class UserSetupDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO: validation
+
         val view = inflater.inflate(R.layout.fragment_user_setup_details, container, false)
 
         val displayName: String? = arguments?.getString("displayName")
@@ -42,11 +44,13 @@ class UserSetupDetails : Fragment() {
             val date = LocalDate.of(dpDob.year, dpDob.month, dpDob.dayOfMonth)
             val timestamp = date.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()
 
+            val userDetails: HashMap<String, Any> = arguments?.getSerializable("userDetails") as HashMap<String, Any>
+            userDetails["firstName"] = firstName
+            userDetails["lastName"] = lastName
+            userDetails["dob"] = timestamp
+
             val bundle = Bundle()
-            bundle.putString("displayName", displayName)
-            bundle.putString("firstName", firstName)
-            bundle.putString("lastName", lastName)
-            bundle.putLong("dob", timestamp)
+            bundle.putSerializable("userDetails", userDetails)
 
             findNavController().navigate(R.id.action_userSetupDetails_to_userSetupInterests, bundle)
         }

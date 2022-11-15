@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -18,6 +19,8 @@ class UserSetupInterests : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO: validation
+
         val view = inflater.inflate(R.layout.fragment_user_setup_interests, container, false)
 
         val edInterestsInput = view.findViewById<EditText>(R.id.edUserSetupInterests)
@@ -37,6 +40,22 @@ class UserSetupInterests : Fragment() {
             }
             false
         })
+
+        btnNext.setOnClickListener {
+            val interests = mutableListOf<String>()
+            for (i in 0 until chipGroup.childCount) {
+                val chip: Chip = chipGroup.getChildAt(i) as Chip
+                interests.add(chip.text.toString())
+            }
+
+            val userDetails: HashMap<String, Any> = arguments?.getSerializable("userDetails") as HashMap<String, Any>
+            userDetails["interests"] = interests
+
+            val bundle = Bundle()
+            bundle.putSerializable("userDetails", userDetails)
+
+            findNavController().navigate(R.id.action_userSetupInterests_to_userSetupSocial, bundle)
+        }
 
         return view
     }

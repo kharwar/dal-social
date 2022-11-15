@@ -15,6 +15,8 @@ class UserSetupDisplayName : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO: validation
+
         val view = inflater.inflate(R.layout.fragment_user_setup_display_name, container, false)
 
         val edDisplayName = view.findViewById<EditText>(R.id.edDisplayName)
@@ -23,7 +25,11 @@ class UserSetupDisplayName : Fragment() {
         btnNext.setOnClickListener {
             val displayName = edDisplayName.text.toString()
             val bundle = Bundle()
-            bundle.putString("displayName", displayName)
+
+            val userDetailsMap = HashMap<String, Any>()
+            userDetailsMap["displayName"] = displayName
+
+            bundle.putSerializable("userDetails", userDetailsMap)
 
             findNavController().navigate(R.id.action_userSetupDisplayName_to_userSetupDetails, bundle)
         }
