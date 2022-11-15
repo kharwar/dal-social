@@ -1,4 +1,4 @@
-package com.example.dalsocial.userManagement.model
+package com.example.dalsocial.model
 
 enum class GenderEnum {
     MALE,

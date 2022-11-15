@@ -1,4 +1,4 @@
-package com.example.dalsocial.userManagement.activity
+package com.example.dalsocial.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

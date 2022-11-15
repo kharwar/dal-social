@@ -14,7 +14,7 @@
         android:theme="@style/Theme.DalSocial"
         tools:targetApi="31">
         <activity
-            android:name=".userManagement.activity.SetupUserActivity"
+            android:name="com.example.dalsocial.activity.SetupUserActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

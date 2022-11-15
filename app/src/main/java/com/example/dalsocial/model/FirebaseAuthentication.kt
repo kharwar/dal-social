@@ -1,4 +1,4 @@
-package com.example.dalsocial.userManagement.model
+package com.example.dalsocial.model
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

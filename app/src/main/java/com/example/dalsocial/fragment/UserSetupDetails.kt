@@ -1,4 +1,4 @@
-package com.example.dalsocial.userManagement.fragment
+package com.example.dalsocial.fragment
 
 import android.os.Build
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
-import java.sql.Timestamp
 import java.time.LocalDate
 import java.time.ZoneOffset
 import java.util.*

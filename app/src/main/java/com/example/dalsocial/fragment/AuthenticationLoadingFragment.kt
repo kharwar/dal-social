@@ -1,4 +1,4 @@
-package com.example.dalsocial.userManagement.fragment
+package com.example.dalsocial.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
-import com.example.dalsocial.userManagement.activity.SetupUserActivity
-import com.example.dalsocial.userManagement.model.FirebaseAuthentication
-import com.example.dalsocial.userManagement.model.UserPersistence
+import com.example.dalsocial.activity.SetupUserActivity
+import com.example.dalsocial.model.FirebaseAuthentication
+import com.example.dalsocial.model.UserPersistence
 
 class AuthenticationLoadingFragment : Fragment() {
 
