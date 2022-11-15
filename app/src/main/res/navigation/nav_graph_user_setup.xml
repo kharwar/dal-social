@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_user_setup"
+    app:startDestination="@id/userSetupDisplayName">
+
+    <fragment
+        android:id="@+id/userSetupDisplayName"
+        android:name="com.example.dalsocial.userManagement.fragment.UserSetupDisplayName"
+        android:label="fragment_user_setup_display_name"
+        tools:layout="@layout/fragment_user_setup_display_name" >
+        <action
+            android:id="@+id/action_userSetupDisplayName_to_userSetupDetails"
+            app:destination="@id/userSetupDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSetupDetails"
+        android:name="com.example.dalsocial.userManagement.fragment.UserSetupDetails"
+        android:label="fragment_user_setup_details"
+        tools:layout="@layout/fragment_user_setup_details" >
+        <action
+            android:id="@+id/action_userSetupDetails_to_userSetupInterests"
+            app:destination="@id/userSetupInterests" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSetupInterests"
+        android:name="com.example.dalsocial.userManagement.fragment.UserSetupInterests"
+        android:label="fragment_user_setup_interests"
+        tools:layout="@layout/fragment_user_setup_interests" >
+        <action
+            android:id="@+id/action_userSetupInterests_to_userSetupSocial"
+            app:destination="@id/userSetupSocial" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSetupSocial"
+        android:name="com.example.dalsocial.userManagement.fragment.UserSetupSocial"
+        android:label="fragment_user_setup_social"
+        tools:layout="@layout/fragment_user_setup_social" />
+</navigation>

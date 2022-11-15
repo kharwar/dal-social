@@ -27,7 +27,7 @@ class UserPersistence : IUserPersistence {
                 }
 
             }.addOnFailureListener { _ ->
-                result(null)
+                throw Exception("Error getting documents.")
             }.await()
 
         }
@@ -42,7 +42,7 @@ class UserPersistence : IUserPersistence {
                 db.collection("users").document(user.userID).set(user).addOnSuccessListener {
                     result(true)
                 }.addOnFailureListener {
-                    result(false)
+                    throw Exception("Error updating document.")
                 }.await()
             }
         }
