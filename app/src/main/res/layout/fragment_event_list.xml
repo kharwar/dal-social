@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/eventToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedButton="@id/allEventsBtn"
+            >
+            <Button
+                android:id="@+id/allEventsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/allEvents"
+                style="?attr/materialButtonOutlinedStyle"
+                />
+            <Button
+                android:id="@+id/myEventsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/myEvents"
+                style="?attr/materialButtonOutlinedStyle"/>
+                />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/eventList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/fragment_event_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventToggle"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,12 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_emoji_people_24"
         android:title="Social" />
+
     <item
         android:id="@+id/events_page"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_emoji_people_24"
         android:title="Events" />
-
     <item
         android:id="@+id/groups_page"
         android:enabled="true"

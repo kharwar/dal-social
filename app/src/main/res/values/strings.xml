@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">DalSocial</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="eventTitle">Title</string>
     <string name="eventDesc">Lorem Ipsum Dolor</string>
     <string name="eventDate">Tomorrow</string>
-
+    <string name="allEvents">All Events</string>
+    <string name="myEvents">My Events</string>
 </resources>
