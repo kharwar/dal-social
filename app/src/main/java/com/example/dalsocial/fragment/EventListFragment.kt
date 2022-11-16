@@ -13,6 +13,7 @@ class EventListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        print("EVENTS")
         return inflater.inflate(R.layout.fragment_event_list, container, false)
     }
 }
