@@ -6,4 +6,8 @@
     <string name="eventDate">Tomorrow</string>
     <string name="allEvents">All Events</string>
     <string name="myEvents">My Events</string>
+    <string name="announcementTitle">Announcement</string>
+    <string name="announcementDescription">Description</string>
+    <string name="participants">Participants</string>
+    <string name="groupDesc">Group Description</string>
 </resources>
