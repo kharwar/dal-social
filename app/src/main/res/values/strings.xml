@@ -10,4 +10,6 @@
     <string name="announcementDescription">Description</string>
     <string name="participants">Participants</string>
     <string name="groupDesc">Group Description</string>
+    <string name="eventRegisterBtn">Register</string>
+    <string name="eventQABtn">Questions</string>
 </resources>
