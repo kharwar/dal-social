@@ -3,9 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/events_page">
+    app:startDestination="@id/socialFragment">
     <fragment
-        android:id="@+id/events_page"
+        android:id="@+id/socialFragment"
+        android:name="com.example.dalsocial.fragment.SocialFragment"
+        android:label="fragment_social"
+        tools:layout="@layout/fragment_social" />
+    <fragment
+        android:id="@+id/eventsFragment"
         android:name="com.example.dalsocial.fragment.EventListFragment"
         android:label="EventListFragment" />
+    <fragment
+        android:id="@+id/groupAnnouncements"
+        android:name="com.example.dalsocial.fragment.GroupAnnouncements"
+        android:label="GroupAnnouncements" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.dalsocial.fragment.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.dalsocial.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
