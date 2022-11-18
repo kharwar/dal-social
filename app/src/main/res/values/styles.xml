@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Material3.DisplayLargeBlack" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+</resources>

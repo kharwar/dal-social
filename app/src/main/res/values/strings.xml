@@ -6,4 +6,6 @@
     <string name="eventDate">Tomorrow</string>
     <string name="allEvents">All Events</string>
     <string name="myEvents">My Events</string>
+    <string name="eventRegisterBtn">Register</string>
+    <string name="eventQABtn">Questions</string>
 </resources>
