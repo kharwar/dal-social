@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
 import com.example.dalsocial.activity.SetupUserActivity
+import com.example.dalsocial.model.CurrentUser
 import com.example.dalsocial.model.FirebaseAuthentication
 import com.example.dalsocial.model.UserPersistence
 
@@ -34,6 +35,10 @@ class AuthenticationLoadingFragment : Fragment() {
                     if (user == null) {
                         intent = Intent(activity, SetupUserActivity::class.java)
                     }
+                    CurrentUser.userID = auth.getFirebaseUserID()!!
+                    CurrentUser.email = auth.getFirebaseUserEmail()!!
+                    CurrentUser.displayName = user?.displayName
+
                     startActivity(intent)
                 }
             } catch (e: Exception) {

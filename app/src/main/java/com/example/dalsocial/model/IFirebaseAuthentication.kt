@@ -7,4 +7,5 @@ interface IFirebaseAuthentication {
     fun logout()
     fun isLoggedIn(): Boolean
     fun getFirebaseUserID(): String?
+    fun getFirebaseUserEmail(): String?
 }

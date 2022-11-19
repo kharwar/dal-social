@@ -22,6 +22,13 @@ class FirebaseAuthentication : IFirebaseAuthentication, Observable() {
         return null
     }
 
+    override fun getFirebaseUserEmail(): String? {
+        if (currentUser != null) {
+            return currentUser!!.email
+        }
+        return null
+    }
+
     override fun loginWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
         if (currentUser == null) {
             auth!!.signInWithEmailAndPassword(email, password)
