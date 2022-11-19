@@ -39,7 +39,7 @@ class UserPersistence : IUserPersistence {
             result(false)
         } else {
             GlobalScope.launch {
-                db.collection("users").document(user.userID).set(user).addOnSuccessListener {
+                db.collection("users").document(user.userID!!).set(user).addOnSuccessListener {
                     result(true)
                 }.addOnFailureListener {
                     throw Exception("Error updating document.")

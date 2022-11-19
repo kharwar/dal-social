@@ -16,22 +16,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:singleSelection="true"
             app:selectionRequired="true"
-            app:checkedButton="@id/allEventsBtn"
-            >
+            app:checkedButton="@id/allEventsBtn">
+
             <Button
                 android:id="@+id/allEventsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/allEvents"
-                style="?attr/materialButtonOutlinedStyle"
-                />
+                style="?attr/materialButtonOutlinedStyle" />
+
             <Button
                 android:id="@+id/myEventsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/myEvents"
-                style="?attr/materialButtonOutlinedStyle"/>
-                />
+                style="?attr/materialButtonOutlinedStyle" />
+            />
         </com.google.android.material.button.MaterialButtonToggleGroup>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/eventList"

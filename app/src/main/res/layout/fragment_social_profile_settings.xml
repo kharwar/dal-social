@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.SocialProfileSettings">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/eventToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp"
+        app:checkedButton="@id/btnSocialProfileToggle"
+        app:selectionRequired="true"
+        app:singleSelection="true">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/btnSocialProfileToggle"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Social Profile" />
+
+        <Button
+            android:id="@+id/btnOtherDetailsToggle"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other Details" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:id="@+id/socialProfileFragmentContainer"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_social_profile" />
+
+</LinearLayout>

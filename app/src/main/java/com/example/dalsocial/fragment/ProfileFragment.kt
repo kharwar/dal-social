@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
 import com.example.dalsocial.model.CurrentUser
 
@@ -26,7 +27,7 @@ class ProfileFragment : Fragment() {
 
         val cardSocialProfile = view.findViewById<CardView>(R.id.socialProfileCard)
         cardSocialProfile.setOnClickListener {
-
+            findNavController().navigate(R.id.socialProfileSettings)
         }
 
         return view;
