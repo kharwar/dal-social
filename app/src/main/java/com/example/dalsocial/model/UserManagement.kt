@@ -1,11 +1,12 @@
 package com.example.dalsocial.model
 
+import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
 
 // reference for mvc: https://www.geeksforgeeks.org/mvc-model-view-controller-architecture-pattern-in-android-with-example/
-class FirebaseAuthentication : IFirebaseAuthentication, Observable() {
+class UserManagement : IUserManagement, Observable() {
 
     var currentUser: FirebaseUser? = null
     var auth: FirebaseAuth? = null
@@ -29,7 +30,39 @@ class FirebaseAuthentication : IFirebaseAuthentication, Observable() {
         return null
     }
 
-    override fun loginWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
+    override fun getUserByID(persistence: IUserPersistence, id: String, result: (User?) -> Unit) {
+        persistence.getUserByID(id, result)
+    }
+
+    override fun createOrUpdateUser(
+        persistence: IUserPersistence,
+        user: User,
+        result: (Boolean) -> Unit
+    ) {
+        persistence.createOrUpdateUser(user, result)
+    }
+
+    override fun deactivateUser(
+        persistence: IUserPersistence,
+        user: User,
+        result: (Boolean) -> Unit
+    ) {
+        persistence.deactivateUser(user, result)
+    }
+
+    override fun uploadProfileImage(
+        persistence: IUserPersistence,
+        uri: Uri,
+        result: (String?) -> Unit
+    ) {
+        persistence.uploadImage(getFirebaseUserID()!!, uri, getFileExtension(uri)!!, result)
+    }
+
+    override fun loginWithEmail(
+        email: String,
+        password: String,
+        function: (status: Boolean) -> Unit
+    ) {
         if (currentUser == null) {
             auth!!.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -45,7 +78,11 @@ class FirebaseAuthentication : IFirebaseAuthentication, Observable() {
         }
     }
 
-    override fun registerWithEmail(email: String, password: String, function: (status: Boolean) -> Unit) {
+    override fun registerWithEmail(
+        email: String,
+        password: String,
+        function: (status: Boolean) -> Unit
+    ) {
         if (currentUser == null) {
             auth!!.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -72,5 +109,9 @@ class FirebaseAuthentication : IFirebaseAuthentication, Observable() {
 
     override fun isLoggedIn(): Boolean {
         return currentUser != null
+    }
+
+    private fun getFileExtension(uri: Uri): String? {
+        return uri.toString().substring(uri.toString().lastIndexOf("/") + 1);
     }
 }

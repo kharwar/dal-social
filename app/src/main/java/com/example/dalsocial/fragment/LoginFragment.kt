@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
 import com.example.dalsocial.activity.SetupUserActivity
-import com.example.dalsocial.model.FirebaseAuthentication
+import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.UserPersistence
 
 class LoginFragment : Fragment() {
@@ -37,16 +37,16 @@ class LoginFragment : Fragment() {
             val email = edEmail.text.toString()
             val password = edPassword.text.toString()
 
-            val auth = FirebaseAuthentication()
+            val userManagement = UserManagement()
 
             val persistence = UserPersistence()
 
-            auth.loginWithEmail(email, password) { success ->
+            userManagement.loginWithEmail(email, password) { success ->
                 if (success) {
 
                     var intent = Intent(activity, HomeActivity::class.java)
 
-                    persistence.getUserByID(auth.getFirebaseUserID()!!) { user ->
+                    persistence.getUserByID(userManagement.getFirebaseUserID()!!) { user ->
                         if (user == null) {
                             intent = Intent(context, SetupUserActivity::class.java)
                         }

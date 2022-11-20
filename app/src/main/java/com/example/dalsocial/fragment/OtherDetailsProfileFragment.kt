@@ -1,10 +1,10 @@
 package com.example.dalsocial.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.dalsocial.R
 import com.example.dalsocial.model.*
 import com.google.android.material.snackbar.Snackbar
@@ -18,7 +18,7 @@ class OtherDetailsProfileFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_other_details_porfile, container, false)
 
-        val auth: IFirebaseAuthentication = FirebaseAuthentication()
+        val userManagement: IUserManagement = UserManagement()
         val userPersistence: IUserPersistence = UserPersistence()
 
         val tiInstagram = view.findViewById<TextInputEditText>(R.id.tiOtherDetailsInstagram)
@@ -28,7 +28,7 @@ class OtherDetailsProfileFragment : Fragment() {
 
         var user: User? = User()
 
-        userPersistence.getUserByID(auth.getFirebaseUserID()!!) { usr ->
+        userManagement.getUserByID(userPersistence, userManagement.getFirebaseUserID()!!) { usr ->
             if (usr != null) {
                 user = usr
                 tiInstagram.setText(user!!.instagram)
@@ -50,9 +50,10 @@ class OtherDetailsProfileFragment : Fragment() {
             user!!.facebook = facebook.toString()
             user!!.linkedin = linkedin.toString()
 
-            userPersistence.createOrUpdateUser(user!!) {
+            userManagement.createOrUpdateUser(userPersistence, user!!) {
                 if (it) {
-                    Snackbar.make(view, "Details updated successfully!", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(view, "Details updated successfully!", Snackbar.LENGTH_SHORT)
+                        .show()
                 } else {
                     Snackbar.make(view, "Something went wrong!", Snackbar.LENGTH_SHORT).show()
                 }
