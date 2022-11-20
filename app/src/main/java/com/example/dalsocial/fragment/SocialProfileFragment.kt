@@ -45,8 +45,10 @@ class SocialProfileFragment : Fragment() {
                 edDisplayName.setText(user.displayName)
                 edBio.setText(user.bio)
 
-                if (usr.profilePictureURL != null) {
+                if (usr.profilePictureURL != null && usr.profilePictureURL != "") {
                     Glide.with(this).load(usr.profilePictureURL).into(imageViewProfilePic!!)
+                } else {
+                    Glide.with(this).load(R.drawable.ic_baseline_account_circle_24).into(imageViewProfilePic!!)
                 }
             }
         }

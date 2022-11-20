@@ -35,7 +35,11 @@ class ProfileFragment : Fragment() {
         userManagement.getUserByID(
             userPersistence,
             userManagement.getFirebaseUserID()!!) { user ->
-            Glide.with(this).load(user?.profilePictureURL).into(ivProfile)
+            if (user?.profilePictureURL != null && user.profilePictureURL != "") {
+                Glide.with(this).load(user.profilePictureURL).into(ivProfile)
+            } else {
+                Glide.with(this).load(R.drawable.ic_baseline_account_circle_24).into(ivProfile)
+            }
         }
 
         tvProfileDisplayName.text = CurrentUser.displayName
