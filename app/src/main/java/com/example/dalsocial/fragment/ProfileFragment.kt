@@ -50,6 +50,11 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.socialProfileSettings)
         }
 
+        val cardQrCode = view.findViewById<CardView>(R.id.qrCodeCard)
+        cardQrCode.setOnClickListener {
+            findNavController().navigate(R.id.QRCodeLanding)
+        }
+
         return view;
     }
 }

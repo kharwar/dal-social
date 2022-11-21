@@ -30,10 +30,36 @@
         <action
             android:id="@+id/action_profileFragment_to_socialProfileSettings"
             app:destination="@id/socialProfileSettings" />
+        <action
+            android:id="@+id/action_profileFragment_to_QRCodeLanding"
+            app:destination="@id/QRCodeLanding" />
     </fragment>
     <fragment
         android:id="@+id/socialProfileSettings"
         android:name="com.example.dalsocial.fragment.SocialProfileSettings"
         android:label="fragment_social_profile_settings"
         tools:layout="@layout/fragment_social_profile_settings" />
+     <fragment
+        android:id="@+id/QRCodeLanding"
+        android:name="com.example.dalsocial.fragment.qr_code.QRCodeLanding"
+        android:label="fragment_qr_code_landing"
+        tools:layout="@layout/fragment_qr_code_landing" >
+         <action
+             android:id="@+id/action_QRCodeLanding_to_QRCodeScanFragment"
+             app:destination="@id/QRCodeScanFragment" />
+     </fragment>
+    <fragment
+        android:id="@+id/QRCodeScanFragment"
+        android:name="com.example.dalsocial.fragment.qr_code.QRCodeScanFragment"
+        android:label="fragment_q_r_code_scan"
+        tools:layout="@layout/fragment_q_r_code_scan" >
+        <action
+            android:id="@+id/action_QRCodeScanFragment_to_QRCodeScannedFragment2"
+            app:destination="@id/QRCodeScannedFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/QRCodeScannedFragment2"
+        android:name="com.example.dalsocial.fragment.qr_code.QRCodeScannedFragment"
+        android:label="fragment_q_r_code_scanned"
+        tools:layout="@layout/fragment_q_r_code_scanned" />
 </navigation>

@@ -34,7 +34,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.2'
+    implementation 'androidx.core:core-ktx:1.7.2' // do not update this!
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -45,6 +45,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
+    implementation("io.github.g0dkar:qrcode-kotlin-android:3.2.0")
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.firebase:firebase-storage:20.1.0'

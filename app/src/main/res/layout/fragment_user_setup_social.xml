@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="https://www.instagram.com/johndoe"
+            android:hint="johndoeIG"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="https://www.twitter.com/johndoe"
+            android:hint="elonmusk"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="https://www.linkedin.com/johndoe"
+            android:hint="johndoe"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -112,7 +112,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LinkedIn"
+            android:text="Facebook"
             android:textSize="18sp" />
 
         <EditText
@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="https://www.facebook.com/johndoe"
+            android:hint="johndoe"
             android:inputType="textUri"
             android:textSize="18sp" />
 
