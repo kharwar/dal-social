@@ -17,6 +17,9 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.dalsocial.R
 import com.example.dalsocial.model.*
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.storage.FirebaseStorage
@@ -37,6 +40,9 @@ class SocialProfileFragment : Fragment() {
         val edDisplayName = view.findViewById<TextInputEditText>(R.id.tiSocialProfileDisplayName)
         val edBio = view.findViewById<TextInputEditText>(R.id.tiSocialProfileBio)
 
+        // reference: https://medium.com/android-beginners/material-chips-material-components-for-android-dd0ef942e5ce#:~:text=Android%20Chips%20is%20one%20the,block%2C%20such%20as%20a%20contact.
+        val chipGroup = view.findViewById<ChipGroup>(R.id.chipGroupScannedUserInterests)
+
         userManagement.getUserByID(userPersistence, userManagement.getFirebaseUserID()!!) { usr ->
             val imageViewProfilePic = view?.findViewById<ImageView>(R.id.ivSocialProfilePic)
             if (usr != null) {
@@ -45,8 +51,21 @@ class SocialProfileFragment : Fragment() {
                 edDisplayName.setText(user.displayName)
                 edBio.setText(user.bio)
 
-                if (usr.profilePictureURL != null) {
+                if (usr.profilePictureURL != null && usr.profilePictureURL != "") {
                     Glide.with(this).load(usr.profilePictureURL).into(imageViewProfilePic!!)
+                } else {
+                    Glide.with(this).load(R.drawable.ic_baseline_account_circle_24).into(imageViewProfilePic!!)
+                }
+
+                for (interest in user.interests!!) {
+                    val chip = Chip(requireContext())
+                    chip.text = interest
+                    chip.isCloseIconVisible = true
+                    chip.setOnCloseIconClickListener {
+                        chipGroup.removeView(chip)
+                        user.interests!!.remove(chip.text.toString())
+                    }
+                    chipGroup.addView(chip)
                 }
             }
         }
@@ -76,7 +95,7 @@ class SocialProfileFragment : Fragment() {
             popupMenu.show()
         }
 
-        val btnSave: Button = view.findViewById(R.id.btnSocialProfileSave)
+        val btnSave = view.findViewById<FloatingActionButton>(R.id.btnSocialProfileSave)
         btnSave.setOnClickListener {
 
             user.displayName = edDisplayName.text.toString()
@@ -90,6 +109,22 @@ class SocialProfileFragment : Fragment() {
                     Snackbar.make(view, "Something went wrong!", Snackbar.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        val tiInterest = view.findViewById<TextInputEditText>(R.id.tiSocialProfileInterestsInput)
+        val fabAddInterest = view.findViewById<FloatingActionButton>(R.id.fabSocialProfileAddInterest)
+
+        fabAddInterest.setOnClickListener {
+            val chip = Chip(requireContext())
+            chip.isCloseIconVisible = true
+            chip.text = tiInterest.text.toString()
+            chip.setOnCloseIconClickListener {
+                chipGroup.removeView(chip)
+                user.interests!!.remove(chip.text.toString())
+            }
+            chipGroup.addView(chip)
+            tiInterest.text?.clear()
+            user.interests?.add(chip.text.toString())
         }
 
         return view
