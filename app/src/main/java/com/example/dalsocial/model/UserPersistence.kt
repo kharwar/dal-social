@@ -1,8 +1,6 @@
 package com.example.dalsocial.model
 
-import android.net.Uri
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -12,11 +10,10 @@ import kotlinx.coroutines.tasks.await
 class UserPersistence : IUserPersistence {
 
     val db = FirebaseFirestore.getInstance()
-    val storageRef = FirebaseStorage.getInstance().reference
 
     override fun getUserByID(id: String, result: (User?) -> Unit) {
 
-        var user: User?
+        var user: User? = User()
 
         GlobalScope.launch {
             val docRef = db.collection("users").document(id)
@@ -42,7 +39,7 @@ class UserPersistence : IUserPersistence {
             result(false)
         } else {
             GlobalScope.launch {
-                db.collection("users").document(user.userID!!).set(user).addOnSuccessListener {
+                db.collection("users").document(user.userID).set(user).addOnSuccessListener {
                     result(true)
                 }.addOnFailureListener {
                     throw Exception("Error updating document.")
@@ -54,30 +51,5 @@ class UserPersistence : IUserPersistence {
     override fun deactivateUser(user: User, result: (Boolean) -> Unit) {
         user.isActive = false
         createOrUpdateUser(user, result)
-    }
-
-    override fun uploadImage(
-        userID: String,
-        imageUri: Uri,
-        fileName: String,
-        result: (String?) -> Unit
-    ) {
-        val userRef = storageRef.child("$userID/profile/$fileName")
-
-        userRef.putFile(imageUri).addOnSuccessListener {
-            userRef.downloadUrl.addOnSuccessListener {
-                result(it.toString())
-            }
-        }.addOnFailureListener {
-            result(null)
-        }
-
-//        GlobalScope.launch {
-//            userRef.downloadUrl.addOnSuccessListener {
-//                result(it.toString())
-//            }.addOnFailureListener {
-//                result(null)
-//            }.await()
-//        }
     }
 }
