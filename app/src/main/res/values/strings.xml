@@ -12,4 +12,9 @@
     <string name="groupDesc">Group Description</string>
     <string name="eventRegisterBtn">Register</string>
     <string name="eventQABtn">Questions</string>
+    <string name="groupName">Group Name</string>
+    <string name="registered">Registered</string>
+
+    <string name="myGroups">My Groups</string>
+    <string name="allGroups">All Groups</string>
 </resources>
