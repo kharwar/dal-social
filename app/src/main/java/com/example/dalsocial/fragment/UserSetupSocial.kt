@@ -10,7 +10,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
-import com.example.dalsocial.model.UserManagement
+import com.example.dalsocial.model.FirebaseAuthentication
 import com.example.dalsocial.model.IUserPersistence
 import com.example.dalsocial.model.User
 import com.example.dalsocial.model.UserPersistence
@@ -42,8 +42,8 @@ class UserSetupSocial : Fragment() {
             userDetails["linkedin"] = edLinkedIn.text.toString()
             userDetails["facebook"] = edFacebook.text.toString()
 
-            userDetails["userID"] = UserManagement().currentUser!!.uid
-            userDetails["email"] = UserManagement().currentUser!!.email!!
+            userDetails["userID"] = FirebaseAuthentication().currentUser!!.uid
+            userDetails["email"] = FirebaseAuthentication().currentUser!!.email!!
 
             val user: User = User.fromMap(userDetails)
 

@@ -1,22 +1,22 @@
 package com.example.dalsocial.model
 
 data class User(
-    var userID: String? = "",
-    var firstName: String? = "",
-    var lastName: String? = "",
-    var displayName: String? = "",
-    var email: String? = "",
-    var interests: ArrayList<String>? = ArrayList(),
+    val userID: String? = "",
+    val firstName: String? = "",
+    val lastName: String? = "",
+    val displayName: String? = "",
+    val email: String? = "",
+    val interests: ArrayList<String>? = ArrayList(),
     var isActive: Boolean? = false,
-    var dob: Long? = 0,
+    val dob: Long? = 0,
 
     // social
-    var bio: String? = "",
-    var profilePictureURL: String? = "",
-    var instagram: String? = "",
-    var twitter: String? = "",
-    var facebook: String? = "",
-    var linkedin: String? = "",
+    val bio: String? = "",
+    val profilePictureURL: String? = "",
+    val instagram: String? = "",
+    val twitter: String? = "",
+    val facebook: String? = "",
+    val linkedin: String? = "",
 ) {
     companion object {
         fun fromMap(map: Map<String, Any?>): User {
