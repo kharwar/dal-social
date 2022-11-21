@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
 import com.example.dalsocial.activity.SetupUserActivity
-import com.example.dalsocial.model.FirebaseAuthentication
+import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.UserPersistence
 
 class RegistrationFragment : Fragment() {
@@ -36,7 +36,7 @@ class RegistrationFragment : Fragment() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
 
-                val auth = FirebaseAuthentication()
+                val auth = UserManagement()
                 val persistence = UserPersistence()
 
                 auth.registerWithEmail(email, password) { success ->

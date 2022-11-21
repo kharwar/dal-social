@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">DalSocial</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="eventTitle">Title</string>
+    <string name="eventDesc">Lorem Ipsum Dolor</string>
+    <string name="eventDate">Tomorrow</string>
+    <string name="allEvents">All Events</string>
+    <string name="myEvents">My Events</string>
+    <string name="announcementTitle">Announcement</string>
+    <string name="announcementDescription">Description</string>
+    <string name="participants">Participants</string>
+    <string name="groupDesc">Group Description</string>
+    <string name="eventRegisterBtn">Register</string>
+    <string name="eventQABtn">Questions</string>
+    <string name="groupName">Group Name</string>
+    <string name="registered">Registered</string>
+
+    <string name="myGroups">My Groups</string>
+    <string name="allGroups">All Groups</string>
 </resources>
