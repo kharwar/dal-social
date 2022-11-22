@@ -24,9 +24,13 @@
     <TextView
         android:id="@+id/eventTitle"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="@string/eventTitle"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="48sp"
+        android:gravity="start"
         android:textAppearance="@style/TextAppearance.Material3.DisplayLargeBlack"
         />
 
