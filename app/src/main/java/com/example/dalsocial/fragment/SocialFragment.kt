@@ -1,60 +1,63 @@
 package com.example.dalsocial.fragment
-
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.dalsocial.R
+import com.example.dalsocial.cards.ArrayAdapter
+import com.example.dalsocial.cards.Cards
+import com.lorentzos.flingswipe.SwipeFlingAdapterView
+import java.util.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SocialFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SocialFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
+    private var arrayAdapter: ArrayAdapter? = null
+    var rowItems: ArrayList<Cards>? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_social, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_social, container, false);
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SocialFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SocialFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        rowItems = ArrayList()
+        val cards: Cards = Cards("abc", "xyz", "asd")
+        rowItems!!.add(cards)
+        arrayAdapter = ArrayAdapter(requireContext(), R.layout.fragment_social, rowItems)
+        val flingContainer = view.findViewById<View>(R.id.frame) as SwipeFlingAdapterView
+        flingContainer.adapter = arrayAdapter
+        flingContainer.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
+
+            override fun removeFirstObjectInAdapter() {
+                Log.d("LIST", "removed object!")
+                rowItems?.removeAt(0)
+                arrayAdapter!!.notifyDataSetChanged()
             }
+
+            override fun onLeftCardExit(dataObject: Any) {
+                Toast.makeText(requireContext(), "Left", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onRightCardExit(dataObject: Any) {
+                Toast.makeText(requireContext(), "Right", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
+            override fun onScroll(scrollProgressPercent: Float) {}
+        })
+
+        // Optionally add an OnItemClickListener
+        flingContainer.setOnItemClickListener { itemPosition, dataObject ->
+            Toast.makeText(
+                requireContext(),
+                "Item Clicked",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        return view
     }
 }
