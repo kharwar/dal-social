@@ -11,6 +11,7 @@ import com.example.dalsocial.databinding.FragmentEventCardBinding
 import com.example.dalsocial.fragment.EventListFragment
 import com.example.dalsocial.fragment.EventListFragmentDirections
 
+
 class EventAdapter (val events: List<Event>, val fragment: EventListFragment): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(
@@ -47,6 +48,7 @@ class EventAdapter (val events: List<Event>, val fragment: EventListFragment): R
                     eventDescription = event.description!!
                 )
                 Navigation.findNavController(it).navigate(action)
+
             }
 
             //loading image

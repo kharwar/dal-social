@@ -8,5 +8,6 @@ data class Event(
     var title: String? = null,
     var description: String? = null,
     var scheduledDate: Date? = null,
-    var imageUrl: String? = "https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    var imageUrl: String? = "https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    var userId: String? = null
 )
