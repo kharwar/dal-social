@@ -13,6 +13,6 @@ class GroupCardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_card, container, false)
+        return inflater.inflate(R.layout.fragment_group_card, container, false)
     }
 }
