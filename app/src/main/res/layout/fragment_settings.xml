@@ -55,11 +55,13 @@
         android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logout" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDeleteAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete Account" />

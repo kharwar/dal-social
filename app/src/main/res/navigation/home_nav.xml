@@ -33,6 +33,12 @@
         <action
             android:id="@+id/action_profileFragment_to_QRCodeLanding"
             app:destination="@id/QRCodeLanding" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/socialProfileSettings"
@@ -62,4 +68,14 @@
         android:name="com.example.dalsocial.fragment.qr_code.QRCodeScannedFragment"
         android:label="fragment_q_r_code_scanned"
         tools:layout="@layout/fragment_q_r_code_scanned" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dalsocial.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/accountDetailsFragment"
+        android:name="com.example.dalsocial.fragment.AccountDetailsFragment"
+        android:label="fragment_account_details"
+        tools:layout="@layout/fragment_account_details" />
 </navigation>

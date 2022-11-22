@@ -36,7 +36,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="4dp"
                 android:text="Name"
-                android:textSize="24sp"
+                android:textSize="21sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -86,7 +86,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Social Profile"
-                   android:textSize="24sp"
+                   android:textSize="21sp"
                    android:textStyle="bold" />
 
                <TextView
@@ -104,6 +104,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/accountDetailsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -136,8 +137,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account Preferences"
-                    android:textSize="24sp"
+                    android:text="Account Details and Preferences"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -154,6 +155,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settingsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -186,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Settings"
-                    android:textSize="24sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -236,7 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="QR Code"
-                    android:textSize="24sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
