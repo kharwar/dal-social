@@ -17,4 +17,7 @@
 
     <string name="myGroups">My Groups</string>
     <string name="allGroups">All Groups</string>
+    <string name="groupNameInput">My Group Meetup</string>
+    <string name="groupDescInput">Some Description</string>
+    <string name="createGroup">Create Group</string>
 </resources>

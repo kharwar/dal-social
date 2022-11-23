@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.GroupList"
     >
 
     <com.google.android.material.button.MaterialButtonToggleGroup
@@ -35,15 +36,31 @@
             style="?attr/materialButtonOutlinedStyle" />
         />
     </com.google.android.material.button.MaterialButtonToggleGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/groupList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="393dp"
+        android:layout_height="571dp"
         android:layout_marginTop="8dp"
-        tools:listitem="@layout/fragment_group_card"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/groupToggle"
-        />
+        tools:listitem="@layout/fragment_group_card" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="333dp"
+        android:layout_marginEnd="23dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupList"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
