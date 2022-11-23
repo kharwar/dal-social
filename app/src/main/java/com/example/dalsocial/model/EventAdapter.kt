@@ -12,7 +12,7 @@ import com.example.dalsocial.fragment.EventListFragment
 import com.example.dalsocial.fragment.EventListFragmentDirections
 
 
-class EventAdapter (val events: List<Event>, val fragment: EventListFragment): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter (var events: List<Event>, val fragment: EventListFragment): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(
             FragmentEventCardBinding.inflate(
@@ -45,7 +45,8 @@ class EventAdapter (val events: List<Event>, val fragment: EventListFragment): R
                     eventBg = event.imageUrl!!,
                     eventDate = event.scheduledDate.toString(),
                     eventTitle =  event.title!!,
-                    eventDescription = event.description!!
+                    eventDescription = event.description!!,
+                    eventId = event.eventId!!
                 )
                 Navigation.findNavController(it).navigate(action)
 
