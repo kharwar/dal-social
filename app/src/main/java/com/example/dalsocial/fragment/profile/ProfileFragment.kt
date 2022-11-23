@@ -1,4 +1,4 @@
-package com.example.dalsocial.fragment
+package com.example.dalsocial.fragment.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

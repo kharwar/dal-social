@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.dalsocial.fragment.ProfileFragment"
+        android:name="com.example.dalsocial.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -42,12 +42,12 @@
     </fragment>
     <fragment
         android:id="@+id/socialProfileSettings"
-        android:name="com.example.dalsocial.fragment.SocialProfileSettings"
+        android:name="com.example.dalsocial.fragment.profile.SocialProfileSettings"
         android:label="fragment_social_profile_settings"
         tools:layout="@layout/fragment_social_profile_settings" />
      <fragment
         android:id="@+id/QRCodeLanding"
-        android:name="com.example.dalsocial.fragment.qr_code.QRCodeLanding"
+        android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeLanding"
         android:label="fragment_qr_code_landing"
         tools:layout="@layout/fragment_qr_code_landing" >
          <action
@@ -56,7 +56,7 @@
      </fragment>
     <fragment
         android:id="@+id/QRCodeScanFragment"
-        android:name="com.example.dalsocial.fragment.qr_code.QRCodeScanFragment"
+        android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeScanFragment"
         android:label="fragment_q_r_code_scan"
         tools:layout="@layout/fragment_q_r_code_scan" >
         <action
@@ -65,17 +65,17 @@
     </fragment>
     <fragment
         android:id="@+id/QRCodeScannedFragment2"
-        android:name="com.example.dalsocial.fragment.qr_code.QRCodeScannedFragment"
+        android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeScannedFragment"
         android:label="fragment_q_r_code_scanned"
         tools:layout="@layout/fragment_q_r_code_scanned" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.dalsocial.fragment.SettingsFragment"
+        android:name="com.example.dalsocial.fragment.profile.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/accountDetailsFragment"
-        android:name="com.example.dalsocial.fragment.AccountDetailsFragment"
+        android:name="com.example.dalsocial.fragment.profile.AccountDetailsFragment"
         android:label="fragment_account_details"
         tools:layout="@layout/fragment_account_details" />
 </navigation>

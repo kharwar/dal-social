@@ -98,6 +98,20 @@ class UserManagement : IUserManagement, Observable() {
         }
     }
 
+    override fun resetPassword(function: (status: Boolean) -> Unit) {
+        // reference: https://firebase.google.com/docs/auth/android/manage-users
+        if (currentUser != null) {
+            currentUser?.sendEmailVerification()?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    function(true)
+                } else {
+                    function(false)
+                }
+            }
+        }
+        function(false)
+    }
+
     override fun logout() {
         if (currentUser != null) {
             auth!!.signOut()

@@ -1,10 +1,7 @@
-package com.example.dalsocial.fragment.qr_code
+package com.example.dalsocial.fragment.profile.qr_code
 
-import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
 import com.example.dalsocial.model.UserManagement
 import io.github.g0dkar.qrcode.QRCode
-import java.text.SimpleDateFormat
-import java.util.*
 
 class QRCodeLanding : Fragment() {
 

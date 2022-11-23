@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.dalsocial.fragment.RegistrationFragment"
+        android:name="com.example.dalsocial.fragment.profile.RegistrationFragment"
         android:label="RegistrationFragment" >
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
