@@ -13,7 +13,6 @@ class GroupAnnouncements : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        print("Groups")
-        return inflater.inflate(R.layout.fragment_event_list, container, false)
+        return inflater.inflate(R.layout.fragment_group_announcements, container, false)
     }
 }
