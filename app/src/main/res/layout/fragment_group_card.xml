@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    tools:context=".fragment.EventCardFragment">
+    tools:context=".fragment.GroupCardFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -32,6 +32,7 @@
             </androidx.cardview.widget.CardView>
 
             <android.widget.LinearLayout
+                android:id="@id/grouplist_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"

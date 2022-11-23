@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_group"
+    app:startDestination="@id/groupCardFragment">
+
+    <fragment
+        android:id="@+id/createGroup2"
+        android:name="com.example.dalsocial.fragment.CreateGroup"
+        android:label="fragment_create_group"
+        tools:layout="@layout/fragment_create_group" >
+        <action
+            android:id="@+id/action_createGroup2_to_groupDescription2"
+            app:destination="@id/groupDescription2" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupCardFragment"
+        android:name="com.example.dalsocial.fragment.GroupCardFragment"
+        android:label="fragment_group_card"
+        tools:layout="@layout/fragment_group_card" />
+    <fragment
+        android:id="@+id/groupDescription2"
+        android:name="com.example.dalsocial.fragment.GroupDescription"
+        android:label="fragment_group_description"
+        tools:layout="@layout/fragment_group_description" >
+        <action
+            android:id="@+id/action_groupDescription2_to_groupAnnouncements3"
+            app:destination="@id/groupAnnouncements3" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupDetailsJoin"
+        android:name="com.example.dalsocial.fragment.GroupDetailsJoin"
+        android:label="fragment_group_details_join"
+        tools:layout="@layout/fragment_group_details_join" >
+        <action
+            android:id="@+id/action_groupDetailsJoin_to_groupAnnouncements3"
+            app:destination="@id/groupAnnouncements3" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupDetailsParticipated2"
+        android:name="com.example.dalsocial.fragment.GroupDetailsParticipated"
+        android:label="fragment_group_details_participated"
+        tools:layout="@layout/fragment_group_details_participated" >
+        <action
+            android:id="@+id/action_groupDetailsParticipated2_to_group2"
+            app:destination="@id/group2" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupAnnouncements3"
+        android:name="com.example.dalsocial.fragment.GroupAnnouncements"
+        android:label="fragment_group_announcements"
+        tools:layout="@layout/fragment_group_announcements" >
+        <action
+            android:id="@+id/action_groupAnnouncements3_to_groupDetailsParticipated2"
+            app:destination="@id/groupDetailsParticipated2" />
+    </fragment>
+    <fragment
+        android:id="@+id/group2"
+        android:name="com.example.dalsocial.fragment.GroupList"
+        android:label="fragment_group_list"
+        tools:layout="@layout/fragment_group_list" >
+        <action
+            android:id="@+id/action_group2_to_groupDetailsJoin"
+            app:destination="@id/groupDetailsJoin" />
+        <action
+            android:id="@+id/action_group2_to_createGroup2"
+            app:destination="@id/createGroup2" />
+    </fragment>
+</navigation>
