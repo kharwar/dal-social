@@ -12,4 +12,12 @@
     <string name="groupDesc">Group Description</string>
     <string name="eventRegisterBtn">Register</string>
     <string name="eventQABtn">Questions</string>
+    <string name="groupName">Group Name</string>
+    <string name="registered">Registered</string>
+
+    <string name="myGroups">My Groups</string>
+    <string name="allGroups">All Groups</string>
+    <string name="groupNameInput">My Group Meetup</string>
+    <string name="groupDescInput">Some Description</string>
+    <string name="createGroup">Create Group</string>
 </resources>

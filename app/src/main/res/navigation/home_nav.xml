@@ -12,7 +12,11 @@
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.example.dalsocial.fragment.EventListFragment"
-        android:label="EventListFragment" />
+        android:label="EventListFragment">
+        <action
+            android:id="@+id/action_eventsFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groupAnnouncements"
         android:name="com.example.dalsocial.fragment.GroupAnnouncements"
@@ -26,7 +30,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.dalsocial.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_socialProfileSettings"
             app:destination="@id/socialProfileSettings" />
@@ -45,20 +49,20 @@
         android:name="com.example.dalsocial.fragment.profile.SocialProfileSettings"
         android:label="fragment_social_profile_settings"
         tools:layout="@layout/fragment_social_profile_settings" />
-     <fragment
+    <fragment
         android:id="@+id/QRCodeLanding"
         android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeLanding"
         android:label="fragment_qr_code_landing"
-        tools:layout="@layout/fragment_qr_code_landing" >
-         <action
-             android:id="@+id/action_QRCodeLanding_to_QRCodeScanFragment"
-             app:destination="@id/QRCodeScanFragment" />
-     </fragment>
+        tools:layout="@layout/fragment_qr_code_landing">
+        <action
+            android:id="@+id/action_QRCodeLanding_to_QRCodeScanFragment"
+            app:destination="@id/QRCodeScanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/QRCodeScanFragment"
         android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeScanFragment"
         android:label="fragment_q_r_code_scan"
-        tools:layout="@layout/fragment_q_r_code_scan" >
+        tools:layout="@layout/fragment_q_r_code_scan">
         <action
             android:id="@+id/action_QRCodeScanFragment_to_QRCodeScannedFragment2"
             app:destination="@id/QRCodeScannedFragment2" />
@@ -78,4 +82,23 @@
         android:name="com.example.dalsocial.fragment.profile.AccountDetailsFragment"
         android:label="fragment_account_details"
         tools:layout="@layout/fragment_account_details" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.dalsocial.fragment.EventFragment"
+        android:label="EventFragment">
+        <argument
+            android:name="eventTitle"
+            app:argType="string"
+            android:defaultValue="Title" />
+        <argument
+            android:name="eventBg"
+            app:argType="string" />
+        <argument
+            android:name="eventDescription"
+            app:argType="string"
+            android:defaultValue="Description" />
+        <argument
+            android:name="eventDate"
+            app:argType="string" />
+    </fragment>
 </navigation>

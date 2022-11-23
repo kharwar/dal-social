@@ -5,69 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    tools:context=".fragment.EventCardFragment">
+    tools:context=".fragment.GroupCardFragment">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/eventCard"
-        style="?attr/materialCardViewFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:cardElevation="8dp">
-
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        >
         <android.widget.LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="5dp"
-                app:cardCornerRadius="8dp">
+                >
 
                 <ImageView
-                    android:id="@+id/eventBg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="TODO: change"
-                    android:scaleType="centerCrop"
+                    android:id="@+id/GroupImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     tools:src="@tools:sample/avatars" />
             </androidx.cardview.widget.CardView>
 
             <android.widget.LinearLayout
+                android:id="@id/grouplist_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/announcemnetTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/eventTitle"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
-
-                <TextView
-                    android:id="@+id/eventDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/eventDesc"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-
-                    />
-
-                <TextView
-                    android:id="@+id/eventDate"
+                    android:id="@+id/groupname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/eventDate"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                    android:text="@string/groupName" />
+
+                <TextView
+                    android:id="@+id/registered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/registered" />
             </android.widget.LinearLayout>
         </android.widget.LinearLayout>
 
