@@ -12,7 +12,11 @@
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.example.dalsocial.fragment.EventListFragment"
-        android:label="EventListFragment" />
+        android:label="EventListFragment" >
+        <action
+            android:id="@+id/action_eventsFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groupAnnouncements"
         android:name="com.example.dalsocial.fragment.GroupAnnouncements"
@@ -62,4 +66,23 @@
         android:name="com.example.dalsocial.fragment.qr_code.QRCodeScannedFragment"
         android:label="fragment_q_r_code_scanned"
         tools:layout="@layout/fragment_q_r_code_scanned" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.dalsocial.fragment.EventFragment"
+        android:label="EventFragment" >
+        <argument
+            android:name="eventTitle"
+            app:argType="string"
+            android:defaultValue="Title" />
+        <argument
+            android:name="eventBg"
+            app:argType="string" />
+        <argument
+            android:name="eventDescription"
+            app:argType="string"
+            android:defaultValue="Description" />
+        <argument
+            android:name="eventDate"
+            app:argType="string" />
+    </fragment>
 </navigation>
