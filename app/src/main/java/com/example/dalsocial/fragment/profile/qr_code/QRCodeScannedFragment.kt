@@ -1,4 +1,4 @@
-package com.example.dalsocial.fragment.qr_code
+package com.example.dalsocial.fragment.profile.qr_code
 
 import android.content.Intent
 import android.net.Uri

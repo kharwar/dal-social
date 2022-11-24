@@ -50,7 +50,7 @@ class UserSetupSocial : Fragment() {
             val userPersistence: IUserPersistence = UserPersistence()
             userPersistence.createOrUpdateUser(user) { success ->
                 if (success) {
-                    var intent = Intent(activity, HomeActivity::class.java)
+                    val intent = Intent(activity, HomeActivity::class.java)
                     startActivity(intent)
                     activity?.finish()
                 }

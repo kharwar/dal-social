@@ -27,6 +27,7 @@ class UserPersistence : IUserPersistence {
             docRef.get().addOnSuccessListener { document ->
                 if (document.exists()) {
                     user = document.toObject(User::class.java)
+                    user?.userID = document.id
                     result(user!!)
                 } else {
                     result(null)
