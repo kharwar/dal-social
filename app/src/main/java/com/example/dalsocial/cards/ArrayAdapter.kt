@@ -10,8 +10,9 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.dalsocial.model.User
 
-class ArrayAdapter(context: Context?, resourceId: Int, items: List<Cards?>?) : ArrayAdapter<Cards?>(context!!, resourceId, items!!) {
+class ArrayAdapter(context: Context?, resourceId: Int, items: List<User?>?) : ArrayAdapter<User?>(context!!, resourceId, items!!) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
@@ -21,14 +22,11 @@ class ArrayAdapter(context: Context?, resourceId: Int, items: List<Cards?>?) : A
         }
         val name = convertView!!.findViewById<View>(R.id.name) as TextView
         val image = convertView.findViewById<View>(R.id.image) as ImageView
-        name.text = cardItem!!.name
-        when (cardItem.profileImageUrl) {
-            "default" -> Glide.with(convertView.context).load(R.mipmap.ic_launcher).into(image)
-            else -> {
-                //Glide.clear(image)
-                Glide.with(convertView.context).load(cardItem.profileImageUrl).into(image)
-            }
-        }
+        name.text = cardItem!!.displayName
+
+        Glide.with(convertView.context).load(cardItem.profilePictureURL).into(image)
+
         return convertView
     }
 }
+//Reference: https://github.com/LukeKotlin/tinder-clone-kotlin

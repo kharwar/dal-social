@@ -1,9 +1,11 @@
 package com.example.dalsocial.model
 
 import android.net.Uri
+import com.example.dalsocial.cards.Cards
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
+import kotlin.collections.ArrayList
 
 // reference for mvc: https://www.geeksforgeeks.org/mvc-model-view-controller-architecture-pattern-in-android-with-example/
 class UserManagement : IUserManagement, Observable() {
@@ -56,6 +58,10 @@ class UserManagement : IUserManagement, Observable() {
         result: (String?) -> Unit
     ) {
         persistence.uploadImage(getFirebaseUserID()!!, uri, getFileExtension(uri)!!, result)
+    }
+
+    override fun getAllUsers(persistence: IUserPersistence, result: (ArrayList<User>) -> Unit) {
+        persistence.getAllUsers(result)
     }
 
     override fun loginWithEmail(

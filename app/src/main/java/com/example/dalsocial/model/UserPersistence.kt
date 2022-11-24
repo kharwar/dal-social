@@ -1,6 +1,9 @@
 package com.example.dalsocial.model
 
+import android.content.ContentValues.TAG
 import android.net.Uri
+import android.util.Log
+import com.example.dalsocial.cards.Cards
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -79,5 +82,23 @@ class UserPersistence : IUserPersistence {
 //                result(null)
 //            }.await()
 //        }
+    }
+
+    override fun getAllUsers(result: (ArrayList<User>) -> Unit) {
+
+        var swipeCards: ArrayList<User> = ArrayList()
+        GlobalScope.launch {
+            val cardRef = db.collection("users").get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        Log.d(TAG, "${document.id} => ${document.data}")
+                        swipeCards.add(document.toObject(User::class.java))
+                        result(swipeCards!!)
+                    }
+                }
+                .addOnFailureListener {
+                    throw Exception("Error updating document.")
+                }.await()
+        }
     }
 }
