@@ -20,4 +20,6 @@
     <string name="groupNameInput">My Group Meetup</string>
     <string name="groupDescInput">Some Description</string>
     <string name="createGroup">Create Group</string>
+
+    <string name="google_client_id">788599215361-r0ahmq41oh1a2gmluj69p59c4u5dk56c.apps.googleusercontent.com</string>
 </resources>
