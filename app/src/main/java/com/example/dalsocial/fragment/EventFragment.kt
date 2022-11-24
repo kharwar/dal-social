@@ -14,8 +14,7 @@ import com.example.dalsocial.model.Event
 import com.example.dalsocial.model.EventPersistence
 import com.example.dalsocial.model.IEventPersistence
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.*
 
 class EventFragment : Fragment() {
@@ -57,17 +56,26 @@ class EventFragment : Fragment() {
                 Log.d(TAG, "Loaded")
 
                 binding?.eventRegisterBtn?.setOnClickListener {
-                    var message: String? = "Hello";
                     if (eventId != null) {
-                        eventPersistence.registerEvent(eventId) { success ->
-                            if (success) {
-                                message = "You have been registered for the event!"
-                                Snackbar.make(view, message!!, Snackbar.LENGTH_SHORT).show()
-                            } else {
-                                message = "Registration failed!"
-                                Snackbar.make(view, message!!, Snackbar.LENGTH_SHORT).show()
+                        var message: String? = "Test";
+                        val responseMsg = GlobalScope.launch {
+                            eventPersistence.registerEvent(eventId) { success ->
+                                if (success) {
+                                    message = "You have been registered for the event!"
+                                    binding?.eventRegisterBtn?.isEnabled = false
+                                    binding?.eventRegisterBtn?.text = "Registered"
+                                    Snackbar.make(view, message!!, Snackbar.LENGTH_SHORT).show()
+                                } else {
+                                    message = "Registration failed!"
+                                    Snackbar.make(view, message!!, Snackbar.LENGTH_SHORT).show()
+                                }
                             }
                         }
+                        runBlocking {
+                            responseMsg.join()
+
+                        }
+
                     }
                 }
             }

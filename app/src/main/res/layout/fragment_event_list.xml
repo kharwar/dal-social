@@ -6,7 +6,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         >
-
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/eventToggle"
             android:layout_width="wrap_content"
@@ -33,6 +32,7 @@
                 android:text="@string/myEvents"
                 style="?attr/materialButtonOutlinedStyle"/>
         </com.google.android.material.button.MaterialButtonToggleGroup>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/eventList"
             android:layout_width="match_parent"
