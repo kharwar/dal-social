@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseUser
 import java.util.*
 
 // reference for mvc: https://www.geeksforgeeks.org/mvc-model-view-controller-architecture-pattern-in-android-with-example/
-class UserManagement : IUserManagement, Observable() {
+class UserManagement : IUserManagement {
 
     var currentUser: FirebaseUser? = null
     var auth: FirebaseAuth? = null
@@ -73,8 +73,6 @@ class UserManagement : IUserManagement, Observable() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         currentUser = auth!!.currentUser
-                        setChanged()
-                        notifyObservers()
                         result(true)
                     } else {
                         result(false)
@@ -93,8 +91,6 @@ class UserManagement : IUserManagement, Observable() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         currentUser = auth!!.currentUser
-                        setChanged()
-                        notifyObservers()
                         result(true)
                     } else {
                         result(false)
@@ -130,7 +126,7 @@ class UserManagement : IUserManagement, Observable() {
     override fun resetPasswordByEmail(email: String, function: (status: Boolean) -> Unit) {
         if (auth != null) {}
         function(false)
-        auth.sendPasswordResetEmail(email).addOnCompleteListener {task ->
+        auth?.sendPasswordResetEmail(email)?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 function(true)
             } else {
@@ -143,8 +139,6 @@ class UserManagement : IUserManagement, Observable() {
         if (currentUser != null) {
             auth!!.signOut()
             currentUser = null
-            setChanged()
-            notifyObservers()
         }
     }
 
