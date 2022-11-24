@@ -1,4 +1,4 @@
-package com.example.dalsocial.fragment
+package com.example.dalsocial.fragment.profile
 
 import android.content.Intent
 import android.os.Bundle

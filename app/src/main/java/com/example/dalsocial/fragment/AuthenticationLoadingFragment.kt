@@ -34,9 +34,6 @@ class AuthenticationLoadingFragment : Fragment() {
                     if (user == null) {
                         intent = Intent(activity, SetupUserActivity::class.java)
                     }
-                    CurrentUser.userID = auth.getFirebaseUserID()!!
-                    CurrentUser.email = auth.getFirebaseUserEmail()!!
-                    CurrentUser.displayName = user?.displayName
 
                     startActivity(intent)
                 }
