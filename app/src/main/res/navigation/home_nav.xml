@@ -34,7 +34,18 @@
             app:destination="@id/usersChatFragment" />
         />
     </fragment>
-
+    <fragment
+        android:id="@+id/usersChatFragment"
+        android:name="com.example.dalsocial.fragment.UserChatFragment"
+        android:label="UserChatFragment" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="username" />
+        <action
+            android:id="@+id/action_usersChatFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.dalsocial.fragment.ProfileFragment"

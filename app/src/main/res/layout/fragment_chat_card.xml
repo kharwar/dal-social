@@ -8,10 +8,11 @@
     tools:context=".fragment.SoloChatCardFragment">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/soloChatCard"
+        android:id="@+id/chatUserId"
         style="?attr/materialCardViewFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:tooltipText="uesrId"
         app:cardElevation="8dp">
 
         <android.widget.LinearLayout
@@ -26,12 +27,13 @@
                 app:cardCornerRadius="8dp">
 
                 <ImageView
-                    android:id="@+id/eventBg"
+                    android:id="@+id/chatProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="TODO: change"
                     android:scaleType="centerCrop"
-                    tools:src="@tools:sample/avatars" />
+                    tools:src="@tools:sample/avatars"
+                    />
             </androidx.cardview.widget.CardView>
 
             <android.widget.LinearLayout

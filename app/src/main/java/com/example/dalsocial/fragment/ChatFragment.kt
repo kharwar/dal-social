@@ -1,12 +1,16 @@
 package com.example.dalsocial.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dalsocial.R
 import com.example.dalsocial.databinding.FragmentChatBinding
+import com.example.dalsocial.model.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +51,45 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var chatList: MutableList<ChatList> = ArrayList()
+        val chatPersistence: IChatListPersistence = ChatListPersistence()
+        var adapter = ChatListAdapter(chatList, this);
+        binding.chatList.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        binding.chatList.adapter = adapter
+
+
+//        eventPersistence.getMyEvents { events ->
+//            var adapter = EventAdapter(events, this);
+//            binding.eventList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+//            binding.eventList.adapter = adapter
+//
+//        }
+
+        binding.chatToggle.addOnButtonCheckedListener { toggleButton, checkedId, isChecked ->
+            if (isChecked){
+                when (checkedId) {
+                    R.id.soloChats -> {
+                        chatPersistence.getChatList { chats ->
+                            adapter.chatlist = chats.toMutableList()
+                            Log.d("Adapter", "all")
+                            adapter.notifyDataSetChanged()
+                        }
+                    }
+                    R.id.groupChats -> {
+                        chatPersistence.getGroupChatList { chats ->
+                            adapter.chatlist = chats.toMutableList()
+                            Log.d("Adapter", "my")
+                            adapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+            }
+        }
+        binding.chatToggle.clearChecked()
+        binding.chatToggle.check(R.id.soloChats)
+
     }
 
     override fun onDestroyView() {
