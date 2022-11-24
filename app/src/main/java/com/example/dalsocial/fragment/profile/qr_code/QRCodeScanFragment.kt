@@ -1,8 +1,6 @@
-package com.example.dalsocial.fragment.qr_code
+package com.example.dalsocial.fragment.profile.qr_code
 
 import android.os.Bundle
-import android.util.Log
-import android.util.Log.INFO
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +11,6 @@ import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.dalsocial.R
-import java.util.logging.Level.INFO
 
 class QRCodeScanFragment : Fragment() {
 

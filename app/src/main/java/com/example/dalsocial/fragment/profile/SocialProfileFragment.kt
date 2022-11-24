@@ -1,4 +1,4 @@
-package com.example.dalsocial.fragment
+package com.example.dalsocial.fragment.profile
 
 import android.content.Intent
 import android.net.Uri
@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.activity.result.ActivityResultLauncher
@@ -22,7 +20,6 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.storage.FirebaseStorage
 
 class SocialProfileFragment : Fragment() {
 

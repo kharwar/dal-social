@@ -1,11 +1,16 @@
 package com.example.dalsocial.model
 
+import android.content.Intent
 import android.net.Uri
 
 interface IUserManagement {
 
-    fun loginWithEmail(email: String, password: String, function: (status: Boolean) -> Unit)
-    fun registerWithEmail(email: String, password: String, function: (status: Boolean) -> Unit)
+    fun loginWithEmail(email: String, password: String, result: (status: Boolean) -> Unit)
+    fun registerWithEmail(email: String, password: String, result: (status: Boolean) -> Unit)
+    fun loginWithGoogle(intent: Intent, result: (status: Boolean) -> Unit)
+
+    fun resetPassword(result: (status: Boolean) -> Unit)
+    fun resetPasswordByEmail(email: String, result: (status: Boolean) -> Unit)
     fun logout()
     fun isLoggedIn(): Boolean
     fun getFirebaseUserID(): String?
