@@ -110,5 +110,9 @@
     <fragment
         android:id="@+id/createEventFragment"
         android:name="com.example.dalsocial.fragment.CreateEventFragment"
-        android:label="CreateEventFragment" />
+        android:label="CreateEventFragment" >
+        <action
+            android:id="@+id/action_createEventFragment_to_eventsFragment2"
+            app:destination="@id/eventsFragment" />
+    </fragment>
 </navigation>
