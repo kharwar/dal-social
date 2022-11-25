@@ -81,4 +81,40 @@ class UserPersistence : IUserPersistence {
 //            }.await()
 //        }
     }
+
+    override fun getAllUsers(result: (ArrayList<User>) -> Unit) {
+        val users: ArrayList<User> = ArrayList()
+        GlobalScope.launch {
+            db.collection("users").get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        users.add(document.toObject(User::class.java))
+                    }
+                    result(users)
+                }
+                .addOnFailureListener {
+                    throw Exception("Error updating document.")
+                }
+        }
+    }
+
+    override fun getAllUsersByInterests(
+        interests: ArrayList<String>,
+        result: (ArrayList<User>) -> Unit
+    ) {
+        // reference: https://firebase.google.com/docs/firestore/query-data/queries#array-contains-any
+        val users: ArrayList<User> = ArrayList()
+        GlobalScope.launch {
+            db.collection("users").whereArrayContainsAny("interests", interests).get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        users.add(document.toObject(User::class.java))
+                    }
+                    result(users)
+                }
+                .addOnFailureListener {
+                    throw Exception("Error updating document.")
+                }
+        }
+    }
 }
