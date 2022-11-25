@@ -1,9 +1,6 @@
 package com.example.dalsocial.model
 
-import android.content.ContentValues.TAG
 import android.net.Uri
-import android.util.Log
-import com.example.dalsocial.cards.Cards
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -86,20 +83,38 @@ class UserPersistence : IUserPersistence {
     }
 
     override fun getAllUsers(result: (ArrayList<User>) -> Unit) {
-
-        var swipeCards: ArrayList<User> = ArrayList()
+        val users: ArrayList<User> = ArrayList()
         GlobalScope.launch {
-            val cardRef = db.collection("users").get()
+            db.collection("users").get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        Log.d(TAG, "${document.id} => ${document.data}")
-                        swipeCards.add(document.toObject(User::class.java))
-                        result(swipeCards!!)
+                        users.add(document.toObject(User::class.java))
                     }
+                    result(users)
                 }
                 .addOnFailureListener {
                     throw Exception("Error updating document.")
-                }.await()
+                }
+        }
+    }
+
+    override fun getAllUsersByInterests(
+        interests: ArrayList<String>,
+        result: (ArrayList<User>) -> Unit
+    ) {
+        // reference: https://firebase.google.com/docs/firestore/query-data/queries#array-contains-any
+        val users: ArrayList<User> = ArrayList()
+        GlobalScope.launch {
+            db.collection("users").whereArrayContainsAny("interests", interests).get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        users.add(document.toObject(User::class.java))
+                    }
+                    result(users)
+                }
+                .addOnFailureListener {
+                    throw Exception("Error updating document.")
+                }
         }
     }
 }

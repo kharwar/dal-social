@@ -2,7 +2,6 @@ package com.example.dalsocial.model
 
 import android.content.Intent
 import android.net.Uri
-import com.example.dalsocial.cards.Cards
 
 interface IUserManagement {
 
@@ -22,5 +21,10 @@ interface IUserManagement {
     fun deactivateUser(persistence: IUserPersistence, user: User, result: (Boolean) -> Unit)
 
     fun uploadProfileImage(persistence: IUserPersistence, fileName: Uri, result: (String?) -> Unit)
-    fun getAllUsers(persistence: IUserPersistence,result: (ArrayList<User>) -> Unit)
+    fun getAllUsers(persistence: IUserPersistence, result: (ArrayList<User>) -> Unit)
+    fun getAllUsersByInterests(
+        persistence: IUserPersistence,
+        interests: ArrayList<String>,
+        result: (ArrayList<User>) -> Unit
+    )
 }
