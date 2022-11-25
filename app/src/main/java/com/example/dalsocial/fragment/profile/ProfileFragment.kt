@@ -1,4 +1,4 @@
-package com.example.dalsocial.fragment
+package com.example.dalsocial.fragment.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.dalsocial.R
-import com.example.dalsocial.model.CurrentUser
 import com.example.dalsocial.model.IUserPersistence
 import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.UserPersistence
@@ -35,6 +34,10 @@ class ProfileFragment : Fragment() {
         userManagement.getUserByID(
             userPersistence,
             userManagement.getFirebaseUserID()!!) { user ->
+
+            tvProfileDisplayName.text = user?.displayName
+            tvProfileEmail.text = userManagement.getFirebaseUserEmail()
+
             if (user?.profilePictureURL != null && user.profilePictureURL != "") {
                 Glide.with(this).load(user.profilePictureURL).into(ivProfile)
             } else {
@@ -42,8 +45,7 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        tvProfileDisplayName.text = CurrentUser.displayName
-        tvProfileEmail.text = CurrentUser.email
+
 
         val cardSocialProfile = view.findViewById<CardView>(R.id.socialProfileCard)
         cardSocialProfile.setOnClickListener {
@@ -53,6 +55,16 @@ class ProfileFragment : Fragment() {
         val cardQrCode = view.findViewById<CardView>(R.id.qrCodeCard)
         cardQrCode.setOnClickListener {
             findNavController().navigate(R.id.QRCodeLanding)
+        }
+
+        val cardSettings = view.findViewById<CardView>(R.id.settingsCard)
+        cardSettings.setOnClickListener {
+            findNavController().navigate(R.id.settingsFragment)
+        }
+
+        val accountsCard = view.findViewById<CardView>(R.id.accountDetailsCard)
+        accountsCard.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_accountDetailsFragment)
         }
 
         return view;

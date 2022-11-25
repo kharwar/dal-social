@@ -37,13 +37,13 @@ class EventAdapter (var events: List<Event>, val fragment: EventListFragment): R
         fun bindEvent(event: Event){
             eventsBinding.eventTitle.text = event.title
             eventsBinding.eventDescription.text = event.description
-            eventsBinding.eventDate.text = event.scheduledDate.toString()
+            eventsBinding.eventDate.text = event.scheduledDate
 
             // Setting onClick listener
             eventsBinding.eventCard.setOnClickListener { it ->
                 val action = EventListFragmentDirections.actionEventsFragmentToEventFragment(
                     eventBg = event.imageUrl!!,
-                    eventDate = event.scheduledDate.toString(),
+                    eventDate = event.scheduledDate!!,
                     eventTitle =  event.title!!,
                     eventDescription = event.description!!,
                     eventId = event.eventId!!

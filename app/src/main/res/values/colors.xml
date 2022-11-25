@@ -1,4 +1,3 @@
-
 <resources>
     <color name="seed">#725c00</color>
     <color name="md_theme_light_primary">#725C00</color>
@@ -62,3 +61,4 @@
     <color name="md_theme_dark_outlineVariant">#4C4639</color>
     <color name="md_theme_dark_scrim">#000000</color>
 </resources>
+

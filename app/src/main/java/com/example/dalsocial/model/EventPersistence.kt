@@ -1,12 +1,11 @@
 package com.example.dalsocial.model
 
+import android.net.Uri
 import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
 @OptIn(DelicateCoroutinesApi::class)
@@ -21,6 +20,7 @@ class EventPersistence : IEventPersistence {
 
     private val eventRef = db.collection(EVENTS_COLLECTION)
     private val guestsRef = db.collection(EVENTS_GUESTS_COLLECTION)
+    private val storageRef = FirebaseStorage.getInstance().reference
 
     val userManagement = UserManagement()
     val userPersistence = UserPersistence()
@@ -44,9 +44,9 @@ class EventPersistence : IEventPersistence {
         }
     }
 
-    override fun registerEvent(eventId: String, result: (Boolean) -> Unit) {
+    override suspend fun registerEvent(eventId: String, result: (Boolean) -> Unit) {
         try {
-            GlobalScope.launch {
+            GlobalScope.async {
                 eventRef.document(eventId).get().addOnCompleteListener { task ->
                     if (!task.isSuccessful) {
                         throw Exception("No such event exist")
@@ -139,9 +139,53 @@ class EventPersistence : IEventPersistence {
         }
     }
 
-    override fun createEvent(event: Event, result: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
-        // TODO: Add the organizer in eventGuests
+    override fun createEvent(event: Event, imageUri: Uri, result: (Boolean) -> Unit) {
+        getCurrentUser { user ->
+            try {
+                val ref = eventRef.document()
+                event.userId = user?.userID
+                event.eventId = ref.id
+
+                uploadImage(ref.id, imageUri) {
+                    event.imageUrl = it
+                    ref.set(event)
+
+                    GlobalScope.launch {
+                        registerEvent(event.eventId!!) { success ->
+                            if(success){
+                                result(true)
+                            } else {
+                                result(false)
+                            }
+                        }
+                    }
+
+                }
+
+            } catch (e: Exception){
+                Log.d(TAG, "Exception in createEvent: $e")
+                result(false)
+            }
+        }
+    }
+
+    private fun uploadImage(eventId: String, imageUri: Uri, result: (String?) -> Unit): String? {
+        var url: String? = null
+        val fileName = getFileExtension(imageUri)
+        val eventRef = storageRef.child("events/$eventId/$fileName")
+        eventRef.putFile(imageUri).addOnSuccessListener {
+            eventRef.downloadUrl.addOnSuccessListener {
+                result(it.toString())
+            }
+        }.addOnFailureListener {
+            Log.d(TAG, "Error in uploading Image")
+            result(null)
+        }
+        return url
+    }
+
+    private fun getFileExtension(uri: Uri): String? {
+        return uri.toString().substring(uri.toString().lastIndexOf("/") + 1);
     }
 
     private fun getCurrentUser(result: (User?) -> Unit) {
