@@ -42,6 +42,14 @@
             android:name="userName"
             app:argType="string"
             android:defaultValue="username" />
+        <argument
+            android:name="chatToUserId"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="chatConnectionId"
+            app:argType="string"
+            android:defaultValue="" />
         <action
             android:id="@+id/action_usersChatFragment_to_chatFragment"
             app:destination="@id/chatFragment" />

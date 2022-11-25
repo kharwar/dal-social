@@ -1,60 +1,135 @@
 package com.example.dalsocial.fragment
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.dalsocial.R
+import com.example.dalsocial.cards.MatchesAdapter
+import com.example.dalsocial.model.*
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+import com.lorentzos.flingswipe.SwipeFlingAdapterView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SocialFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SocialFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    val userManagement: IUserManagement = UserManagement()
+    val userPersistence: IUserPersistence = UserPersistence()
+    val socialMatches: ISocialMatches = SocialMatches(MatchPersistence(), userManagement)
 
+    lateinit var flingContainer: SwipeFlingAdapterView
+
+    var data: ArrayList<User> = ArrayList()
+    val filteredInterests: ArrayList<String> = ArrayList()
+
+    private var arrayAdapter: MatchesAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_social, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_social, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SocialFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SocialFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val interestChipGroup = view.findViewById<ChipGroup>(R.id.socialFilterChipGroup)
+        var isFilterOpen = false
+
+        flingContainer = view.findViewById<View>(R.id.frame) as SwipeFlingAdapterView
+
+        userManagement.getUserByID(userPersistence, userManagement.getFirebaseUserID()!!) { user ->
+            if (user?.interests != null) {
+                for (interest in user.interests!!) {
+                    val filterChip = Chip(context)
+                    filterChip.text = interest
+                    filterChip.isChecked = true
+                    filterChip.isCheckedIconVisible = true
+                    filterChip.isCheckable = true
+                    interestChipGroup.addView(filterChip)
+                    filterChip.setOnCheckedChangeListener { _, isChecked ->
+                        if (isChecked) {
+                            filteredInterests.add(interest)
+                        } else {
+                            filteredInterests.remove(interest)
+                        }
+                        load(filteredInterests)
+                    }
                 }
             }
+        }
+
+        load(filteredInterests)
+
+        flingContainer.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
+
+            override fun removeFirstObjectInAdapter() {
+                data.removeAt(0)
+                arrayAdapter!!.notifyDataSetChanged()
+            }
+
+            override fun onLeftCardExit(dataObject: Any) {
+            }
+
+            override fun onRightCardExit(dataObject: Any) {
+                val user = dataObject as User
+                val includedUserIds = ArrayList<String>()
+                includedUserIds.add(user.userID!!)
+                includedUserIds.add(userManagement.getFirebaseUserID()!!)
+
+
+                val match = Match(
+                    matchInitiatorUserId = userManagement.getFirebaseUserID()!!,
+                    toBeMatchedUserId = user.userID!!,
+                    matchInitiatorUserIdLiked = true,
+                    includedUsers = includedUserIds
+                )
+                socialMatches.match(match) {
+                    Toast.makeText(requireContext(), "Matched", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
+            override fun onScroll(scrollProgressPercent: Float) {}
+        })
+
+        // Optionally add an OnItemClickListener
+        flingContainer.setOnItemClickListener { itemPosition, dataObject ->
+            Toast.makeText(
+                requireContext(),
+                "Item Clicked",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+
+        val filterButton = view.findViewById<View>(R.id.btnSocialFilter)
+        filterButton.setOnClickListener {
+            if (isFilterOpen) {
+                interestChipGroup.visibility = View.GONE
+            } else {
+                interestChipGroup.visibility = View.VISIBLE
+            }
+            isFilterOpen = !isFilterOpen
+        }
+
+        return view
+    }
+
+    fun load(filteredInterests: ArrayList<String>) {
+        if (filteredInterests.isEmpty()) {
+            userManagement.getAllUsers(userPersistence) { users ->
+                data = users
+                arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
+                flingContainer.adapter = arrayAdapter
+                arrayAdapter!!.notifyDataSetChanged()
+            }
+        } else {
+            userManagement.getAllUsersByInterests(userPersistence, filteredInterests) { users ->
+                data = users
+                arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
+                flingContainer.adapter = arrayAdapter
+                arrayAdapter!!.notifyDataSetChanged()
+            }
+        }
+
     }
 }
+//Reference: https://github.com/LukeKotlin/tinder-clone-kotlin

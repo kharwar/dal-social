@@ -40,7 +40,9 @@ class ChatListAdapter (var chatlist: List<ChatList>, val fragment: ChatFragment)
             // Setting onClick listener
             chatListBinding.SoloChatUserName.setOnClickListener { it ->
                 val action = ChatFragmentDirections.actionChatFragmentToUserChatFragment(
-                    userName = chatlist.displayName!!
+                    userName = chatlist.displayName!!,
+                    chatToUserId = chatlist.userId!!,
+                    chatConnectionId = chatlist.connectionId!!
                 )
                 Navigation.findNavController(it).navigate(action)
 

@@ -1,8 +1,9 @@
 package com.example.dalsocial.model
 
-import java.util.*
-
-data class Match (
-    var userId: String? = null,
-    var matchedUserId: String?=null
+data class Match(
+    var approved: Boolean = false,
+    var matchInitiatorUserId: String = "",
+    var toBeMatchedUserId: String = "",
+    val matchInitiatorUserIdLiked: Boolean = false,
+    var includedUsers : ArrayList<String> = ArrayList()
 )
