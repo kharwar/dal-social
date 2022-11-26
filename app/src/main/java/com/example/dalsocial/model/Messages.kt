@@ -6,7 +6,7 @@ import java.util.Date
 data class Messages(
     var fromUserId: String?=null,
     var toUserId: String?=null,
-    var messsage: String?=null,
+    var message: String?=null,
     @ServerTimestamp
     var timestamp: Date?=null
 )
