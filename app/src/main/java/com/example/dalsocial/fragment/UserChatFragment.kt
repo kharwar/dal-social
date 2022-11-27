@@ -52,7 +52,7 @@ class UserChatFragment : Fragment() {
                     .orderBy("timestamp", Query.Direction.ASCENDING)
         val recyclerViewOptions=
             FirestoreRecyclerOptions.Builder<Messages>().setQuery(getMessagesQuery, Messages::class.java).build()
-        adapter = MessageAdapter(recyclerViewOptions)
+        adapter = MessageAdapter(recyclerViewOptions, binding!!, currentUser!! )
         binding?.messagesRecyclerView?.adapter = adapter
         binding?.sendMessageToUser?.setOnClickListener{it ->
 
@@ -75,42 +75,6 @@ class UserChatFragment : Fragment() {
         }
         binding?.backChatBtn?.setOnClickListener{ it ->
             Navigation.findNavController(it).navigate(UserChatFragmentDirections.actionUsersChatFragmentToChatFragment())
-        }
-    }
-
-    inner class messageViewHolder internal constructor(private val view: View) : RecyclerView.ViewHolder(view){
-        internal fun setMessage(message: Messages){
-            val tView = view.findViewById<TextView>(R.id.text_view)
-            tView.text=message.message
-        }
-    }
-
-    inner class MessageAdapter internal constructor(options: FirestoreRecyclerOptions<Messages>) :
-        FirestoreRecyclerAdapter<Messages, messageViewHolder>(options) {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): messageViewHolder {
-            return if (viewType == R.layout.fragment_message_to) {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_message_to, parent, false)
-                messageViewHolder(view)
-            } else {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_message_from, parent, false)
-                messageViewHolder(view)
-            }
-        }
-
-        override fun onBindViewHolder(holder: messageViewHolder, position: Int, model: Messages) {
-            holder.setMessage(model)
-        }
-
-        override fun getItemViewType(position: Int): Int {
-            return if (currentUser != getItem(position).fromUserId) {
-                R.layout.fragment_message_to
-            } else {
-                R.layout.fragment_message_from
-            }
-        }
-
-        override fun onDataChanged() {
-            binding?.messagesRecyclerView?.layoutManager?.scrollToPosition(itemCount - 1)
         }
     }
 

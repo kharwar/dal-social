@@ -1,10 +1,7 @@
 package com.example.dalsocial.model
 
-import android.util.Log
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
-import kotlinx.coroutines.tasks.await
 
 @OptIn(DelicateCoroutinesApi::class)
 class ChatListPersistence : IChatListPersistence {
