@@ -1,5 +1,7 @@
 package com.example.dalsocial.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -57,7 +59,29 @@ class EventFragment : Fragment() {
         }
         val eventPersistence: IEventPersistence = EventPersistence()
         var eventId: String? = arguments?.getString("eventId")
+
+
+        eventPersistence.isCurrentUserOwner(eventId) { isOwner ->
+            if(isOwner){
+                binding?.eventDeleteFb?.visibility = View.VISIBLE
+            }
+        }
+
+
+        val alertBuilder = AlertDialog.Builder(context)
+        binding?.eventDeleteFb?.setOnClickListener {
+            alertBuilder.setMessage("Are you sure you want to delete the event?")
+                .setCancelable(true)
+            alertBuilder.setPositiveButton("Yes") { dialog, which ->
+                eventPersistence.deleteEvent(eventId) {
+                }
+                findNavController().navigate(R.id.action_eventFragment_to_eventsFragment)
+            }
+            alertBuilder.show()
+        }
+
         GlobalScope.launch {
+
             eventPersistence.isCurrentUserRegistered(eventId?.trim()) { registered ->
                 isRegistered = registered
                 toggleRegisterBtn()
@@ -100,6 +124,8 @@ class EventFragment : Fragment() {
 
 
         }
+
+
     }
 
 

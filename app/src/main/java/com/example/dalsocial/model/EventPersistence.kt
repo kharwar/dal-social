@@ -32,8 +32,6 @@ class EventPersistence : IEventPersistence {
         GlobalScope.launch {
             eventRef.get().addOnSuccessListener { document ->
                 events = document.toObjects(Event::class.java)
-                Log.d(TAG, "Events Called")
-                Log.d(TAG, "Event Size ${events.size}")
                 result(events)
             }
                 .addOnFailureListener { exception ->
@@ -87,22 +85,9 @@ class EventPersistence : IEventPersistence {
                         .addOnCompleteListener { it ->
                             if (it.isSuccessful) {
                                 val documents = it.result
-                                Log.d(
-                                    TAG,
-                                    "Documents Received: " + documents.documents.size.toString()
-                                )
                                 if (documents.isEmpty) {
                                     result(false)
                                 } else {
-                                    Log.d(
-                                        TAG,
-                                        "Received userId: ${documents.documents[0].getString("userId")}"
-                                    )
-                                    Log.d(TAG, "Current userId: ${user?.userID.toString()}")
-                                    Log.d(
-                                        TAG,
-                                        "User Match: ${documents.documents[0].getString("userId") == user?.userID}"
-                                    )
                                     result(true)
                                 }
                             } else {
@@ -115,6 +100,43 @@ class EventPersistence : IEventPersistence {
         } catch (e: Exception) {
             Log.d(TAG, "Exception in isUserRegistered: $e")
             result(false)
+        }
+    }
+
+    override fun isCurrentUserOwner(eventId: String?, result: (Boolean) -> Unit) {
+        if(eventId != null && eventId.isNotEmpty()){
+            getCurrentUser { user ->
+                eventRef.document(eventId).get()
+                    .addOnCompleteListener {
+                        if(it.isSuccessful){
+                            val event = it.result
+                            if(event.getString("userId") == user?.userID){
+                                result(true)
+                            } else {
+                                result(false)
+                            }
+                        } else {
+                            result(false)
+                        }
+                    }
+            }
+        }
+    }
+
+    override fun deleteEvent(eventId: String?, result: (Boolean) -> Unit) {
+        if(eventId != null && !eventId.isEmpty()){
+            eventRef.document(eventId).delete().addOnSuccessListener {
+                guestsRef.whereEqualTo("eventId", eventId).get().addOnSuccessListener { snapshot ->
+                    snapshot.forEach { doc ->
+                        doc.reference.delete()
+                        result(true)
+                    }
+                }
+            }
+                .addOnFailureListener {
+                    result(false)
+                }
+
         }
     }
 
