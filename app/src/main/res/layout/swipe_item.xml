@@ -31,7 +31,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="X's profile"
+                android:text="@string/profile_mock_name"
                 android:textSize="23sp"
                 android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="a.k.a XYZ"
+                android:text="@string/profile_mock_akaname"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text="Bio"
+            android:text="@string/profile_mock_bio"
             android:textSize="16sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
-            android:text="I am interested in: "
+            android:text="@string/interested_in"
             android:textSize="16sp" />
 
         <com.google.android.material.chip.ChipGroup
