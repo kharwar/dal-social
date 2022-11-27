@@ -54,7 +54,7 @@ class SocialMatches(
                         break
                     }
                 }
-                if (!alreadySwiped) {
+                if (!alreadySwiped && user.userID != userManagement.getFirebaseUserID()) {
                     filteredUsers.add(user)
                 }
             }
