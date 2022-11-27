@@ -20,6 +20,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.findFragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.Navigation
+import com.example.dalsocial.R
 import com.example.dalsocial.databinding.FragmentCreateEventBinding
 import com.example.dalsocial.model.Event
 import com.example.dalsocial.model.EventPersistence
@@ -27,6 +28,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.datepicker.MaterialStyledDatePickerDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.tapadoo.alerter.Alerter
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -112,22 +114,34 @@ class CreateEventFragment : Fragment() {
 
 
             eventPersistence.createEvent(event, imageUri!!) { event ->
-                var message = "Test"
-                if (event != null) {
-                    message = "Event creation failed"
-                    val bundle: Bundle = bundleOf();
-                    bundle.putBoolean("isAdded", true)
-                    setFragmentResult("requestKey", bundle)
-                    val action =
-                        CreateEventFragmentDirections.actionCreateEventFragmentToEventFragment(
-                            eventId =  event.eventId!!,
-                            eventTitle = event.title!!,
-                            eventDescription = event.description!!,
-                            eventBg = event.imageUrl!!,
-                            eventDate = event.scheduledDate!!
-                        )
-                    Navigation.findNavController(view).navigate(action)
-                }
+//                if(event == null) {
+//                    if(imageUri == null) {
+//                        Alerter.create(requireActivity())
+//                            .setText("Background image is required!")
+//                            .setBackgroundColorRes(R.color.md_theme_light_error)
+//                            .show()
+//                    } else {
+//                        Alerter.create(requireActivity())
+//                            .setText("Unknown error occured! Could not create event!")
+//                            .setBackgroundColorRes(R.color.md_theme_light_error)
+//                            .show()
+//                    }
+//                } else {
+                    if (event != null) {
+                        val bundle: Bundle = bundleOf();
+                        bundle.putBoolean("isAdded", true)
+                        setFragmentResult("requestKey", bundle)
+                        val action =
+                            CreateEventFragmentDirections.actionCreateEventFragmentToEventFragment(
+                                eventId =  event.eventId!!,
+                                eventTitle = event.title!!,
+                                eventDescription = event.description!!,
+                                eventBg = event.imageUrl!!,
+                                eventDate = event.scheduledDate!!
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                    }
+//                }
             }
         }
 
