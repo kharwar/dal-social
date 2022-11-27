@@ -21,8 +21,6 @@ class UserSetupInterests : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //TODO: validation
-
         val view = inflater.inflate(R.layout.fragment_user_setup_interests, container, false)
 
         val edInterestsInput = view.findViewById<EditText>(R.id.edUserSetupInterests)

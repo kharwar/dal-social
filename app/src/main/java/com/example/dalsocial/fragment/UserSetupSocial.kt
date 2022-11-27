@@ -22,8 +22,6 @@ class UserSetupSocial : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //TODO: validation
-
         val view = inflater.inflate(R.layout.fragment_user_setup_social, container, false)
 
         val edBio: TextInputEditText = view.findViewById(R.id.edUserSetupBio)

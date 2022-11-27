@@ -136,7 +136,7 @@ class SocialFragment : Fragment() {
             userManagement.getAllUsers(userPersistence) { users ->
                 socialMatches.filterRemoveAlreadyLikedUsers(users) { filteredUsers ->
                     data = filteredUsers
-                    arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
+                    arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data, flingContainer)
                     flingContainer.adapter = arrayAdapter
                     arrayAdapter!!.notifyDataSetChanged()
                 }
@@ -146,7 +146,7 @@ class SocialFragment : Fragment() {
             userManagement.getAllUsersByInterests(userPersistence, filteredInterests) { users ->
                 socialMatches.filterRemoveAlreadyLikedUsers(users) { filteredData ->
                     data = filteredData
-                    arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
+                    arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data, flingContainer)
                     flingContainer.adapter = arrayAdapter
                     arrayAdapter!!.notifyDataSetChanged()
                 }

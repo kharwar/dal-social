@@ -13,9 +13,12 @@ import com.example.dalsocial.model.*
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.lorentzos.flingswipe.SwipeFlingAdapterView
 
-class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?) :
+class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?, swipeAdapterView: SwipeFlingAdapterView) :
     ArrayAdapter<User?>(context!!, resourceId, items!!) {
+
+    private val swipeAdapterView: SwipeFlingAdapterView = swipeAdapterView;
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
@@ -35,12 +38,12 @@ class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?) :
         val userManagement = UserManagement()
         val socialMatches = SocialMatches(matchesPersistence = MatchPersistence(), userManagement)
         btnLike.setOnClickListener {
-            cardItem?.let { it1 -> actionSwipe(it1, userManagement, socialMatches) }
+            cardItem?.let { it1 -> actionSwipe(it1, userManagement, socialMatches, true) }
         }
 
         val btnDislike = view.findViewById<FloatingActionButton>(R.id.matchCardDislike)
         btnDislike.setOnClickListener {
-            cardItem?.let { it1 -> actionSwipe(it1, userManagement, socialMatches) }
+            cardItem?.let { it1 -> actionSwipe(it1, userManagement, socialMatches, false) }
         }
 
         firstName.text = cardItem!!.firstName
@@ -57,7 +60,7 @@ class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?) :
         return view
     }
 
-    fun actionSwipe(user: User, userManagement: UserManagement, socialMatches: SocialMatches) {
+    private fun actionSwipe(user: User, userManagement: UserManagement, socialMatches: SocialMatches, isLike: Boolean) {
         val includedUserIds = ArrayList<String>()
         includedUserIds.add(user.userID!!)
         includedUserIds.add(userManagement.getFirebaseUserID()!!)
@@ -69,7 +72,7 @@ class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?) :
             includedUsers = includedUserIds,
         )
         socialMatches.match(match) {
-
+            swipeAdapterView.topCardListener.selectRight()
         }
     }
 }

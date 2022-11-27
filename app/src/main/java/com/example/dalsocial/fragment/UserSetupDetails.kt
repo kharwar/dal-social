@@ -23,8 +23,6 @@ class UserSetupDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //TODO: validation
-
         val view = inflater.inflate(R.layout.fragment_user_setup_details, container, false)
 
         val edFirstName = view.findViewById<EditText>(R.id.edUserSetupFirstName)

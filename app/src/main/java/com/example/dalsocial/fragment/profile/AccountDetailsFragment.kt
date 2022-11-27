@@ -17,6 +17,7 @@ import com.example.dalsocial.model.UserPersistence
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.tapadoo.alerter.Alerter
 import java.time.LocalDate
 import java.time.ZoneOffset
 import java.util.*
@@ -74,9 +75,15 @@ class AccountDetailsFragment : Fragment() {
 
             userManagement.createOrUpdateUser(userPersistence, user) { success ->
                 if (success) {
-                    Snackbar.make(view, "Account details saved", Snackbar.LENGTH_LONG).show()
+                    Alerter.create(requireActivity())
+                        .setText("Details update successfully")
+                        .setBackgroundColorRes(R.color.md_theme_light_secondary)
+                        .show()
                 } else {
-                    Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_LONG).show()
+                    Alerter.create(requireActivity())
+                        .setText("Something went wrong")
+                        .setBackgroundColorRes(R.color.md_theme_light_error)
+                        .show()
                 }
             }
         }
