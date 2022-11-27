@@ -20,15 +20,6 @@
         android:theme="@style/Theme.DalSocial"
         tools:targetApi="31">
         <activity
-            android:name=".MatchesActivity"
-            android:exported="false"
-            android:label="@string/title_activity_matches"
-            android:theme="@style/Theme.DalSocial.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".activity.SetupUserActivity"
             android:exported="false" />
         <activity

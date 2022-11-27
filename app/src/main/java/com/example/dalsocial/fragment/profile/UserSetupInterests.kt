@@ -1,4 +1,4 @@
-package com.example.dalsocial.fragment
+package com.example.dalsocial.fragment.profile
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class UserSetupInterests : Fragment() {
 
@@ -55,6 +56,16 @@ class UserSetupInterests : Fragment() {
             bundle.putSerializable("userDetails", userDetails)
 
             findNavController().navigate(R.id.action_userSetupInterests_to_userSetupSocial, bundle)
+        }
+
+        val btnAddInterests = view.findViewById<FloatingActionButton>(R.id.btnSetupAddInterests)
+        btnAddInterests.setOnClickListener {
+            val chip = Chip(context)
+            chip.text = edInterestsInput.text
+            edInterestsInput.text.clear()
+            chip.isCloseIconVisible = true
+            chipGroup.addView(chip)
+            chip.setOnCloseIconClickListener { chipGroup.removeView(chip) }
         }
 
         return view

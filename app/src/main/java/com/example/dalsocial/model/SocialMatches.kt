@@ -25,6 +25,12 @@ class SocialMatches(
         }
     }
 
+    override fun createMatch(match: Match, result: (Boolean) -> Unit) {
+        matchesPersistence.createMatch(match) { success ->
+            result(success)
+        }
+    }
+
     override fun getMatches(result: (List<Match>) -> Unit) {
         matchesPersistence.getMatches(userManagement.getFirebaseUserID()!!, result)
     }
@@ -34,6 +40,18 @@ class SocialMatches(
         result: (List<User>) -> Unit
     ) {
         matchesPersistence.getAllUsersWhoLikedMe(userID, result)
+    }
+
+    override fun filterRemoveAlreadyLikedUsers(
+        users: List<User>,
+        result: (ArrayList<User>) -> Unit
+    ) {
+        matchesPersistence.getMatchHistory(userManagement.getFirebaseUserID()!!) { matches ->
+            val filteredUsers = users.filter { user ->
+                matches.any { match -> match.toBeMatchedUserId != user.userID }
+            }
+            result(filteredUsers as ArrayList<User>)
+        }
     }
 
 }

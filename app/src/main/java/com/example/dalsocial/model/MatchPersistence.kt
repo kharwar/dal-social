@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 @OptIn(DelicateCoroutinesApi::class)
 class MatchPersistence : IMatchPersistence {
 
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun createMatch(match: Match, result: (Boolean) -> Unit) {
         GlobalScope.launch {
@@ -85,5 +85,19 @@ class MatchPersistence : IMatchPersistence {
     }
 
     override fun getAllUsersWhoLikedMe(userID: String, result: (List<User>) -> Unit) {}
+
+    override fun getMatchHistory(userID: String, result: (List<Match>) -> Unit) {
+        GlobalScope.launch {
+            val docRef = db.collection("matchesTest")
+                .whereEqualTo("matchInitiatorUserId", userID)
+            docRef.get().addOnSuccessListener { document ->
+                if (document != null) {
+                    val matches = document.toObjects(Match::class.java)
+                    result(matches)
+                }
+            }.addOnFailureListener {
+            }
+        }
+    }
 
 }

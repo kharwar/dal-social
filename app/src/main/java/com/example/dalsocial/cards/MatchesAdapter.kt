@@ -17,16 +17,16 @@ class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?) :
     ArrayAdapter<User?>(context!!, resourceId, items!!) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
+        var view = convertView
         val cardItem = getItem(position)
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.swipe_item, parent, false)
+            view = LayoutInflater.from(context).inflate(R.layout.swipe_item, parent, false)
         }
-        val profileImage = convertView!!.findViewById<ImageView>(R.id.matchCardImage)
-        val firstName = convertView.findViewById<TextView>(R.id.matchCardName)
-        val displayName = convertView.findViewById<TextView>(R.id.matchCardDisplayName)
-        val bio = convertView.findViewById<TextView>(R.id.matchCardBio)
-        val interests = convertView.findViewById<ChipGroup>(R.id.matchCardUserInterests)
+        val profileImage = view!!.findViewById<ImageView>(R.id.matchCardImage)
+        val firstName = view.findViewById<TextView>(R.id.matchCardName)
+        val displayName = view.findViewById<TextView>(R.id.matchCardDisplayName)
+        val bio = view.findViewById<TextView>(R.id.matchCardBio)
+        val interests = view.findViewById<ChipGroup>(R.id.matchCardUserInterests)
 
         firstName.text = cardItem!!.firstName
         displayName.text = cardItem.displayName
@@ -39,8 +39,7 @@ class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?) :
             interests.addView(chip)
         }
 
-
-        return convertView
+        return view
     }
 }
 //Reference: https://github.com/LukeKotlin/tinder-clone-kotlin

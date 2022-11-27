@@ -129,7 +129,7 @@
                             android:id="@+id/tiSocialProfileInterestsInput"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Swimming?" />
+                            android:hint="Interests" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

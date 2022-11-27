@@ -14,6 +14,7 @@ import com.example.dalsocial.R
 import com.example.dalsocial.activity.SetupUserActivity
 import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.UserPersistence
+import com.google.android.material.textfield.TextInputEditText
 
 class RegistrationFragment : Fragment() {
 
@@ -25,8 +26,8 @@ class RegistrationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
 
         val registerButton = view.findViewById<Button>(R.id.registerRegisterButton)
-        val edEmail = view.findViewById<EditText>(R.id.edRegistrationEmail)
-        val edPassword = view.findViewById<EditText>(R.id.edRegistrationPassword)
+        val edEmail = view.findViewById<TextInputEditText>(R.id.edRegistrationEmail)
+        val edPassword = view.findViewById<TextInputEditText>(R.id.edRegistrationPassword)
 
         registerButton.setOnClickListener {
             //TODO: Show progress bar here
