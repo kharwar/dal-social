@@ -16,8 +16,6 @@ class UserSetupDisplayName : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //TODO: validation
-
         val view = inflater.inflate(R.layout.fragment_user_setup_display_name, container, false)
 
         val edDisplayName = view.findViewById<EditText>(R.id.edDisplayName)

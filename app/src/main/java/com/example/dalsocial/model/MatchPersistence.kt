@@ -63,8 +63,6 @@ class MatchPersistence : IMatchPersistence {
                     }.addOnFailureListener {
                     }
                 }
-            }.addOnFailureListener {
-                //TODO: Handle exceptions
             }
         }
     }

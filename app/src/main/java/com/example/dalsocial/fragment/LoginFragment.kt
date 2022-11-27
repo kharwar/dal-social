@@ -104,7 +104,6 @@ class LoginFragment : Fragment() {
                     .show()
             } else {
                 userManagement.loginWithEmail(email.toString(), password.toString()) { state ->
-                    //TODO: handle errors with state
                     Alerter.hide()
 
                     if (state is AuthenticationSuccessState) {

@@ -31,8 +31,6 @@ class RegistrationFragment : Fragment() {
         val edPassword = view.findViewById<TextInputEditText>(R.id.edRegistrationPassword)
 
         registerButton.setOnClickListener {
-            //TODO: Show progress bar here
-
             val email = edEmail.text.toString()
             val password = edPassword.text.toString()
 

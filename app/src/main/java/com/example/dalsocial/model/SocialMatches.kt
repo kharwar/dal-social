@@ -12,13 +12,11 @@ class SocialMatches(
         matchesPersistence.checkIfMatchExists(match) { docID ->
             if (docID == null) {
                 matchesPersistence.createMatch(match) { success ->
-                    //TODO Use state machine
                     result(false)
                 }
             } else {
                 match.approved = true
                 matchesPersistence.updateMatch(docID, match) { success ->
-                    //TODO Use state machine
                     result(true)
                 }
             }
