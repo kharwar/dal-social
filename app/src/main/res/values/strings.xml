@@ -29,6 +29,7 @@
 
     <string name="settings">Settings</string>
     <string name="notifications">Notifications</string>
+    <string name="darkModeSwitch">Dark Mode</string>
     <string name="logout">Logout</string>
     <string name="acc_delete">Delete Account</string>
 

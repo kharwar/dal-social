@@ -46,12 +46,12 @@ class UserManagement : IUserManagement {
         persistence.createOrUpdateUser(user, result)
     }
 
-    override fun deactivateUser(
+    override fun deleteUser(
         persistence: IUserPersistence,
-        user: User,
+        userID: String,
         result: (Boolean) -> Unit
     ) {
-        persistence.deactivateUser(user, result)
+        persistence.deleteUser(userID, result)
     }
 
     override fun uploadProfileImage(

@@ -18,7 +18,7 @@ interface IUserManagement {
 
     fun getUserByID(persistence: IUserPersistence, id: String, result: (User?) -> Unit)
     fun createOrUpdateUser(persistence: IUserPersistence, user: User, result: (Boolean) -> Unit)
-    fun deactivateUser(persistence: IUserPersistence, user: User, result: (Boolean) -> Unit)
+    fun deleteUser(persistence: IUserPersistence, userID: String, result: (Boolean) -> Unit)
 
     fun uploadProfileImage(persistence: IUserPersistence, fileName: Uri, result: (String?) -> Unit)
     fun getAllUsers(persistence: IUserPersistence, result: (ArrayList<User>) -> Unit)
