@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Other Details"
+        android:text="@string/other_details"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
                 android:id="@+id/tiOtherDetailsInstagram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instagram" />
+                android:hint="@string/instagram" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,7 +44,7 @@
                 android:id="@+id/tiOtherDetailsTwitter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Twitter" />
+                android:hint="@string/twitter" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +57,7 @@
                 android:id="@+id/tiOtherDetailsFacebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Facebook" />
+                android:hint="@string/facebook" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
                 android:id="@+id/tiOtherDetailsLinkedIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="LinkedIn" />
+                android:hint="@string/linkedin" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
-        android:text="Save" />
+        android:text="@string/save" />
 
 
 </LinearLayout>

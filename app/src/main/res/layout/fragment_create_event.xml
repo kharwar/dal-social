@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Background"
+                    android:text="@string/event_background_tv"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Details"
+                    android:text="@string/event_details_tv"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                         android:id="@+id/newEventTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Title" />
+                        android:hint="@string/event_title_ti" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -122,7 +122,7 @@
                         android:lines="3"
                         android:gravity="start|top"
                         android:ellipsize="end"
-                        android:hint="Description"
+                        android:hint="@string/event_desc_ti"
                         android:inputType="textMultiLine"
 
                         />
@@ -141,7 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
-                        android:hint="Date"
+                        android:hint="@string/event_date_ti"
                         app:helperText="Required*"
                         app:helperTextEnabled="true"
 

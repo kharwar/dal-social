@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Your Details"
+                android:text="@string/your_details"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
                         android:id="@+id/tiSocialProfileDisplayName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Your display name" />
+                        android:hint="@string/display_name_placeholder" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,7 +56,7 @@
                         android:id="@+id/tiSocialProfileBio"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:hint="About you..."
+                        android:hint="@string/about_you_placeholder"
                         android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Profile Image"
+                    android:text="@string/profile_image_title"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Tap on the image to view options" />
+                    android:text="@string/profile_image_desc" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="150dp"
@@ -109,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Interests"
+                    android:text="@string/interests_title"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                             android:id="@+id/tiSocialProfileInterestsInput"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Interests" />
+                            android:hint="@string/interests_title" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,7 +167,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="false"
         android:layout_alignParentRight="true"
-        android:contentDescription="Save"
+        android:contentDescription="@string/save"
         android:src="@drawable/ic_baseline_save_24"/>
 
 </RelativeLayout>

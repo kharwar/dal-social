@@ -22,14 +22,14 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Social Profile" />
+            android:text="@string/social_profile_card_title" />
 
         <Button
             android:id="@+id/btnOtherDetailsToggle"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Other Details" />
+            android:text="@string/other_details" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
