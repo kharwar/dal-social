@@ -81,6 +81,7 @@
     <string name="reset_password">Reset Password</string>
     <string name="acc_details_save">Save</string>
 
+    <string name="event_create_btn">Create</string>
     <string name="event_title_ti">Title</string>
     <string name="event_desc_ti">Description</string>
     <string name="event_date_ti">Date</string>

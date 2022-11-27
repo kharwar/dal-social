@@ -13,6 +13,7 @@ import com.example.dalsocial.fragment.EventListFragmentDirections
 
 
 class EventAdapter (var events: List<Event>, val fragment: EventListFragment): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(
             FragmentEventCardBinding.inflate(
@@ -31,7 +32,6 @@ class EventAdapter (var events: List<Event>, val fragment: EventListFragment): R
     override fun getItemCount(): Int {
         return events.size
     }
-
 
     inner class EventViewHolder (val eventsBinding: FragmentEventCardBinding) : RecyclerView.ViewHolder(eventsBinding.root) {
         fun bindEvent(event: Event){

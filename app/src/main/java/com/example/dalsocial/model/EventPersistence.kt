@@ -34,7 +34,7 @@ class EventPersistence : IEventPersistence {
                 events = document.toObjects(Event::class.java)
                 Log.d(TAG, "Events Called")
                 Log.d(TAG, "Event Size ${events.size}")
-                result(events!!)
+                result(events)
             }
                 .addOnFailureListener { exception ->
                     {
@@ -44,9 +44,9 @@ class EventPersistence : IEventPersistence {
         }
     }
 
-    override suspend fun registerEvent(eventId: String, result: (Boolean) -> Unit) {
+    override fun registerEvent(eventId: String, result: (Boolean) -> Unit) {
         try {
-            GlobalScope.async {
+            GlobalScope.launch {
                 eventRef.document(eventId).get().addOnCompleteListener { task ->
                     if (!task.isSuccessful) {
                         throw Exception("No such event exist")
@@ -75,44 +75,44 @@ class EventPersistence : IEventPersistence {
             if (eventId == null) {
                 result(false)
             } else {
-                    userManagement.getUserByID(
-                        userPersistence,
-                        userManagement.getFirebaseUserID()!!
-                    ) { user ->
-                        guestsRef
-                            .whereEqualTo("userId", user?.userID.toString())
-                            .whereEqualTo("eventId", eventId.toString())
-                            .limit(1)
-                            .get()
-                            .addOnCompleteListener { it ->
-                                if (it.isSuccessful) {
-                                    val documents = it.result
+                userManagement.getUserByID(
+                    userPersistence,
+                    userManagement.getFirebaseUserID()!!
+                ) { user ->
+                    guestsRef
+                        .whereEqualTo("userId", user?.userID.toString())
+                        .whereEqualTo("eventId", eventId.toString())
+                        .limit(1)
+                        .get()
+                        .addOnCompleteListener { it ->
+                            if (it.isSuccessful) {
+                                val documents = it.result
+                                Log.d(
+                                    TAG,
+                                    "Documents Received: " + documents.documents.size.toString()
+                                )
+                                if (documents.isEmpty) {
+                                    result(false)
+                                } else {
                                     Log.d(
                                         TAG,
-                                        "Documents Received: " + documents.documents.size.toString()
+                                        "Received userId: ${documents.documents[0].getString("userId")}"
                                     )
-                                    if (documents.isEmpty) {
-                                        result(false)
-                                    } else {
-                                        Log.d(
-                                            TAG,
-                                            "Received userId: ${documents.documents[0].getString("userId")}"
-                                        )
-                                        Log.d(TAG, "Current userId: ${user?.userID.toString()}")
-                                        Log.d(
-                                            TAG,
-                                            "User Match: ${documents.documents[0].getString("userId") == user?.userID}"
-                                        )
-                                        result(true)
-                                    }
-                                } else {
-                                    result(false)
+                                    Log.d(TAG, "Current userId: ${user?.userID.toString()}")
+                                    Log.d(
+                                        TAG,
+                                        "User Match: ${documents.documents[0].getString("userId") == user?.userID}"
+                                    )
+                                    result(true)
                                 }
+                            } else {
+                                result(false)
                             }
-                    }
-
+                        }
                 }
-            } catch (e: Exception) {
+
+            }
+        } catch (e: Exception) {
             Log.d(TAG, "Exception in isUserRegistered: $e")
             result(false)
         }
@@ -126,20 +126,24 @@ class EventPersistence : IEventPersistence {
                     .whereEqualTo("userId", user?.userID)
                     .get()
                     .addOnCompleteListener {
-                        it
-                        val eventIds = it.result.documents.map { doc -> doc.getString("eventId") }
-                        eventRef.whereIn("eventId", eventIds)
-                            .get()
-                            .addOnCompleteListener { documents ->
-                                events = documents.result.toObjects(Event::class.java)
-                                result(events)
-                            }
+                        if (it.isSuccessful && !it.result.isEmpty) {
+                            val eventIds =
+                                it.result.documents.map { doc -> doc.getString("eventId") }
+                            eventRef.whereIn("eventId", eventIds)
+                                .get()
+                                .addOnCompleteListener { documents ->
+                                    events = documents.result.toObjects(Event::class.java)
+                                    result(events)
+                                }
+                        } else {
+                            result(events)
+                        }
                     }
             }
         }
     }
 
-    override fun createEvent(event: Event, imageUri: Uri, result: (Boolean) -> Unit) {
+    override fun createEvent(event: Event, imageUri: Uri, result: (Event?) -> Unit) {
         getCurrentUser { user ->
             try {
                 val ref = eventRef.document()
@@ -150,21 +154,20 @@ class EventPersistence : IEventPersistence {
                     event.imageUrl = it
                     ref.set(event)
 
-                    GlobalScope.launch {
-                        registerEvent(event.eventId!!) { success ->
-                            if(success){
-                                result(true)
-                            } else {
-                                result(false)
-                            }
+                    registerEvent(event.eventId!!) { success ->
+                        if (success) {
+                            result(event)
+                        } else {
+                            result(null)
                         }
                     }
 
+
                 }
 
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d(TAG, "Exception in createEvent: $e")
-                result(false)
+                result(null)
             }
         }
     }

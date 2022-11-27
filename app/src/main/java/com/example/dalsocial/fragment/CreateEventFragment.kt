@@ -16,7 +16,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.registerForActivityResult
 import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
 import androidx.fragment.app.findFragment
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.Navigation
 import com.example.dalsocial.databinding.FragmentCreateEventBinding
 import com.example.dalsocial.model.Event
@@ -27,6 +29,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -36,7 +39,7 @@ import java.util.*
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
-class CreateEventFragment : Fragment(){
+class CreateEventFragment : Fragment() {
 
     val TAG = "CreateEventFragment"
 
@@ -59,7 +62,6 @@ class CreateEventFragment : Fragment(){
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             imageLauncher.launch(gallery)
         }
-
 
 
         val datePicker = MaterialDatePicker.Builder.datePicker()
@@ -107,24 +109,38 @@ class CreateEventFragment : Fragment(){
                 ""
             )
             val eventPersistence = EventPersistence()
-            runBlocking {
-                eventPersistence.createEvent(event, imageUri!!) { success ->
+
+
+            eventPersistence.createEvent(event, imageUri!!) { event ->
+                var message = "Test"
+                if (event != null) {
+                    message = "Event creation failed"
+                    val bundle: Bundle = bundleOf();
+                    bundle.putBoolean("isAdded", true)
+                    setFragmentResult("requestKey", bundle)
+                    val action =
+                        CreateEventFragmentDirections.actionCreateEventFragmentToEventFragment(
+                            eventId =  event.eventId!!,
+                            eventTitle = event.title!!,
+                            eventDescription = event.description!!,
+                            eventBg = event.imageUrl!!,
+                            eventDate = event.scheduledDate!!
+                        )
+                    Navigation.findNavController(view).navigate(action)
                 }
-                Snackbar.make(view, "Event created!", Snackbar.LENGTH_SHORT).show()
-                val action = CreateEventFragmentDirections.actionCreateEventFragmentToEventsFragment2()
-                Navigation.findNavController(view).navigate(action)
             }
         }
 
 
     }
 
-    var imageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            imageUri = result.data?.data
-            binding?.newEventBg?.setImageURI(imageUri)
+    var imageLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                imageUri = result.data?.data
+                binding?.newEventBg?.setImageURI(imageUri)
+            }
         }
-    }
 
 //    override fun onFocusChange(p0: View?, p1: Boolean) {
 //
