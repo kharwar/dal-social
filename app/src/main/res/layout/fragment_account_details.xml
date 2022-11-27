@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Account Details and Preferences"
+                android:text="Account Details"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -83,27 +83,27 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Social: Age preference"
-                        android:textSize="18sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Social: Age preference"-->
+<!--                        android:textSize="18sp" />-->
 
-                    <com.google.android.material.slider.RangeSlider
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:valueFrom="18"
-                        android:valueTo="40"
-                        app:values="@array/age_values" />
+<!--                    <com.google.android.material.slider.RangeSlider-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:valueFrom="18"-->
+<!--                        android:valueTo="40"-->
+<!--                        app:values="@array/age_values" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnAccountDetailsResetPassword"

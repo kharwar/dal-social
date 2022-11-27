@@ -22,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 
 class LoginFragment : Fragment() {
 
@@ -44,7 +45,7 @@ class LoginFragment : Fragment() {
         loginWithGoogleForResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
-            if (result.resultCode != Activity.RESULT_OK) {
+            if (result.resultCode == Activity.RESULT_OK) {
 
                 userManagement.loginWithGoogle(result.data!!) { success ->
                     if (success) {
@@ -73,8 +74,8 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         val loginButton = view.findViewById<Button>(R.id.loginLoginButton)
-        val edEmail = view.findViewById<EditText>(R.id.edLoginEmail)
-        val edPassword = view.findViewById<EditText>(R.id.edLoginPassword)
+        val edEmail = view.findViewById<TextInputEditText>(R.id.edLoginEmail)
+        val edPassword = view.findViewById<TextInputEditText>(R.id.edLoginPassword)
 
         loginButton.setOnClickListener {
 

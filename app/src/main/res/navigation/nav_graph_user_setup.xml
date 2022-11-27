@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/userSetupInterests"
-        android:name="com.example.dalsocial.fragment.UserSetupInterests"
+        android:name="com.example.dalsocial.fragment.profile.UserSetupInterests"
         android:label="fragment_user_setup_interests"
         tools:layout="@layout/fragment_user_setup_interests" >
         <action
