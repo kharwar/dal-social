@@ -160,6 +160,11 @@ class LoginFragment : Fragment() {
             loginWithGoogleForResult.launch(intent)
         }
 
+        val btnResetPassword = view.findViewById<Button>(R.id.edResetLink)
+        btnResetPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
+        }
+
         return view
     }
 

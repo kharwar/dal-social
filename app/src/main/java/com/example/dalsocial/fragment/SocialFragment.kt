@@ -12,6 +12,7 @@ import com.example.dalsocial.model.*
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
+import com.tapadoo.alerter.Alerter
 
 class SocialFragment : Fragment() {
 
@@ -98,7 +99,10 @@ class SocialFragment : Fragment() {
                     includedUsers = includedUserIds,
                 )
                 socialMatches.match(match) {
-                    Toast.makeText(requireContext(), "Matched", Toast.LENGTH_SHORT).show()
+                    Alerter.create(requireActivity())
+                        .setText("You matched with ${user.firstName}!")
+                        .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
+                        .show()
                 }
             }
 
