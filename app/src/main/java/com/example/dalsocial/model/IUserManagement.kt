@@ -2,11 +2,12 @@ package com.example.dalsocial.model
 
 import android.content.Intent
 import android.net.Uri
+import com.example.dalsocial.model.states.AuthenticationState
 
 interface IUserManagement {
 
     fun loginWithEmail(email: String, password: String, result: (status: Boolean) -> Unit)
-    fun registerWithEmail(email: String, password: String, result: (status: Boolean) -> Unit)
+    fun registerWithEmail(email: String, password: String, result: (status: AuthenticationState) -> Unit)
     fun loginWithGoogle(intent: Intent, result: (status: Boolean) -> Unit)
 
     fun resetPassword(result: (status: Boolean) -> Unit)

@@ -2,12 +2,14 @@ package com.example.dalsocial.model
 
 import android.content.Intent
 import android.net.Uri
+import com.example.dalsocial.model.states.AuthenticationState
+import com.example.dalsocial.model.states.AuthenticationSuccessState
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseUser
-import kotlin.collections.ArrayList
 
 // reference for mvc: https://www.geeksforgeeks.org/mvc-model-view-controller-architecture-pattern-in-android-with-example/
 class UserManagement : IUserManagement {
@@ -95,17 +97,21 @@ class UserManagement : IUserManagement {
     override fun registerWithEmail(
         email: String,
         password: String,
-        result: (status: Boolean) -> Unit
+        result: (status: AuthenticationState) -> Unit
     ) {
         if (currentUser == null) {
             auth!!.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         currentUser = auth!!.currentUser
-                        result(true)
+                        result(AuthenticationSuccessState())
                     } else {
-                        result(false)
+                        if (task.exception is FirebaseAuthException) {
+                            result(AuthenticationState((task.exception as FirebaseAuthException).errorCode))
+                        }
                     }
+                }.addOnFailureListener { exception ->
+                    result(AuthenticationState(exception.message!!))
                 }
         }
     }
