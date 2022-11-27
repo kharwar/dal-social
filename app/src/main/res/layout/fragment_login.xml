@@ -8,12 +8,36 @@
     android:orientation="vertical"
     tools:context=".fragment.LoginFragment">
 
-    <ImageView
-        android:id="@+id/ivLoginImage"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        tools:src="@tools:sample/avatars" />
+        android:layout_gravity="left"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="DalSocial"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFilterDisplayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="Find your hive!"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/ivLoginImage"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="160dp"-->
+    <!--        tools:src="@tools:sample/avatars" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

@@ -47,10 +47,20 @@ class SocialMatches(
         result: (ArrayList<User>) -> Unit
     ) {
         matchesPersistence.getMatchHistory(userManagement.getFirebaseUserID()!!) { matches ->
-            val filteredUsers = users.filter { user ->
-                matches.any { match -> match.toBeMatchedUserId != user.userID }
+            val filteredUsers = ArrayList<User>()
+            for (user in users) {
+                var alreadySwiped = false
+                for (match in matches) {
+                    if (match.toBeMatchedUserId == user.userID) {
+                        alreadySwiped = true
+                        break
+                    }
+                }
+                if (!alreadySwiped) {
+                    filteredUsers.add(user)
+                }
             }
-            result(filteredUsers as ArrayList<User>)
+            result(filteredUsers)
         }
     }
 

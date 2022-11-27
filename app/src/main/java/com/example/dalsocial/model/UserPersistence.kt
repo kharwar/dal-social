@@ -11,8 +11,8 @@ import kotlinx.coroutines.tasks.await
 @OptIn(DelicateCoroutinesApi::class)
 class UserPersistence : IUserPersistence {
 
-    val db = FirebaseFirestore.getInstance()
-    val storageRef = FirebaseStorage.getInstance().reference
+    private val db = FirebaseFirestore.getInstance()
+    private val storageRef = FirebaseStorage.getInstance().reference
 
     override fun getUserByID(id: String, result: (User?) -> Unit) {
 
