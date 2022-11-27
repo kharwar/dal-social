@@ -25,10 +25,10 @@ class HomeActivity : AppCompatActivity() {
                     findNavController(R.id.activity_home_nav_host_fragment).navigate(R.id.eventsFragment)
                     true
                 }
-                R.id.menu_groups_page -> {
-                    findNavController(R.id.activity_home_nav_host_fragment).navigate(R.id.eventsFragment)
-                    true
-                }
+//                R.id.menu_groups_page -> {
+//                    findNavController(R.id.activity_home_nav_host_fragment).navigate(R.id.eventsFragment)
+//                    true
+//                }
                 R.id.menu_chat_page -> {
                     findNavController(R.id.activity_home_nav_host_fragment).navigate(R.id.chatFragment)
                     true

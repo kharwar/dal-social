@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_margin="12dp"
-    tools:context=".fragment.UserSetupInterests">
+    tools:context=".fragment.profile.UserSetupInterests">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,14 +16,38 @@
         android:layout_gravity="left"
         android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/edUserSetupInterests"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Enter your interests"
-        android:inputType="textPersonName"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edUserSetupInterests"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Interests" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSetupAddInterests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:elevation="1dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroupUserSetupInterests"

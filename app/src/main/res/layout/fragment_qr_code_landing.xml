@@ -3,10 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".fragment.profile.qr_code.QRCodeLanding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="QRify"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvFilterDisplayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="Let someone scan your QR code to share your profile with them. Scan their QR code to view their profile."
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,15 +34,10 @@
         <ImageView
             android:gravity="center"
             android:id="@+id/ivQRCode"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
             android:layout_gravity="center" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
 
 <!--            <com.google.android.material.button.MaterialButton-->
 <!--                android:id="@+id/btnShareQRCode"-->
@@ -36,12 +47,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnScanQRCode"
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
                 android:text="Scan QR Code" />
 
-        </LinearLayout>
 
     </LinearLayout>
 

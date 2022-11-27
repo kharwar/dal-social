@@ -5,5 +5,5 @@ data class Match(
     var matchInitiatorUserId: String = "",
     var toBeMatchedUserId: String = "",
     val matchInitiatorUserIdLiked: Boolean = false,
-    var includedUsers : ArrayList<String> = ArrayList()
+    var includedUsers : ArrayList<String> = ArrayList(),
 )

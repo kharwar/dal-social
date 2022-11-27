@@ -11,11 +11,11 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_emoji_people_24"
         android:title="Events" />
-    <item
-        android:id="@+id/menu_groups_page"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_emoji_people_24"
-        android:title="Groups" />
+<!--    <item-->
+<!--        android:id="@+id/menu_groups_page"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_baseline_emoji_people_24"-->
+<!--        android:title="Groups" />-->
 
     <item
         android:id="@+id/menu_chat_page"

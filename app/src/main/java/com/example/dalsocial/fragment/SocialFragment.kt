@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.dalsocial.R
@@ -31,6 +32,7 @@ class SocialFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_social, container, false)
 
         val interestChipGroup = view.findViewById<ChipGroup>(R.id.socialFilterChipGroup)
+        val tvFilterLabel = view.findViewById<TextView>(R.id.tvFilterDisplayText)
         var isFilterOpen = false
 
         flingContainer = view.findViewById<View>(R.id.frame) as SwipeFlingAdapterView
@@ -66,9 +68,6 @@ class SocialFragment : Fragment() {
             }
 
             override fun onLeftCardExit(dataObject: Any) {
-            }
-
-            override fun onRightCardExit(dataObject: Any) {
                 val user = dataObject as User
                 val includedUserIds = ArrayList<String>()
                 includedUserIds.add(user.userID!!)
@@ -79,7 +78,24 @@ class SocialFragment : Fragment() {
                     matchInitiatorUserId = userManagement.getFirebaseUserID()!!,
                     toBeMatchedUserId = user.userID!!,
                     matchInitiatorUserIdLiked = true,
-                    includedUsers = includedUserIds
+                    includedUsers = includedUserIds,
+                )
+                socialMatches.match(match) {
+                    Toast.makeText(requireContext(), "Matched", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onRightCardExit(dataObject: Any) {
+                val user = dataObject as User
+                val includedUserIds = ArrayList<String>()
+                includedUserIds.add(user.userID!!)
+                includedUserIds.add(userManagement.getFirebaseUserID()!!)
+
+                val match = Match(
+                    matchInitiatorUserId = userManagement.getFirebaseUserID()!!,
+                    toBeMatchedUserId = user.userID!!,
+                    matchInitiatorUserIdLiked = true,
+                    includedUsers = includedUserIds,
                 )
                 socialMatches.match(match) {
                     Toast.makeText(requireContext(), "Matched", Toast.LENGTH_SHORT).show()
@@ -104,8 +120,10 @@ class SocialFragment : Fragment() {
         filterButton.setOnClickListener {
             if (isFilterOpen) {
                 interestChipGroup.visibility = View.GONE
+                tvFilterLabel.visibility = View.GONE
             } else {
                 interestChipGroup.visibility = View.VISIBLE
+                tvFilterLabel.visibility = View.VISIBLE
             }
             isFilterOpen = !isFilterOpen
         }
@@ -116,17 +134,22 @@ class SocialFragment : Fragment() {
     fun load(filteredInterests: ArrayList<String>) {
         if (filteredInterests.isEmpty()) {
             userManagement.getAllUsers(userPersistence) { users ->
-                data = users
-                arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
-                flingContainer.adapter = arrayAdapter
-                arrayAdapter!!.notifyDataSetChanged()
+                socialMatches.filterRemoveAlreadyLikedUsers(users) { filteredUsers ->
+                    data = filteredUsers
+                    arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
+                    flingContainer.adapter = arrayAdapter
+                    arrayAdapter!!.notifyDataSetChanged()
+                }
             }
+
         } else {
             userManagement.getAllUsersByInterests(userPersistence, filteredInterests) { users ->
-                data = users
-                arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
-                flingContainer.adapter = arrayAdapter
-                arrayAdapter!!.notifyDataSetChanged()
+                socialMatches.filterRemoveAlreadyLikedUsers(users) { filteredData ->
+                    data = filteredData
+                    arrayAdapter = MatchesAdapter(requireContext(), R.layout.item_matches, data)
+                    flingContainer.adapter = arrayAdapter
+                    arrayAdapter!!.notifyDataSetChanged()
+                }
             }
         }
 

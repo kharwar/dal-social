@@ -11,10 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.dalsocial.R
-import com.example.dalsocial.model.IUserManagement
-import com.example.dalsocial.model.IUserPersistence
-import com.example.dalsocial.model.UserManagement
-import com.example.dalsocial.model.UserPersistence
+import com.example.dalsocial.model.*
 
 class QRCodeScannedFragment : Fragment() {
 
@@ -86,6 +83,25 @@ class QRCodeScannedFragment : Fragment() {
             }
         }
 
+        val matchPersistence: IMatchPersistence = MatchPersistence()
+        val socialMatches = SocialMatches(matchPersistence, userManagement)
+
+        val matchButton = view.findViewById<TextView>(R.id.btnScannedUserMessage)
+        matchButton.setOnClickListener {
+            val match = Match(
+                approved = true,
+                matchInitiatorUserId = userManagement.getFirebaseUserID()!!,
+                toBeMatchedUserId = scannedUserId,
+                matchInitiatorUserIdLiked = true,
+                includedUsers = arrayListOf(userManagement.getFirebaseUserID()!!, scannedUserId)
+            )
+            socialMatches.createMatch(match) { success ->
+                if (success) {
+                    matchButton.text = "Matched!"
+                    matchButton.isEnabled = false
+                }
+            }
+        }
 
         return view
     }
