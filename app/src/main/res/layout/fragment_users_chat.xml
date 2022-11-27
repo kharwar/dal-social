@@ -15,7 +15,7 @@
         android:id="@+id/backChatBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go back"
+        android:text="@string/go_back"
         android:layout_gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:paddingLeft="20dp"
-        android:text="UserName"
+        android:text="@string/username"
         android:layout_gravity="center_vertical"
         android:textSize="30sp"
         tools:ignore="MissingConstraints" />
@@ -65,14 +65,14 @@
             android:layout_weight="0.8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Message..."
+            android:hint="@string/message_placeholder"
             android:id="@+id/messageText"
             />
         <Button
             android:layout_weight="0.2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Send"
+            android:text="@string/send"
             android:id="@+id/sendMessageToUser"/>
     </LinearLayout>
 

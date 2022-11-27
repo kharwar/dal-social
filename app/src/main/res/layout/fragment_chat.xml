@@ -13,7 +13,7 @@
     android:layout_height="50dp"
         android:textSize="30dp"
         android:gravity="center"
-        android:text="Chat"
+        android:text="@string/chat_btn"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
         android:typeface="serif"
         android:layout_marginTop="40dp"
