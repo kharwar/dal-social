@@ -15,6 +15,10 @@
     <string name="linkedin">LinkedIn</string>
     <string name="save">Save</string>
     <string name="done">Done!</string>
+    <string name="send">Send</string>
+
+    <string name="match_name">Match\'s Name</string>
+    <string name="match_id">Match\'s ID</string>
 
     <string name="name_helper">What should we call you?</string>
 
@@ -59,6 +63,10 @@
     <string name="profile_mock_akaname">a.k.a XYZ</string>
     <string name="profile_mock_bio">Bio</string>
     <string name="profile_add_btn">Add them!</string>
+
+    <string name="go_back">Go back</string>
+    <string name="username">Username</string>
+    <string name="message_placeholder">Message...</string>
 
     <string name="interested_in">I am interested in:</string>
 

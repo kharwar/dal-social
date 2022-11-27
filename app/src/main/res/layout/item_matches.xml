@@ -19,12 +19,12 @@
             android:paddingBottom="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Match's Name"
+            android:text="@string/match_name"
             android:id="@+id/MatchName"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Match's ID"
+            android:text="@string/match_id"
             android:layout_gravity="center"
             android:id="@+id/Matchid"/>
     </LinearLayout>
