@@ -15,6 +15,7 @@ import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.UserPersistence
 import com.example.dalsocial.model.states.AuthenticationSuccessState
 import com.google.android.material.textfield.TextInputEditText
+import com.tapadoo.alerter.Alerter
 
 class RegistrationFragment : Fragment() {
 
@@ -53,39 +54,32 @@ class RegistrationFragment : Fragment() {
                         }
 
                     } else {
-                        if (state.message == "The email address is already in use by another account.") {
-                            Toast.makeText(
-                                context,
-                                "The email address is already in use by another account.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Toast.makeText(context, "Error: ${state.message}", Toast.LENGTH_SHORT)
-                                .show()
-                        }
                         // reference for messages: https://github.com/catapulta-startup-sas/m2colab/blob/6b5deff03ff803b6d0ce08f7e4d5ee8e9f16f507/lib/firebase/handles/sign_up_handle.dart
                         // got an example message by debugging first, then looked up for that message on GitHuib and got other similar messages
                         when (state.message) {
                             "ERROR_EMAIL_ALREADY_IN_USE" -> {
-                                Toast.makeText(
-                                    context,
-                                    "The email is being used by another account.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Alerter.create(requireActivity())
+                                    .setText("The email is being used by another account.")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
                             }
                             "ERROR_INVALID_EMAIL" -> {
-                                Toast.makeText(
-                                    context,
-                                    "Invalid address seems incorrect",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Alerter.create(requireActivity())
+                                    .setText("Invalid address seems incorrect")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
                             }
                             "ERROR_WEAK_PASSWORD" -> {
-                                Toast.makeText(
-                                    context,
-                                    "Password should have more than 6 characters",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Alerter.create(requireActivity())
+                                    .setText("Password should be at least 6 characters")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
+                            }
+                            else -> {
+                                Alerter.create(requireActivity())
+                                    .setText("An error occurred, please try again later.")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
                             }
                         }
                     }

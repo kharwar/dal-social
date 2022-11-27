@@ -12,7 +12,7 @@ class MatchPersistence : IMatchPersistence {
 
     override fun createMatch(match: Match, result: (Boolean) -> Unit) {
         GlobalScope.launch {
-            db.collection("matchesTest")
+            db.collection("matches")
                 .add(match)
                 .addOnSuccessListener {
                     result(true)
@@ -25,7 +25,7 @@ class MatchPersistence : IMatchPersistence {
 
     override fun updateMatch(matchId: String, match: Match, result: (Boolean) -> Unit) {
         GlobalScope.launch {
-            db.collection("matchesTest")
+            db.collection("matches")
                 .document(matchId)
                 .set(match)
                 .addOnSuccessListener {
@@ -42,7 +42,7 @@ class MatchPersistence : IMatchPersistence {
 
             var docID: String? = null;
 
-            val docRef = db.collection("matchesTest")
+            val docRef = db.collection("matches")
                 .whereEqualTo("matchInitiatorUserId", match.matchInitiatorUserId)
                 .whereEqualTo("toBeMatchedUserId", match.toBeMatchedUserId)
             docRef.get().addOnSuccessListener { snapshot ->
@@ -50,7 +50,7 @@ class MatchPersistence : IMatchPersistence {
                     docID = snapshot.documents[0].id
                     result(docID)
                 } else {
-                    val docRef2 = db.collection("matchesTest")
+                    val docRef2 = db.collection("matches")
                         .whereEqualTo("matchInitiatorUserId", match.toBeMatchedUserId)
                         .whereEqualTo("toBeMatchedUserId", match.matchInitiatorUserId)
                     docRef2.get().addOnSuccessListener { snapshot ->
@@ -71,7 +71,7 @@ class MatchPersistence : IMatchPersistence {
 
     override fun getMatches(userID: String, result: (List<Match>) -> Unit) {
         GlobalScope.launch {
-            val docRef = db.collection("matchesTest")
+            val docRef = db.collection("matches")
                 .whereArrayContains("includedUsers", userID)
             docRef.get().addOnSuccessListener { document ->
                 if (document != null) {
@@ -88,7 +88,7 @@ class MatchPersistence : IMatchPersistence {
 
     override fun getMatchHistory(userID: String, result: (List<Match>) -> Unit) {
         GlobalScope.launch {
-            val docRef = db.collection("matchesTest")
+            val docRef = db.collection("matches")
                 .whereEqualTo("matchInitiatorUserId", userID)
             docRef.get().addOnSuccessListener { document ->
                 if (document != null) {

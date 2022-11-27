@@ -79,16 +79,18 @@ class UserManagement : IUserManagement {
     override fun loginWithEmail(
         email: String,
         password: String,
-        result: (status: Boolean) -> Unit
+        result: (status: AuthenticationState) -> Unit
     ) {
         if (currentUser == null) {
             auth!!.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         currentUser = auth!!.currentUser
-                        result(true)
+                        result(AuthenticationSuccessState())
                     } else {
-                        result(false)
+                        if (task.exception is FirebaseAuthException) {
+                            result(AuthenticationState((task.exception as FirebaseAuthException).errorCode))
+                        }
                     }
                 }
         }

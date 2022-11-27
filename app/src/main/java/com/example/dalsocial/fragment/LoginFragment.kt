@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import com.example.dalsocial.R
 import com.example.dalsocial.activity.SetupUserActivity
 import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.UserPersistence
+import com.example.dalsocial.model.states.AuthenticationSuccessState
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -83,33 +85,67 @@ class LoginFragment : Fragment() {
                 .setBackgroundColorRes(R.color.md_theme_light_secondary)
                 .show()
 
-            val email = edEmail.text.toString()
-            val password = edPassword.text.toString()
+            val email = edEmail.text
+            val password = edPassword.text
 
             val userManagement = UserManagement()
 
             val persistence = UserPersistence()
 
-            userManagement.loginWithEmail(email, password) { success ->
-            //TODO: handle errors with state
-                Alerter.hide()
+            if (email == null || email.isEmpty()) {
+                Alerter.create(requireActivity())
+                    .setText("Email can not be empty!")
+                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                    .show()
+            } else if (password == null || password.isEmpty()) {
+                Alerter.create(requireActivity())
+                    .setText("You need a password to login")
+                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                    .show()
+            } else {
+                userManagement.loginWithEmail(email.toString(), password.toString()) { state ->
+                    //TODO: handle errors with state
+                    Alerter.hide()
 
-                if (success) {
+                    if (state is AuthenticationSuccessState) {
 
-                    var intent = Intent(activity, HomeActivity::class.java)
+                        var intent = Intent(activity, HomeActivity::class.java)
 
-                    persistence.getUserByID(userManagement.getFirebaseUserID()!!) { user ->
-                        if (user == null) {
-                            intent = Intent(context, SetupUserActivity::class.java)
+                        persistence.getUserByID(userManagement.getFirebaseUserID()!!) { user ->
+                            if (user == null) {
+                                intent = Intent(context, SetupUserActivity::class.java)
+                            }
+                            startActivity(intent)
                         }
-                        startActivity(intent)
-                    }
 
-                } else {
-                    Alerter.create(requireActivity())
-                        .setText("Sorry! Something went wrong")
-                        .setBackgroundColorRes(R.color.md_theme_light_secondary)
-                        .show()
+                    } else {
+                        when (state.message) {
+                            "ERROR_INVALID_EMAIL" -> {
+                                Alerter.create(requireActivity())
+                                    .setText("Invalid address seems incorrect")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
+                            }
+                            "ERROR_USER_NOT_FOUND" -> {
+                                Alerter.create(requireActivity())
+                                    .setText("We couldn't find an account with that email")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
+                            }
+                            "ERROR_WRONG_PASSWORD" -> {
+                                Alerter.create(requireActivity())
+                                    .setText("Uh-oh! You seem to have the entered wrong password")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
+                            }
+                            else -> {
+                                Alerter.create(requireActivity())
+                                    .setText("An error occurred, please try again later.")
+                                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                                    .show()
+                            }
+                        }
+                    }
                 }
             }
         }

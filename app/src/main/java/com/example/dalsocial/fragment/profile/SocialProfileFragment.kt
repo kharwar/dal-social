@@ -20,6 +20,7 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.tapadoo.alerter.Alerter
 
 class SocialProfileFragment : Fragment() {
 
@@ -100,10 +101,15 @@ class SocialProfileFragment : Fragment() {
 
             userManagement.createOrUpdateUser(userPersistence, user) {
                 if (it) {
-                    Snackbar.make(view, "Details updated successfully!", Snackbar.LENGTH_SHORT)
+                    Alerter.create(requireActivity())
+                        .setText("Details update successfully")
+                        .setBackgroundColorRes(R.color.md_theme_light_secondary)
                         .show()
                 } else {
-                    Snackbar.make(view, "Something went wrong!", Snackbar.LENGTH_SHORT).show()
+                    Alerter.create(requireActivity())
+                        .setText("Something went wrong!")
+                        .setBackgroundColorRes(R.color.md_theme_light_secondary)
+                        .show()
                 }
             }
         }
