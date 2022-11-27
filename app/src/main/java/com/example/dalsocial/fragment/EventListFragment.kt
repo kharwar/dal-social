@@ -17,6 +17,7 @@ import com.example.dalsocial.model.Event
 import com.example.dalsocial.model.EventAdapter
 import com.example.dalsocial.model.EventPersistence
 import com.example.dalsocial.model.IEventPersistence
+import com.tapadoo.alerter.Alerter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,6 +32,15 @@ class EventListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setFragmentResultListener("fromEventFragment") { _, bundle ->
+            if(bundle.getBoolean("isEventDeleted")){
+                Alerter.create(requireActivity())
+                    .setText("Event Deleted")
+                    .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
+                    .show()
+            }
+        }
     }
 
     override fun onCreateView(

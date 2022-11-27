@@ -166,6 +166,9 @@ class EventPersistence : IEventPersistence {
     }
 
     override fun createEvent(event: Event, imageUri: Uri, result: (Event?) -> Unit) {
+        if(imageUri == null) {
+            result(null)
+        }
         getCurrentUser { user ->
             try {
                 val ref = eventRef.document()

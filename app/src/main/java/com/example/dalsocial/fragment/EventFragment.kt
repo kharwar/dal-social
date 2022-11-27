@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -21,6 +23,9 @@ import com.example.dalsocial.model.EventPersistence
 import com.example.dalsocial.model.IEventPersistence
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
+import com.tapadoo.alerter.Alerter;
+import com.tapadoo.alerter.OnHideAlertListener;
+import com.tapadoo.alerter.OnShowAlertListener;
 import java.util.*
 
 class EventFragment : Fragment() {
@@ -54,7 +59,11 @@ class EventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setFragmentResultListener("requestKey") {_, bundle ->
             if(bundle.getBoolean("isAdded")){
-                Snackbar.make(view, "Event created", Snackbar.LENGTH_SHORT).show()
+//                Snackbar.make(view, "Event created", Snackbar.LENGTH_SHORT).show()
+                Alerter.create(requireActivity())
+                    .setText("Event Created")
+                    .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
+                    .show()
             }
         }
         val eventPersistence: IEventPersistence = EventPersistence()
@@ -74,6 +83,10 @@ class EventFragment : Fragment() {
                 .setCancelable(true)
             alertBuilder.setPositiveButton("Yes") { dialog, which ->
                 eventPersistence.deleteEvent(eventId) {
+                    val bundle: Bundle = bundleOf(
+                        "isEventDeleted" to true
+                    )
+                    setFragmentResult("fromEventFragment", bundle)
                 }
                 findNavController().navigate(R.id.action_eventFragment_to_eventsFragment)
             }
@@ -107,7 +120,7 @@ class EventFragment : Fragment() {
                                     message = "You have been registered for the event!"
                                     binding?.eventRegisterBtn?.isEnabled = false
                                     binding?.eventRegisterBtn?.text = "Registered"
-                                    Snackbar.make(view, message!!, Snackbar.LENGTH_SHORT).show()
+
                                 } else {
                                     message = "Registration failed!"
                                     Snackbar.make(view, message!!, Snackbar.LENGTH_SHORT).show()
