@@ -25,7 +25,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
-            android:text="X's profile"
+            android:text="@string/profile_mock_name"
             android:textSize="23sp"
             android:textStyle="bold" />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="a.k.a XYZ"
+            android:text="@string/profile_mock_akaname"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:text="Bio"
+        android:text="@string/profile_mock_bio"
         android:textSize="16sp" />
 
     <com.google.android.material.chip.ChipGroup
@@ -72,7 +72,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:src="@drawable/ic_facebook"
-            android:contentDescription="Facebook"/>
+            android:contentDescription="@string/facebook"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:visibility="gone"
@@ -82,7 +82,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:src="@drawable/ic_linkedin_circled"
-            android:contentDescription="LinkedIn"/>
+            android:contentDescription="@string/linkedin"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:visibility="gone"
@@ -92,7 +92,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:src="@drawable/ic_instagram"
-            android:contentDescription="Instagram"/>
+            android:contentDescription="@string/instagram"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:visibility="gone"
@@ -102,7 +102,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:src="@drawable/ic_twitter"
-            android:contentDescription="Twitter" />
+            android:contentDescription="@string/twitter" />
 
     </LinearLayout>
 
@@ -117,6 +117,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:text="Add them!" />
+        android:text="@string/profile_add_btn" />
 
 </LinearLayout>

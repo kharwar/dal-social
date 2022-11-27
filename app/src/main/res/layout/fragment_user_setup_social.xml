@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bio"
+            android:text="@string/profile_mock_bio"
             android:textSize="18sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -28,7 +28,7 @@
                 android:id="@+id/edUserSetupBio"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:hint="Something about yourself"
+                android:hint="@string/something_about_yourself"
                 android:inputType="textMultiLine" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Instagram"
+            android:text="@string/instagram"
             android:textSize="18sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -57,7 +57,7 @@
                 android:id="@+id/edUserSetupInstagram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instagram" />
+                android:hint="@string/instagram_mock" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +73,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Twitter"
+            android:text="@string/twitter"
             android:textSize="18sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +85,8 @@
                 android:id="@+id/edUserSetupTwitter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Twitter" />
+                android:hint="@string/twitter_mock"
+            />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LinkedIn"
+            android:text="@string/linkedin"
             android:textSize="18sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +114,7 @@
                 android:id="@+id/edUserSetupLinkedIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="LinkedIn" />
+                android:hint="@string/linkedin_mock" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +130,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Facebook"
+            android:text="@string/facebook"
             android:textSize="18sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -141,7 +142,7 @@
                 android:id="@+id/edUserSetupFacebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Facebook" />
+                android:hint="@string/facebook_mock" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -158,6 +159,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="16dp"
-        android:text="Done!" />
+        android:text="@string/done" />
 
 </LinearLayout>

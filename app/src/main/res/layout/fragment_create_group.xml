@@ -14,7 +14,7 @@
         android:layout_marginTop="57dp"
         android:layout_marginEnd="303dp"
         android:layout_marginBottom="655dp"
-        android:text="New Group Meetup"
+        android:text="@string/new_group_meetup"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +46,7 @@
         android:layout_marginTop="58dp"
         android:layout_marginEnd="167dp"
         android:layout_marginBottom="578dp"
-        android:text="Name"
+        android:text="@string/group_name"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
@@ -82,7 +82,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="311dp"
         android:layout_marginBottom="464dp"
-        android:text="Next Meetup"
+        android:text="@string/group_next_meetup"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +117,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="311dp"
         android:layout_marginBottom="348dp"
-        android:text="Repeat"
+        android:text="@string/group_repeat"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,21 +147,21 @@
             android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="weekly" />
+            android:text="@string/group_weekly_rb" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="monthly" />
+            android:text="@string/group_monthly_rb" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="never" />
+            android:text="@string/group_never_rb" />
     </RadioGroup>
 
     <TextView
@@ -172,7 +172,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="314dp"
         android:layout_marginBottom="183dp"
-        android:text="Group Description"
+        android:text="@string/groupDesc"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

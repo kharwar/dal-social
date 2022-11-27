@@ -43,7 +43,7 @@
             android:id="@+id/edRegistrationEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="@string/email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="Password" />
+            android:hint="@string/password" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +68,7 @@
         android:layout_width="213dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="Register"
+        android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
