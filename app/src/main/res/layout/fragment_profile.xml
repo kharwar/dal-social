@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="4dp"
-                android:text="Name"
+                android:text="@string/display_name"
                 android:textSize="21sp"
                 android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:text="Email"
+                android:text="@string/email"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -85,7 +85,7 @@
                    android:id="@+id/profile_points"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="Social Profile"
+                   android:text="@string/social_profile_card_title"
                    android:textSize="21sp"
                    android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                    android:id="@+id/profile_points_text"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="Edit your social profile"
+                   android:text="@string/social_profile_card_desc"
                    android:textSize="16sp" />
 
            </LinearLayout>
@@ -137,14 +137,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account Details"
+                    android:text="@string/acc_details_card_title"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit your account preferences"
+                    android:text="@string/acc_details_card_desc"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -187,14 +187,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="@string/settings_card_title"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Change app settings"
+                    android:text="@string/settings_card_desc"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -237,14 +237,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="QR Code"
+                    android:text="@string/qrcode_card_title"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Scan or share your QR code"
+                    android:text="@string/qrcode_card_desc"
                     android:textSize="16sp" />
 
             </LinearLayout>

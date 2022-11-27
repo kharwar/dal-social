@@ -12,7 +12,7 @@
         android:layout_height="31dp"
         android:layout_marginTop="42dp"
         android:layout_marginBottom="670dp"
-        android:text="Announcements"
+        android:text="@string/announcementTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

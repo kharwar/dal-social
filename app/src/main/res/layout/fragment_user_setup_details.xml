@@ -23,7 +23,7 @@
                 android:id="@+id/edUserSetupFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="First Name" />
+                android:hint="@string/acc_details_fname" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +45,7 @@
                 android:id="@+id/edUserSetupLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Last Name" />
+                android:hint="@string/acc_details_lname" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date of birth"
+            android:text="@string/date_of_birth"
             android:textSize="18sp" />
 
         <!-- reference: https://www.tutlane.com/tutorial/android/android-datepicker-with-examples -->
@@ -83,6 +83,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="16dp"
-        android:text="Next" />
+        android:text="@string/next" />
 
 </LinearLayout>

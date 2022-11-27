@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bio"
+            android:text="@string/profile_mock_bio"
             android:textSize="18sp" />
 
         <EditText
@@ -25,7 +25,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="8dp"
             android:inputType="textMultiLine"
-            android:hint="Type something about yourself"
+            android:hint="@string/something_about_yourself"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Instagram"
+            android:text="@string/instagram"
             android:textSize="18sp" />
 
         <EditText
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="johndoeIG"
+            android:hint="@string/instagram_mock"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -64,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Twitter"
+            android:text="@string/twitter"
             android:textSize="18sp" />
 
         <EditText
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="elonmusk"
+            android:hint="@string/twitter_mock"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -88,7 +88,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LinkedIn"
+            android:text="@string/linkedin"
             android:textSize="18sp" />
 
         <EditText
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="johndoe"
+            android:hint="@string/linkedin_mock"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -112,7 +112,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Facebook"
+            android:text="@string/facebook"
             android:textSize="18sp" />
 
         <EditText
@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="johndoe"
+            android:hint="@string/facebook_mock"
             android:inputType="textUri"
             android:textSize="18sp" />
 
@@ -132,6 +132,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="16dp"
-        android:text="Done!" />
+        android:text="@string/done" />
 
 </LinearLayout>

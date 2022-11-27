@@ -29,7 +29,7 @@
                     android:id="@+id/eventBg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="TODO: change"
+                    android:contentDescription="@string/event_bg_content_iv"
                     android:scaleType="centerCrop"
                     tools:src="@tools:sample/avatars" />
             </androidx.cardview.widget.CardView>
