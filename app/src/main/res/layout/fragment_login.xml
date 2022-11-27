@@ -92,13 +92,14 @@
         android:layout_marginTop="12dp"
         android:visibility="gone" />
 
-    <TextView
+    <Button
         android:id="@+id/edResetLink"
-        android:layout_width="wrap_content"
+        android:layout_width="213dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:autoLink="all"
         android:text="Reset Password"
+        style="@style/Widget.Material3.Button.ElevatedButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
