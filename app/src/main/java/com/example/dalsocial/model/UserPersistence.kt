@@ -38,7 +38,6 @@ class UserPersistence : IUserPersistence {
     }
 
     override fun createOrUpdateUser(user: User, result: (Boolean) -> Unit) {
-
         if (user.userID == null) {
             result(false)
         } else {
@@ -52,9 +51,14 @@ class UserPersistence : IUserPersistence {
         }
     }
 
-    override fun deactivateUser(user: User, result: (Boolean) -> Unit) {
-        user.isActive = false
-        createOrUpdateUser(user, result)
+    override fun deleteUser(userID: String, result: (Boolean) -> Unit) {
+        GlobalScope.launch {
+            db.collection("users").document(userID).delete().addOnSuccessListener {
+                result(true)
+            }.addOnFailureListener {
+                throw Exception("Error deleting document.")
+            }.await()
+        }
     }
 
     override fun uploadImage(
