@@ -85,7 +85,7 @@ class CreateEventFragment : Fragment(){
         }
 
         var scheduledDate: String? = null;
-        timePicker.addOnPositiveButtonClickListener { it ->
+        timePicker.addOnPositiveButtonClickListener {
             val hour = timePicker.hour.hours
             val minute = timePicker.minute.minutes
             val dateFormat = SimpleDateFormat("dd-MM-yyyy")
