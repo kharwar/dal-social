@@ -1,5 +1,7 @@
 package com.example.dalsocial.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.dalsocial.R
 import com.example.dalsocial.databinding.FragmentEventBinding
@@ -24,6 +30,16 @@ class EventFragment : Fragment() {
     val TAG = "EventFragment"
 
     var binding: FragmentEventBinding? = null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().navigate(R.id.action_eventFragment_to_eventsFragment)
+        }
+        callback.isEnabled = true
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,9 +52,36 @@ class EventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setFragmentResultListener("requestKey") {_, bundle ->
+            if(bundle.getBoolean("isAdded")){
+                Snackbar.make(view, "Event created", Snackbar.LENGTH_SHORT).show()
+            }
+        }
         val eventPersistence: IEventPersistence = EventPersistence()
         var eventId: String? = arguments?.getString("eventId")
+
+
+        eventPersistence.isCurrentUserOwner(eventId) { isOwner ->
+            if(isOwner){
+                binding?.eventDeleteFb?.visibility = View.VISIBLE
+            }
+        }
+
+
+        val alertBuilder = AlertDialog.Builder(context)
+        binding?.eventDeleteFb?.setOnClickListener {
+            alertBuilder.setMessage("Are you sure you want to delete the event?")
+                .setCancelable(true)
+            alertBuilder.setPositiveButton("Yes") { dialog, which ->
+                eventPersistence.deleteEvent(eventId) {
+                }
+                findNavController().navigate(R.id.action_eventFragment_to_eventsFragment)
+            }
+            alertBuilder.show()
+        }
+
         GlobalScope.launch {
+
             eventPersistence.isCurrentUserRegistered(eventId?.trim()) { registered ->
                 isRegistered = registered
                 toggleRegisterBtn()
@@ -73,7 +116,6 @@ class EventFragment : Fragment() {
                         }
                         runBlocking {
                             responseMsg.join()
-
                         }
 
                     }
@@ -82,7 +124,10 @@ class EventFragment : Fragment() {
 
 
         }
+
+
     }
+
 
 
     private fun toggleRegisterBtn() {

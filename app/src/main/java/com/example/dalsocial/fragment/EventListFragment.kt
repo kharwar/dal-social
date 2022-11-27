@@ -1,11 +1,13 @@
 package com.example.dalsocial.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +22,16 @@ import kotlin.collections.ArrayList
 
 class EventListFragment : Fragment() {
 
+    private val TAG = "EventListFragment"
+
+    private var adapter: EventAdapter? = null
+    private val eventPersistence: IEventPersistence = EventPersistence()
+
     lateinit var binding: FragmentEventListBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +45,7 @@ class EventListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var eventsList: MutableList<Event> = ArrayList()
-        val eventPersistence: IEventPersistence = EventPersistence()
-        var adapter = EventAdapter(eventsList, this);
+        adapter = EventAdapter(eventsList, this);
         binding.eventList.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         binding.eventList.adapter = adapter
@@ -49,27 +59,29 @@ class EventListFragment : Fragment() {
 //        }
 
         binding.eventToggle.addOnButtonCheckedListener { toggleButton, checkedId, isChecked ->
-            if (isChecked){
+            if (isChecked) {
                 when (checkedId) {
                     R.id.allEventsBtn -> {
                         eventPersistence.getAllEvents() { events ->
-                            adapter.events = events.toMutableList()
+                            adapter?.events = events
                             Log.d("Adapter", "all")
-                            adapter.notifyDataSetChanged()
+                            adapter?.notifyDataSetChanged()
                         }
                     }
                     R.id.myEventsBtn -> {
                         eventPersistence.getMyEvents() { events ->
-                            adapter.events = events.toMutableList()
+                            adapter?.events = events
                             Log.d("Adapter", "my")
-                            adapter.notifyDataSetChanged()
+                            adapter?.notifyDataSetChanged()
                         }
                     }
                 }
             }
         }
+
         binding.eventToggle.clearChecked()
         binding.eventToggle.check(R.id.allEventsBtn)
+        Log.d(TAG, "Events List size: ${eventsList.size}")
 
         binding?.createEventBtn?.setOnClickListener { it ->
             val action = EventListFragmentDirections.actionEventsFragmentToCreateEventFragment()
