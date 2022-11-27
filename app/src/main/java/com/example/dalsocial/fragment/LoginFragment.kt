@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -23,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.tapadoo.alerter.Alerter
 
 class LoginFragment : Fragment() {
 
@@ -79,7 +78,10 @@ class LoginFragment : Fragment() {
 
         loginButton.setOnClickListener {
 
-            //TODO: Show progress bar here
+            Alerter.create(requireActivity())
+                .setText("Signing you in...")
+                .setBackgroundColorRes(R.color.md_theme_light_secondary)
+                .show()
 
             val email = edEmail.text.toString()
             val password = edPassword.text.toString()
@@ -89,6 +91,9 @@ class LoginFragment : Fragment() {
             val persistence = UserPersistence()
 
             userManagement.loginWithEmail(email, password) { success ->
+            //TODO: handle errors with state
+                Alerter.hide()
+
                 if (success) {
 
                     var intent = Intent(activity, HomeActivity::class.java)
@@ -101,7 +106,10 @@ class LoginFragment : Fragment() {
                     }
 
                 } else {
-                    Toast.makeText(context, "Login failed", Toast.LENGTH_SHORT).show()
+                    Alerter.create(requireActivity())
+                        .setText("Sorry! Something went wrong")
+                        .setBackgroundColorRes(R.color.md_theme_light_secondary)
+                        .show()
                 }
             }
         }
