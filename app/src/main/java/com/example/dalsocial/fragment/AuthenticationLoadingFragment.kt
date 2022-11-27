@@ -22,8 +22,7 @@ class AuthenticationLoadingFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_authentication_loading, container, false)
 
         val auth = UserManagement()
-
-
+        
         if (auth.isLoggedIn()) {
             val userPersistence: IUserPersistence = UserPersistence()
             val userManagement: IUserManagement = UserManagement()

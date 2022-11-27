@@ -128,28 +128,27 @@ class UserManagement : IUserManagement {
     }
 
 
-    override fun resetPassword(function: (status: Boolean) -> Unit) {
+    override fun resetPassword(result: (status: Boolean) -> Unit) {
         // reference: https://firebase.google.com/docs/auth/android/manage-users
         if (currentUser != null) {
             currentUser?.sendEmailVerification()?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    function(true)
+                    result(true)
                 } else {
-                    function(false)
+                    result(false)
                 }
             }
         }
-        function(false)
     }
 
-    override fun resetPasswordByEmail(email: String, function: (status: Boolean) -> Unit) {
-        if (auth != null) {}
-        function(false)
-        auth?.sendPasswordResetEmail(email)?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                function(true)
-            } else {
-                function(false)
+    override fun resetPasswordByEmail(email: String, result: (status: Boolean) -> Unit) {
+        if (auth != null) {
+            auth?.sendPasswordResetEmail(email)?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    result(true)
+                } else {
+                    result(false)
+                }
             }
         }
     }

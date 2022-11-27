@@ -10,8 +10,8 @@ import com.example.dalsocial.R
 import com.example.dalsocial.R.id.btnResetPassword
 import com.example.dalsocial.model.IUserManagement
 import com.example.dalsocial.model.UserManagement
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.tapadoo.alerter.Alerter
 
 class ResetPasswordFragment : Fragment() {
 
@@ -26,12 +26,26 @@ class ResetPasswordFragment : Fragment() {
         val tiInputResetPassword = view.findViewById<TextInputEditText>(R.id.tiResetPasswordEmail)
         val btnResetPassword = view.findViewById<Button>(btnResetPassword)
         btnResetPassword.setOnClickListener {
-            userManagement.resetPasswordByEmail(tiInputResetPassword.text.toString()) { success ->
-                if (success) {
-                    Snackbar.make(view, "Email sent", Snackbar.LENGTH_LONG).show()
-                } else {
-                    Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_LONG).show()
+            val email = tiInputResetPassword.text
+            if (email != null) {
+                userManagement.resetPasswordByEmail(email.toString()) { success ->
+                    if (success) {
+                        Alerter.create(requireActivity())
+                            .setText("Email sent successfully to ${tiInputResetPassword.text}")
+                            .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
+                            .show()
+                    } else {
+                        Alerter.create(requireActivity())
+                            .setText("Something went wrong")
+                            .setBackgroundColorRes(R.color.md_theme_light_error)
+                            .show()
+                    }
                 }
+            } else {
+                Alerter.create(requireActivity())
+                    .setText("Please enter your email")
+                    .setBackgroundColorRes(R.color.md_theme_light_error)
+                    .show()
             }
         }
 
