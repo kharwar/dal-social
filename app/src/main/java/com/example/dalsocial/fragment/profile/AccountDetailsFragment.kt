@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.DatePicker
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
 import com.example.dalsocial.model.IUserPersistence
 import com.example.dalsocial.model.User
@@ -97,6 +99,12 @@ class AccountDetailsFragment : Fragment() {
                     Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_LONG).show()
                 }
             }
+        }
+
+        // reference: https://stackoverflow.com/questions/5448653/how-to-implement-onbackpressed-in-fragments
+        val btnBack = view.findViewById<ImageView>(R.id.backAccountDetailBtn)
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         return view

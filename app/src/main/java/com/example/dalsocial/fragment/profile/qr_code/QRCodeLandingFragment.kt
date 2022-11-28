@@ -29,15 +29,16 @@ class QRCodeLanding : Fragment() {
         val ivQrCode = view.findViewById<ImageView>(R.id.ivQRCode)
         ivQrCode.setImageBitmap(qrCode)
 
-//        val btnShareQRCode = view.findViewById<Button>(R.id.btnShareQRCode)
-//        btnShareQRCode.setOnClickListener {
-//
-//        }
-
         val btnScanQRCode = view.findViewById<Button>(R.id.btnScanQRCode)
         btnScanQRCode.setOnClickListener {
             findNavController().navigate(R.id.action_QRCodeLanding_to_QRCodeScanFragment)
 
+        }
+
+        // reference: https://stackoverflow.com/questions/5448653/how-to-implement-onbackpressed-in-fragments
+        val btnBack = view.findViewById<ImageView>(R.id.backQrCodeLandingBtn)
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         return view
