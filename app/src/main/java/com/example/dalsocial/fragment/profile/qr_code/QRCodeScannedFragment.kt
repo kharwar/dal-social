@@ -87,6 +87,15 @@ class QRCodeScannedFragment : Fragment() {
         val socialMatches = SocialMatches(matchPersistence, userManagement)
 
         val matchButton = view.findViewById<TextView>(R.id.btnScannedUserMessage)
+
+        val includedUsers =
+            mutableListOf(scannedUserId, userManagement.getFirebaseUserID()!!)
+        socialMatches.hasAnyMatchByIncludedUsersID(includedUsers) { hasMatch ->
+            if (hasMatch) {
+                matchButton.isEnabled = false
+            }
+        }
+
         matchButton.setOnClickListener {
             val match = Match(
                 approved = true,

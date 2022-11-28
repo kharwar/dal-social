@@ -10,6 +10,10 @@ interface ISocialMatches {
         userID: String,
         result: (List<User>) -> Unit
     )
+    fun hasAnyMatchByIncludedUsersID(
+        userIDs: List<String>,
+        result: (Boolean) -> Unit
+    )
 
     fun filterRemoveAlreadyLikedUsers(
         users: List<User>,

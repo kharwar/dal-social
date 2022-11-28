@@ -8,6 +8,7 @@ interface IMatchPersistence {
 
     fun getMatches(userID: String, result: (List<Match>) -> Unit)
     fun getAllUsersWhoLikedMe(userID: String, result: (List<User>) -> Unit)
+    fun hasAnyMatchByIncludedUsersID(userIDs: List<String>, result: (Boolean) -> Unit)
 
     fun getMatchHistory(userID: String, result: (List<Match>) -> Unit)
 

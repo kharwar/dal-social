@@ -83,6 +83,36 @@ class MatchPersistence : IMatchPersistence {
     }
 
     override fun getAllUsersWhoLikedMe(userID: String, result: (List<User>) -> Unit) {}
+    override fun hasAnyMatchByIncludedUsersID(userIDs: List<String>, result: (Boolean) -> Unit) {
+        GlobalScope.launch {
+            val docRef = db.collection("matches")
+                .whereArrayContains("includedUsers", userIDs[0])
+            val docRef2 = db.collection("matches")
+                .whereArrayContains("includedUsers", userIDs[1])
+
+            docRef.get().addOnSuccessListener { snapshot1 ->
+                if (snapshot1 != null) {
+                    if (snapshot1.documents.size > 0) {
+                        docRef2.get().addOnSuccessListener { snapshot2 ->
+                            if (snapshot2 != null) {
+                                if (snapshot2.documents.size > 0) {
+                                    result(true)
+                                } else {
+                                    result(false)
+                                }
+                            }
+                        }.addOnFailureListener {
+                        }
+                    } else {
+                        result(false)
+                    }
+                } else {
+                    result(false)
+                }
+            }.addOnFailureListener {
+            }
+        }
+    }
 
     override fun getMatchHistory(userID: String, result: (List<Match>) -> Unit) {
         GlobalScope.launch {

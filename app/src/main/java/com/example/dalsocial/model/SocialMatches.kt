@@ -40,6 +40,10 @@ class SocialMatches(
         matchesPersistence.getAllUsersWhoLikedMe(userID, result)
     }
 
+    override fun hasAnyMatchByIncludedUsersID(userIDs: List<String>, result: (Boolean) -> Unit) {
+        matchesPersistence.hasAnyMatchByIncludedUsersID(userIDs, result)
+    }
+
     override fun filterRemoveAlreadyLikedUsers(
         users: List<User>,
         result: (ArrayList<User>) -> Unit
