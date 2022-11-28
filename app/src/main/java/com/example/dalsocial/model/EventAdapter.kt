@@ -12,7 +12,7 @@ import com.example.dalsocial.fragment.EventListFragment
 import com.example.dalsocial.fragment.EventListFragmentDirections
 
 
-class EventAdapter (var events: List<Event>, val fragment: EventListFragment): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+    class EventAdapter (var events: List<Event>, val fragment: EventListFragment): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(

@@ -16,9 +16,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:visibility="visible"
+        android:visibility="gone"
         />
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/eventViewMembers"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_people_outline_24"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        />
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"

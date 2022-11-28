@@ -73,14 +73,25 @@ class EventFragment : Fragment() {
         eventPersistence.isCurrentUserOwner(eventId) { isOwner ->
             if(isOwner){
                 binding?.eventDeleteFb?.visibility = View.VISIBLE
+                binding?.eventViewMembers?.visibility = View.VISIBLE
             }
         }
 
 
+        // On View Members Listener
+        binding?.eventViewMembers?.setOnClickListener {
+            val action = EventFragmentDirections.actionEventFragmentToEventUserListFragment(
+                eventId = eventId!!
+            )
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        // On Delete Listener
         val alertBuilder = AlertDialog.Builder(context)
         binding?.eventDeleteFb?.setOnClickListener {
             alertBuilder.setMessage("Are you sure you want to delete the event?")
                 .setCancelable(true)
+
             alertBuilder.setPositiveButton("Yes") { dialog, which ->
                 eventPersistence.deleteEvent(eventId) {
                     val bundle: Bundle = bundleOf(
@@ -90,6 +101,11 @@ class EventFragment : Fragment() {
                 }
                 findNavController().navigate(R.id.action_eventFragment_to_eventsFragment)
             }
+
+            alertBuilder.setNegativeButton("No") { dialog, which ->
+                dialog.cancel()
+            }
+
             alertBuilder.show()
         }
 
@@ -120,6 +136,10 @@ class EventFragment : Fragment() {
                                     message = "You have been registered for the event!"
                                     binding?.eventRegisterBtn?.isEnabled = false
                                     binding?.eventRegisterBtn?.text = "Registered"
+                                    Alerter.create(requireActivity())
+                                        .setText("Event looks exciting! You have been registered for it.")
+                                        .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
+                                        .show()
 
                                 } else {
                                     message = "Registration failed!"
