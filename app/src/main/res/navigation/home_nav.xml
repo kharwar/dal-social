@@ -6,12 +6,12 @@
     app:startDestination="@id/socialFragment">
     <fragment
         android:id="@+id/socialFragment"
-        android:name="com.example.dalsocial.fragment.SocialFragment"
+        android:name="com.example.dalsocial.fragment.social.SocialFragment"
         android:label="fragment_social"
         tools:layout="@layout/fragment_social" />
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.example.dalsocial.fragment.EventListFragment"
+        android:name="com.example.dalsocial.fragment.events.EventListFragment"
         android:label="EventListFragment">
         <action
             android:id="@+id/action_eventsFragment_to_eventFragment"
@@ -22,11 +22,11 @@
     </fragment>
     <fragment
         android:id="@+id/groupAnnouncements"
-        android:name="com.example.dalsocial.fragment.GroupAnnouncements"
+        android:name="com.example.dalsocial.fragment.groups.GroupAnnouncements"
         android:label="GroupAnnouncements" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.dalsocial.fragment.ChatFragment"
+        android:name="com.example.dalsocial.fragment.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/usersChatFragment"
-        android:name="com.example.dalsocial.fragment.UserChatFragment"
+        android:name="com.example.dalsocial.fragment.chat.UserChatFragment"
         android:label="UserChatFragment" >
         <argument
             android:name="userName"
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
-        android:name="com.example.dalsocial.fragment.EventFragment"
+        android:name="com.example.dalsocial.fragment.events.EventFragment"
         android:label="EventFragment">
         <argument
             android:name="eventTitle"
@@ -144,7 +144,7 @@
     </fragment>
     <fragment
         android:id="@+id/createEventFragment"
-        android:name="com.example.dalsocial.fragment.CreateEventFragment"
+        android:name="com.example.dalsocial.fragment.events.CreateEventFragment"
         android:label="CreateEventFragment" >
         <action
             android:id="@+id/action_createEventFragment_to_eventFragment"
@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventUserListFragment"
-        android:name="com.example.dalsocial.fragment.EventUserListFragment"
+        android:name="com.example.dalsocial.fragment.events.EventUserListFragment"
         android:label="EventUserListFragment" >
         <argument
             android:name="eventId"

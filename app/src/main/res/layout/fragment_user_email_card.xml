@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    tools:context=".fragment.EventCardFragment">
+    tools:context=".fragment.events.EventCardFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/user_email_card"

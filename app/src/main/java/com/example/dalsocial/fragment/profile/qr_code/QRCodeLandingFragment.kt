@@ -10,7 +10,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
-import com.example.dalsocial.model.UserManagement
+import com.example.dalsocial.model.user.UserManagement
 import io.github.g0dkar.qrcode.QRCode
 
 class QRCodeLanding : Fragment() {

@@ -12,10 +12,10 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.R
-import com.example.dalsocial.model.IUserPersistence
-import com.example.dalsocial.model.User
-import com.example.dalsocial.model.UserManagement
-import com.example.dalsocial.model.UserPersistence
+import com.example.dalsocial.model.user.IUserPersistence
+import com.example.dalsocial.model.user.User
+import com.example.dalsocial.model.user.UserManagement
+import com.example.dalsocial.model.user.UserPersistence
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText

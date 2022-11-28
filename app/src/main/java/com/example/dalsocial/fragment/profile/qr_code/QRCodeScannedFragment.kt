@@ -11,7 +11,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.dalsocial.R
-import com.example.dalsocial.model.*
+import com.example.dalsocial.model.social.IMatchPersistence
+import com.example.dalsocial.model.social.Match
+import com.example.dalsocial.model.social.MatchPersistence
+import com.example.dalsocial.model.social.SocialMatches
+import com.example.dalsocial.model.user.IUserManagement
+import com.example.dalsocial.model.user.IUserPersistence
+import com.example.dalsocial.model.user.UserManagement
+import com.example.dalsocial.model.user.UserPersistence
 
 class QRCodeScannedFragment : Fragment() {
 
