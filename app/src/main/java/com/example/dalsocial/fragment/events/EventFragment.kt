@@ -55,7 +55,7 @@ class EventFragment : Fragment() {
             if(bundle.getBoolean("isAdded")){
 //                Snackbar.make(view, "Event created", Snackbar.LENGTH_SHORT).show()
                 Alerter.create(requireActivity())
-                    .setText("Event Created")
+                    .setText("Hooray! Your event is available for others now.")
                     .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
                     .show()
             }

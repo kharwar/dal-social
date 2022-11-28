@@ -17,12 +17,17 @@ import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.Navigation
+import com.example.dalsocial.R
 import com.example.dalsocial.databinding.FragmentCreateEventBinding
 import com.example.dalsocial.model.events.Event
 import com.example.dalsocial.model.events.EventPersistence
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.tapadoo.alerter.Alerter
 import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
@@ -51,11 +56,19 @@ class CreateEventFragment : Fragment() {
         }
 
 
+        //Date picker Constraints
+        val constraintsBuilder =
+            CalendarConstraints.Builder()
+                .setValidator(DateValidatorPointForward.now())
+
+        // Date Picker
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select Date")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .setCalendarConstraints(constraintsBuilder.build())
             .build()
 
+        // Time Picker
         val timePicker = MaterialTimePicker.Builder()
             .setTitleText("Select Time")
             .build()
@@ -84,6 +97,10 @@ class CreateEventFragment : Fragment() {
         }
 
         binding?.newEventBtn?.setOnClickListener {
+            Alerter.create(requireActivity())
+                .setText("It looks exciting! Publishing your event for others...")
+                .setBackgroundColorRes(R.color.md_theme_light_secondary)
+                .show()
             val title: String = binding?.newEventTitle?.text.toString()
             val description: String = binding?.newEventDesc?.text.toString()
             val date: String? = scheduledDate
@@ -124,10 +141,12 @@ class CreateEventFragment : Fragment() {
                                 eventBg = event.imageUrl!!,
                                 eventDate = event.scheduledDate!!
                             )
+
                         Navigation.findNavController(view).navigate(action)
+
                     }
-//                }
             }
+            Alerter.hide()
         }
 
 
