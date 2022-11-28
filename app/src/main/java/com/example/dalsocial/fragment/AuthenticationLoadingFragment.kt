@@ -11,8 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
 import com.example.dalsocial.activity.SetupUserActivity
-import com.example.dalsocial.model.FirebaseAuthentication
-import com.example.dalsocial.model.UserPersistence
+import com.example.dalsocial.model.*
 
 class AuthenticationLoadingFragment : Fragment() {
 
@@ -22,18 +21,19 @@ class AuthenticationLoadingFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_authentication_loading, container, false)
 
-        val auth = FirebaseAuthentication()
-
-
+        val auth = UserManagement()
+        
         if (auth.isLoggedIn()) {
-            val userPersistence = UserPersistence()
+            val userPersistence: IUserPersistence = UserPersistence()
+            val userManagement: IUserManagement = UserManagement()
             var intent = Intent(activity, HomeActivity::class.java)
 
             try {
-                userPersistence.getUserByID(auth.getFirebaseUserID()!!) { user ->
+                userManagement.getUserByID(userPersistence, auth.getFirebaseUserID()!!) { user ->
                     if (user == null) {
                         intent = Intent(activity, SetupUserActivity::class.java)
                     }
+
                     startActivity(intent)
                 }
             } catch (e: Exception) {

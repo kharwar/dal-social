@@ -1,5 +1,138 @@
 <resources>
     <string name="app_name">DalSocial</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_catchphrase">Find your hive!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="other_details">Other Details</string>
+    <string name="instagram">Instagram</string>
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="save">Save</string>
+    <string name="done">Done!</string>
+    <string name="send">Send</string>
+
+    <string name="match_name">Match\'s Name</string>
+    <string name="match_id">Match\'s ID</string>
+
+    <string name="name_helper">What should we call you?</string>
+
+
+    <string name="reset_password_desc">Enter your email address to receive a password reset email.</string>
+    <string name="email_address">Email Address</string>
+    <string name="reset_password_mail_btn">Send reset password email</string>
+
+    <string name="settings">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="darkModeSwitch">Dark Mode</string>
+    <string name="logout">Logout</string>
+    <string name="acc_delete">Delete Account</string>
+
+    <string name="social">Social</string>
+    <string name="filter">Filter</string>
+    <string name="filter_desc">Filter by your interests</string>
+
+    <string name="your_details">Your Details</string>
+    <string name="display_name_placeholder">Your display name</string>
+    <string name="about_you_placeholder">About you...</string>
+    <string name="profile_image_title">Profile Image</string>
+    <string name="profile_image_desc">Tap on the image to view options</string>
+    <string name="interests_title">Interests</string>
+    <string name="something_about_yourself">Type something about yourself</string>
+
+    <string name="instagram_mock">johndoeIG</string>
+    <string name="twitter_mock">elonmusk</string>
+    <string name="linkedin_mock">johndoe</string>
+    <string name="facebook_mock">johndoe</string>
+
+    <string name="display_name">Name</string>
+    <string name="social_profile_card_title">Social Profile</string>
+    <string name="social_profile_card_desc">Edit your social profile</string>
+    <string name="acc_details_card_title">Account Details</string>
+    <string name="acc_details_card_desc">Edit your account preferences</string>
+    <string name="settings_card_title">Settings</string>
+    <string name="settings_card_desc">Change app settings</string>
+    <string name="qrcode_card_title">QR Code</string>
+    <string name="qrcode_card_desc">Scan or share your QR code</string>
+
+    <string name="profile_mock_name">X\'s profile</string>
+    <string name="profile_mock_akaname">a.k.a XYZ</string>
+    <string name="profile_mock_bio">Bio</string>
+    <string name="profile_add_btn">Add them!</string>
+
+    <string name="go_back">Go back</string>
+    <string name="username">Username</string>
+    <string name="message_placeholder">Message...</string>
+
+    <string name="interested_in">I am interested in:</string>
+
+    <string name="qr_landing_title">QRify</string>
+    <string name="qr_landing_desc">Let someone scan your QR code to share your profile with them. Scan their QR code to view their profile.</string>
+    <string name="qr_landing_btn">Scan QR Code</string>
+
+    <string name="acc_details">Account Details</string>
+    <string name="acc_details_fname">First Name</string>
+    <string name="acc_details_lname">Last Name</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="acc_details_save">Save</string>
+
+    <string name="event_create_btn">Create</string>
+    <string name="event_title_ti">Title</string>
+    <string name="event_desc_ti">Description</string>
+    <string name="event_date_ti">Date</string>
+    <string name="event_background_tv">Background</string>
+    <string name="event_details_tv">Details</string>
+    <string name="eventTitle">Title</string>
+    <string name="eventDesc">Lorem Ipsum Dolor</string>
+    <string name="eventDate">Tomorrow</string>
+    <string name="allEvents">All Events</string>
+    <string name="myEvents">My Events</string>
+    <string name="eventRegisterBtn">Register</string>
+    <string name="eventQABtn">Questions</string>
+    <string name="event_bg_content_iv">Event background</string>
+    <string name="event_create_fb">Create</string>
+    <string name="event_user_card_display_picture">User Display Picture</string>
+
+    <string name="new_group_meetup">New Group Meetup</string>
+    <string name="group_name">Name</string>
+    <string name="announcementTitle">Announcement</string>
+    <string name="announcements_btn">Announcements</string>
+    <string name="participate_btn">Participate</string>
+    <string name="leave_btn">Leave</string>
+    <string name="announcementDescription">Description</string>
+    <string name="participants">Participants</string>
+    <string name="groupDesc">Group Description</string>
+    <string name="group_next_meetup">Next Meetup</string>
+    <string name="group_repeat">Repeat</string>
+    <string name="group_weekly_rb">Weekly</string>
+    <string name="group_monthly_rb">Monthly</string>
+    <string name="group_never_rb">Never</string>
+    <string name="group_description_tv">Group Description</string>
+    <string name="groupName">Group Name</string>
+    <string name="registered">Registered</string>
+    <string name="myGroups">My Groups</string>
+    <string name="allGroups">All Groups</string>
+    <string name="groupNameInput">My Group Meetup</string>
+    <string name="groupDescInput">Some Description</string>
+    <string name="createGroup">Create Group</string>
+    <string name="title_activity_matches">MatchesActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="chat_btn">Chat</string>
+    <string name="edit_btn">Edit</string>
+
+    <string name="google_client_id">788599215361-r0ahmq41oh1a2gmluj69p59c4u5dk56c.apps.googleusercontent.com</string>
 </resources>

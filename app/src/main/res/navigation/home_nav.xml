@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/socialFragment">
+    <fragment
+        android:id="@+id/socialFragment"
+        android:name="com.example.dalsocial.fragment.SocialFragment"
+        android:label="fragment_social"
+        tools:layout="@layout/fragment_social" />
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.dalsocial.fragment.EventListFragment"
+        android:label="EventListFragment">
+        <action
+            android:id="@+id/action_eventsFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_eventsFragment_to_createEventFragment"
+            app:destination="@id/createEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupAnnouncements"
+        android:name="com.example.dalsocial.fragment.GroupAnnouncements"
+        android:label="GroupAnnouncements" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.dalsocial.fragment.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chatFragment_to_userChatFragment"
+            app:destination="@id/usersChatFragment" />
+        />
+    </fragment>
+    <fragment
+        android:id="@+id/usersChatFragment"
+        android:name="com.example.dalsocial.fragment.UserChatFragment"
+        android:label="UserChatFragment" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="username" />
+        <argument
+            android:name="chatToUserId"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="chatConnectionId"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_usersChatFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.dalsocial.fragment.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_socialProfileSettings"
+            app:destination="@id/socialProfileSettings" />
+        <action
+            android:id="@+id/action_profileFragment_to_QRCodeLanding"
+            app:destination="@id/QRCodeLanding" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/socialProfileSettings"
+        android:name="com.example.dalsocial.fragment.profile.SocialProfileSettings"
+        android:label="fragment_social_profile_settings"
+        tools:layout="@layout/fragment_social_profile_settings" />
+    <fragment
+        android:id="@+id/QRCodeLanding"
+        android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeLanding"
+        android:label="fragment_qr_code_landing"
+        tools:layout="@layout/fragment_qr_code_landing">
+        <action
+            android:id="@+id/action_QRCodeLanding_to_QRCodeScanFragment"
+            app:destination="@id/QRCodeScanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/QRCodeScanFragment"
+        android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeScanFragment"
+        android:label="fragment_q_r_code_scan"
+        tools:layout="@layout/fragment_q_r_code_scan">
+        <action
+            android:id="@+id/action_QRCodeScanFragment_to_QRCodeScannedFragment2"
+            app:destination="@id/QRCodeScannedFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/QRCodeScannedFragment2"
+        android:name="com.example.dalsocial.fragment.profile.qr_code.QRCodeScannedFragment"
+        android:label="fragment_q_r_code_scanned"
+        tools:layout="@layout/fragment_q_r_code_scanned" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dalsocial.fragment.profile.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/accountDetailsFragment"
+        android:name="com.example.dalsocial.fragment.profile.AccountDetailsFragment"
+        android:label="fragment_account_details"
+        tools:layout="@layout/fragment_account_details" >
+        <action
+            android:id="@+id/action_accountDetailsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.dalsocial.fragment.EventFragment"
+        android:label="EventFragment">
+        <argument
+            android:name="eventTitle"
+            app:argType="string"
+            android:defaultValue="Title" />
+        <argument
+            android:name="eventBg"
+            app:argType="string" />
+        <argument
+            android:name="eventDescription"
+            app:argType="string"
+            android:defaultValue="Description" />
+        <argument
+            android:name="eventDate"
+            app:argType="string" />
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_eventFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_eventUserListFragment"
+            app:destination="@id/eventUserListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createEventFragment"
+        android:name="com.example.dalsocial.fragment.CreateEventFragment"
+        android:label="CreateEventFragment" >
+        <action
+            android:id="@+id/action_createEventFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventUserListFragment"
+        android:name="com.example.dalsocial.fragment.EventUserListFragment"
+        android:label="EventUserListFragment" >
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_eventUserListFragment_to_QRCodeScannedFragment2"
+            app:destination="@id/QRCodeScannedFragment2" />
+    </fragment>
+</navigation>

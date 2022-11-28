@@ -16,17 +16,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bio"
+            android:text="@string/profile_mock_bio"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/edUserSetupBio"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:inputType="textMultiLine"
-            android:hint="Type something about yourself"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edUserSetupBio"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="@string/something_about_yourself"
+                android:inputType="textMultiLine" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -40,17 +45,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Instagram"
+            android:text="@string/instagram"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/edUserSetupInstagram"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="https://www.instagram.com/johndoe"
-            android:inputType="textUri"
-            android:textSize="18sp" />
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edUserSetupInstagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/instagram_mock" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -64,17 +73,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Twitter"
+            android:text="@string/twitter"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/edUserSetupTwitter"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="https://www.twitter.com/johndoe"
-            android:inputType="textUri"
-            android:textSize="18sp" />
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edUserSetupTwitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/twitter_mock"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -88,17 +102,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LinkedIn"
+            android:text="@string/linkedin"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/edUserSetupLinkedIn"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="https://www.linkedin.com/johndoe"
-            android:inputType="textUri"
-            android:textSize="18sp" />
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edUserSetupLinkedIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/linkedin_mock" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -112,19 +130,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LinkedIn"
+            android:text="@string/facebook"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/edUserSetupFacebook"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="https://www.facebook.com/johndoe"
-            android:inputType="textUri"
-            android:textSize="18sp" />
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edUserSetupFacebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/facebook_mock" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btnUserSetupDetailsDone"
@@ -132,6 +159,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="16dp"
-        android:text="Done!" />
+        android:text="@string/done" />
 
 </LinearLayout>

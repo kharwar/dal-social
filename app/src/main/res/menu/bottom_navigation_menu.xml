@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/social_page"
+        android:id="@+id/menu_social_page"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_emoji_people_24"
         android:title="Social" />
+
     <item
-        android:id="@+id/events_page"
+        android:id="@+id/menu_events_page"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_emoji_people_24"
+        android:icon="@drawable/ic_event_24"
         android:title="Events" />
+<!--    <item-->
+<!--        android:id="@+id/menu_groups_page"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_baseline_emoji_people_24"-->
+<!--        android:title="Groups" />-->
 
     <item
-        android:id="@+id/groups_page"
+        android:id="@+id/menu_chat_page"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_emoji_people_24"
-        android:title="Groups" />
-
-    <item
-        android:id="@+id/chat_page"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_emoji_people_24"
+        android:icon="@drawable/ic_chat_24"
         android:title="Chat" />
 
     <item
-        android:id="@+id/profile_page"
+        android:id="@+id/menu_profile_page"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_emoji_people_24"
+        android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="Profile" />
 </menu>

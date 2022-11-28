@@ -10,10 +10,11 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.dalsocial.HomeActivity
 import com.example.dalsocial.R
-import com.example.dalsocial.model.FirebaseAuthentication
+import com.example.dalsocial.model.UserManagement
 import com.example.dalsocial.model.IUserPersistence
 import com.example.dalsocial.model.User
 import com.example.dalsocial.model.UserPersistence
+import com.google.android.material.textfield.TextInputEditText
 
 class UserSetupSocial : Fragment() {
 
@@ -21,15 +22,13 @@ class UserSetupSocial : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //TODO: validation
-
         val view = inflater.inflate(R.layout.fragment_user_setup_social, container, false)
 
-        val edBio: EditText = view.findViewById(R.id.edUserSetupBio)
-        val edInsta: EditText = view.findViewById(R.id.edUserSetupInstagram)
-        val edTwitter: EditText = view.findViewById(R.id.edUserSetupTwitter)
-        val edLinkedIn: EditText = view.findViewById(R.id.edUserSetupLinkedIn)
-        val edFacebook: EditText = view.findViewById(R.id.edUserSetupFacebook)
+        val edBio: TextInputEditText = view.findViewById(R.id.edUserSetupBio)
+        val edInsta: TextInputEditText = view.findViewById(R.id.edUserSetupInstagram)
+        val edTwitter: TextInputEditText = view.findViewById(R.id.edUserSetupTwitter)
+        val edLinkedIn: TextInputEditText = view.findViewById(R.id.edUserSetupLinkedIn)
+        val edFacebook: TextInputEditText = view.findViewById(R.id.edUserSetupFacebook)
 
         val btnDone: Button = view.findViewById(R.id.btnUserSetupDetailsDone)
 
@@ -42,15 +41,15 @@ class UserSetupSocial : Fragment() {
             userDetails["linkedin"] = edLinkedIn.text.toString()
             userDetails["facebook"] = edFacebook.text.toString()
 
-            userDetails["userID"] = FirebaseAuthentication().currentUser!!.uid
-            userDetails["email"] = FirebaseAuthentication().currentUser!!.email!!
+            userDetails["userID"] = UserManagement().currentUser!!.uid
+            userDetails["email"] = UserManagement().currentUser!!.email!!
 
             val user: User = User.fromMap(userDetails)
 
             val userPersistence: IUserPersistence = UserPersistence()
             userPersistence.createOrUpdateUser(user) { success ->
                 if (success) {
-                    var intent = Intent(activity, HomeActivity::class.java)
+                    val intent = Intent(activity, HomeActivity::class.java)
                     startActivity(intent)
                     activity?.finish()
                 }
