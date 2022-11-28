@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    tools:context=".fragment.GroupCardFragment">
+    tools:context=".fragment.groups.GroupCardFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

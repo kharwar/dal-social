@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.dalsocial.R
-import com.example.dalsocial.model.*
+import com.example.dalsocial.model.user.*
 import com.google.android.material.textfield.TextInputEditText
 import com.tapadoo.alerter.Alerter
 

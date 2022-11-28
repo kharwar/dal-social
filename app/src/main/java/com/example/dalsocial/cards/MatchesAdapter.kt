@@ -9,7 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.dalsocial.R
-import com.example.dalsocial.model.*
+import com.example.dalsocial.model.social.Match
+import com.example.dalsocial.model.social.MatchPersistence
+import com.example.dalsocial.model.social.SocialMatches
+import com.example.dalsocial.model.user.User
+import com.example.dalsocial.model.user.UserManagement
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton

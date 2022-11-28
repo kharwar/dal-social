@@ -10,13 +10,13 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.dalsocial.MainActivity
+import com.example.dalsocial.activity.MainActivity
 import com.example.dalsocial.R
 import com.example.dalsocial.R.layout
-import com.example.dalsocial.model.IUserManagement
-import com.example.dalsocial.model.IUserPersistence
-import com.example.dalsocial.model.UserManagement
-import com.example.dalsocial.model.UserPersistence
+import com.example.dalsocial.model.user.IUserManagement
+import com.example.dalsocial.model.user.IUserPersistence
+import com.example.dalsocial.model.user.UserManagement
+import com.example.dalsocial.model.user.UserPersistence
 
 class SettingsFragment : Fragment() {
 
