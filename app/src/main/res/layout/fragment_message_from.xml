@@ -8,9 +8,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_view"
-        android:background="@drawable/message_from"
+        android:background="@drawable/message_to"
+        android:text="This is test message"
         android:layout_alignParentEnd="true"
         android:layout_margin="12dp"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:padding="10dp"/>
 </RelativeLayout>

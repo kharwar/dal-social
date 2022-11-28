@@ -82,7 +82,6 @@ class SocialFragment : Fragment() {
                     includedUsers = includedUserIds,
                 )
                 socialMatches.match(match) {
-                    Toast.makeText(requireContext(), "Matched", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -98,11 +97,13 @@ class SocialFragment : Fragment() {
                     matchInitiatorUserIdLiked = true,
                     includedUsers = includedUserIds,
                 )
-                socialMatches.match(match) {
-                    Alerter.create(requireActivity())
-                        .setText("You matched with ${user.firstName}!")
-                        .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
-                        .show()
+                socialMatches.match(match) { matched ->
+                    if (matched) {
+                        Alerter.create(requireActivity())
+                            .setText("You matched with ${user.firstName}!")
+                            .setBackgroundColorRes(com.tapadoo.alerter.R.color.alerter_default_success_background)
+                            .show()
+                    }
                 }
             }
 

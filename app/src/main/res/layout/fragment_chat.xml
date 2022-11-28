@@ -1,63 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.ChatFragment"
-    >
+    android:orientation="vertical">
+
     <TextView
-        android:id="@+id/chatToggle"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:text="@string/chat_btn"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        android:typeface="serif"
-        android:layout_marginTop="40dp"
-        tools:ignore="MissingConstraints" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="33dp"
-        android:background="@android:color/background_dark"
-        tools:ignore="MissingConstraints" />
-<!--    <com.google.android.material.button.MaterialButtonToggleGroup-->
-<!--        android:id="@+id/chatToggle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="20dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:singleSelection="true"-->
-<!--        app:selectionRequired="true"-->
-<!--        app:checkedButton="@id/soloChats"-->
-<!--        >-->
-<!--        <Button-->
-<!--            android:id="@+id/soloChats"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Solo Chats"-->
-<!--            style="?attr/materialButtonOutlinedStyle"-->
-<!--            />-->
-<!--        <Button-->
-<!--            android:id="@+id/groupChats"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Group Chats"-->
-<!--            style="?attr/materialButtonOutlinedStyle"/>-->
-<!--    </com.google.android.material.button.MaterialButtonToggleGroup>-->
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Register"
+        android:textSize="35sp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        tools:listitem="@layout/fragment_chat_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chatToggle"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        tools:listitem="@layout/fragment_chat_card" />
+</LinearLayout>

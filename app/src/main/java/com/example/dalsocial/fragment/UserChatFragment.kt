@@ -1,18 +1,13 @@
 package com.example.dalsocial.fragment
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.RecyclerView
-import com.example.dalsocial.R
 import com.example.dalsocial.databinding.FragmentUsersChatBinding
 import com.example.dalsocial.model.*
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
@@ -54,6 +49,7 @@ class UserChatFragment : Fragment() {
             FirestoreRecyclerOptions.Builder<Messages>().setQuery(getMessagesQuery, Messages::class.java).build()
         adapter = MessageAdapter(recyclerViewOptions, binding!!, currentUser!! )
         binding?.messagesRecyclerView?.adapter = adapter
+
         binding?.sendMessageToUser?.setOnClickListener{it ->
 
             var message : String?=binding?.messageText?.text.toString()
