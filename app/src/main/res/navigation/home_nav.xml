@@ -138,6 +138,9 @@
         <action
             android:id="@+id/action_eventFragment_to_eventsFragment"
             app:destination="@id/eventsFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_eventUserListFragment"
+            app:destination="@id/eventUserListFragment" />
     </fragment>
     <fragment
         android:id="@+id/createEventFragment"
@@ -146,5 +149,16 @@
         <action
             android:id="@+id/action_createEventFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventUserListFragment"
+        android:name="com.example.dalsocial.fragment.EventUserListFragment"
+        android:label="EventUserListFragment" >
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_eventUserListFragment_to_QRCodeScannedFragment2"
+            app:destination="@id/QRCodeScannedFragment2" />
     </fragment>
 </navigation>

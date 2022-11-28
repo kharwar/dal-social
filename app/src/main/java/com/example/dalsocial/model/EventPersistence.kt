@@ -17,9 +17,11 @@ class EventPersistence : IEventPersistence {
 
     val EVENTS_COLLECTION: String = "events"
     val EVENTS_GUESTS_COLLECTION: String = "eventGuests"
+    val USERS_COLLECTION: String = "users"
 
     private val eventRef = db.collection(EVENTS_COLLECTION)
     private val guestsRef = db.collection(EVENTS_GUESTS_COLLECTION)
+    private val userRef = db.collection(USERS_COLLECTION)
     private val storageRef = FirebaseStorage.getInstance().reference
 
     val userManagement = UserManagement()
@@ -104,13 +106,13 @@ class EventPersistence : IEventPersistence {
     }
 
     override fun isCurrentUserOwner(eventId: String?, result: (Boolean) -> Unit) {
-        if(eventId != null && eventId.isNotEmpty()){
+        if (eventId != null && eventId.isNotEmpty()) {
             getCurrentUser { user ->
                 eventRef.document(eventId).get()
                     .addOnCompleteListener {
-                        if(it.isSuccessful){
+                        if (it.isSuccessful) {
                             val event = it.result
-                            if(event.getString("userId") == user?.userID){
+                            if (event.getString("userId") == user?.userID) {
                                 result(true)
                             } else {
                                 result(false)
@@ -124,7 +126,7 @@ class EventPersistence : IEventPersistence {
     }
 
     override fun deleteEvent(eventId: String?, result: (Boolean) -> Unit) {
-        if(eventId != null && !eventId.isEmpty()){
+        if (eventId != null && !eventId.isEmpty()) {
             eventRef.document(eventId).delete().addOnSuccessListener {
                 guestsRef.whereEqualTo("eventId", eventId).get().addOnSuccessListener { snapshot ->
                     snapshot.forEach { doc ->
@@ -135,6 +137,39 @@ class EventPersistence : IEventPersistence {
             }
                 .addOnFailureListener {
                     result(false)
+                }
+
+        }
+    }
+
+    override fun viewMembers(eventId: String?, result: (MutableList<User>) -> Unit) {
+        getCurrentUser { user ->
+            var guestUserIdList: MutableList<String?> = mutableListOf()
+            guestsRef.whereEqualTo("eventId", eventId).get()
+                .addOnSuccessListener { snapshot ->
+//                    guestUserList = snapshot.toObjects(EventGuest::class.java)
+//                    if(guestUserList.isNotEmpty()){
+//                        var iterator = guestUserList.iterator()
+//                        iterator.forEach {
+//                            if(it.userId != user?.userID){
+//                                guestUserList.add(it)
+//                            }
+//                        }
+//                        userRef.whereIn("userID", )
+//                    }
+                    snapshot.forEach {
+                        if (it.getString("userId") != user?.userID) {
+                            guestUserIdList.add(it.getString("userId"))
+                        }
+                    }
+
+                    userRef.whereIn("userID", guestUserIdList).get()
+                        .addOnSuccessListener { userSnapshot ->
+                            var users: MutableList<User> = mutableListOf()
+                            users = userSnapshot.toObjects(User::class.java)
+                            result(users)
+                        }
+
                 }
 
         }
@@ -166,7 +201,7 @@ class EventPersistence : IEventPersistence {
     }
 
     override fun createEvent(event: Event, imageUri: Uri, result: (Event?) -> Unit) {
-        if(imageUri == null) {
+        if (imageUri == null) {
             result(null)
         }
         getCurrentUser { user ->

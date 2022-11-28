@@ -97,6 +97,7 @@
     <string name="eventQABtn">Questions</string>
     <string name="event_bg_content_iv">Event background</string>
     <string name="event_create_fb">Create</string>
+    <string name="event_user_card_display_picture">User Display Picture</string>
 
     <string name="new_group_meetup">New Group Meetup</string>
     <string name="group_name">Name</string>

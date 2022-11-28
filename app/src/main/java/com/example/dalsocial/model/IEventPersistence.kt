@@ -11,4 +11,5 @@ interface IEventPersistence {
     fun getMyEvents(result: (List<Event>) -> Unit)
     fun createEvent(event: Event, imageUri: Uri, result: (Event?) -> Unit)
     fun deleteEvent(eventId: String?, result: (Boolean) -> Unit)
+    fun viewMembers(eventId: String?, result: (MutableList<User>) -> Unit)
 }
