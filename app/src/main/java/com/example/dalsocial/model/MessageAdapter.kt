@@ -10,10 +10,11 @@ import com.example.dalsocial.databinding.FragmentUsersChatBinding
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
-class MessageAdapter(options: FirestoreRecyclerOptions<Messages>, usersChatBinding: FragmentUsersChatBinding, currentUser: String)
+class MessageAdapter(options: FirestoreRecyclerOptions<Messages>,
+                     private val usersChatBinding: FragmentUsersChatBinding,
+                     private val currentUser: String
+)
     : FirestoreRecyclerAdapter<Messages, MessageAdapter.MessageViewHolder>(options) {
-    val usersChatBinding: FragmentUsersChatBinding=usersChatBinding
-    val currentUser: String=currentUser
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         return if (viewType == R.layout.fragment_message_to) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_message_to, parent, false)

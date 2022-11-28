@@ -1,19 +1,16 @@
 package com.example.dalsocial.fragment
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.dalsocial.R
 import com.example.dalsocial.databinding.FragmentChatBinding
-import com.example.dalsocial.model.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.dalsocial.model.ChatList
+import com.example.dalsocial.model.ChatListAdapter
+import com.example.dalsocial.model.ChatListPersistence
+import com.example.dalsocial.model.IChatListPersistence
 
 class ChatFragment : Fragment() {
     private var _binding: FragmentChatBinding? = null
@@ -22,7 +19,7 @@ class ChatFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentChatBinding.inflate(inflater, container, false)
         return binding.root

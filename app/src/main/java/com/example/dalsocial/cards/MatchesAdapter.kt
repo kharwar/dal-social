@@ -71,8 +71,12 @@ class MatchesAdapter(context: Context?, resourceId: Int, items: List<User?>?, sw
             matchInitiatorUserIdLiked = true,
             includedUsers = includedUserIds,
         )
-        socialMatches.match(match) {
-            swipeAdapterView.topCardListener.selectRight()
+        socialMatches.match(match) { matched ->
+            if (isLike) {
+                swipeAdapterView.topCardListener.selectRight()
+            } else {
+                swipeAdapterView.topCardListener.selectLeft()
+            }
         }
     }
 }

@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dalsocial.MainActivity
 import com.example.dalsocial.R
 import com.example.dalsocial.R.layout
@@ -51,6 +53,12 @@ class SettingsFragment : Fragment() {
                 }
                 .setNegativeButton("No") { _, _ -> }
                 .show()
+        }
+
+        // reference: https://stackoverflow.com/questions/5448653/how-to-implement-onbackpressed-in-fragments
+        val btnBack = view.findViewById<ImageView>(R.id.backAccountSettingsBtn)
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         return view
