@@ -10,6 +10,7 @@ import com.example.dalsocial.databinding.FragmentEventUserListBinding
 import com.example.dalsocial.model.events.EventPersistence
 import com.example.dalsocial.model.events.EventUserAdapter
 import com.example.dalsocial.model.events.IEventPersistence
+import com.example.dalsocial.model.user.User
 
 class EventUserListFragment : Fragment() {
 
@@ -31,10 +32,10 @@ class EventUserListFragment : Fragment() {
         val eventPersistence: IEventPersistence = EventPersistence()
 
 
-
         eventPersistence.viewMembers(arguments?.getString("eventId")) { users ->
             val adapter = EventUserAdapter(users, this)
-            binding.eventUserList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            binding.eventUserList.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             binding.eventUserList.adapter = adapter
         }
     }

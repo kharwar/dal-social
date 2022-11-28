@@ -164,13 +164,17 @@ class EventPersistence : IEventPersistence {
                             guestUserIdList.add(it.getString("userId"))
                         }
                     }
+                    var users: MutableList<User> = mutableListOf()
+                    if(guestUserIdList.isNotEmpty()){
+                        userRef.whereIn("userID", guestUserIdList).get()
+                            .addOnSuccessListener { userSnapshot ->
+                                users = userSnapshot.toObjects(User::class.java)
+                                result(users)
+                            }
+                    } else {
+                        result(users)
+                    }
 
-                    userRef.whereIn("userID", guestUserIdList).get()
-                        .addOnSuccessListener { userSnapshot ->
-                            var users: MutableList<User> = mutableListOf()
-                            users = userSnapshot.toObjects(User::class.java)
-                            result(users)
-                        }
 
                 }
 
